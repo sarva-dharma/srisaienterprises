@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow Studio 2.0 | Advanced Project & Workflow Management</title>
+    <meta name="description" content="An enterprise-grade full-stack project management platform with Kanban drag-and-drop, data table, subtask checklists, and executive analytics.">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Top Navigation Bar -->
+        <header class="navbar">
+            <div class="nav-container">
+                <!-- Brand & Logo -->
+                <div class="brand">
+                    <div class="brand-logo">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                    </div>
+                    <div class="brand-text">
+                        <div class="brand-title-row">
+                            <span class="brand-name">TaskFlow</span>
+                            <span class="version-tag">2.0 Pro</span>
+                        </div>
+                        <span class="brand-tagline">Project & Workflow Suite</span>
+                    </div>
+                </div>
+
+                <!-- View Switcher Tabs -->
+                <div class="view-switcher" role="tablist" aria-label="Management Views">
+                    <button class="view-tab active" data-view="board" role="tab" aria-selected="true" id="tabBoard">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="5" height="18" rx="1"></rect>
+                            <rect x="10" y="3" width="5" height="12" rx="1"></rect>
+                            <rect x="17" y="3" width="5" height="15" rx="1"></rect>
+                        </svg>
+                        <span>Kanban Board</span>
+                    </button>
+                    <button class="view-tab" data-view="table" role="tab" aria-selected="false" id="tabTable">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                        </svg>
+                        <span>Data Table</span>
+                    </button>
+                    <button class="view-tab" data-view="analytics" role="tab" aria-selected="false" id="tabAnalytics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                        <span>Analytics</span>
+                    </button>
+                </div>
+
+                <!-- Nav Actions -->
+                <div class="nav-actions">
+                    <!-- Dark / Light Theme Toggle -->
+                    <button class="btn btn-icon theme-toggle-btn" id="themeToggleBtn" title="Toggle Dark / Light Theme" aria-label="Toggle theme">
+                        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Data Actions Dropdown -->
+                    <div class="dropdown-wrapper">
+                        <button class="btn btn-secondary btn-sm" id="dataDropdownBtn" title="Data management options">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            <span>Data</span>
+                        </button>
+                        <div class="dropdown-menu" id="dataDropdownMenu">
+                            <a href="/api/tasks/export?format=json" download class="dropdown-item" id="exportJsonBtn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="8 17 12 21 16 17"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.88 18.09A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.29"></path></svg>
+                                Export as JSON
+                            </a>
+                            <a href="/api/tasks/export?format=csv" download class="dropdown-item" id="exportCsvBtn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line></svg>
+                                Export as CSV
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <button type="button" class="dropdown-item" id="triggerImportBtn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                Import from JSON
+                            </button>
+                            <div class="dropdown-divider"></div>
+                            <button type="button" class="dropdown-item text-danger" id="resetDataBtn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                                Reset Demo Data
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- New Task Button -->
+                    <button class="btn btn-primary" id="openCreateModalBtn">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        <span>New Task</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+            <!-- Executive Overview Bar -->
+            <section class="overview-bar">
+                <div class="overview-left">
+                    <h1 class="page-title" id="pageTitle">Kanban Board</h1>
+                    <p class="page-subtitle" id="pageSubtitle">Organize, prioritize, and drag tasks across workflow stages.</p>
+                </div>
+
+                <!-- KPI Metric Badges -->
+                <div class="kpi-strip">
+                    <div class="kpi-pill">
+                        <span class="kpi-label">Total</span>
+                        <span class="kpi-val" id="kpiTotal">--</span>
+                    </div>
+                    <div class="kpi-pill">
+                        <span class="kpi-label">In Progress</span>
+                        <span class="kpi-val text-warning" id="kpiInProgress">--</span>
+                    </div>
+                    <div class="kpi-pill">
+                        <span class="kpi-label">In Review</span>
+                        <span class="kpi-val text-purple" id="kpiReview">--</span>
+                    </div>
+                    <div class="kpi-pill">
+                        <span class="kpi-label">Completed</span>
+                        <span class="kpi-val text-success" id="kpiCompleted">--</span>
+                    </div>
+                    <div class="kpi-pill kpi-overdue-pill" id="kpiOverduePill">
+                        <span class="kpi-label">Overdue</span>
+                        <span class="kpi-val text-danger" id="kpiOverdue">0</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Frictionless Quick Add Bar -->
+            <section class="quick-add-section">
+                <form id="quickAddForm" class="quick-add-box">
+                    <div class="quick-add-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </div>
+                    <input type="text" id="quickAddInput" placeholder="+ Quick add task to Backlog (type title & press Enter)..." autocomplete="off" maxlength="150">
+                    <button type="submit" class="btn btn-primary btn-sm" id="quickAddSubmitBtn">Add</button>
+                </form>
+            </section>
+
+            <!-- Filter & Search Toolbar -->
+            <section class="controls-toolbar">
+                <div class="toolbar-wrapper">
+                    <!-- Search Input -->
+                    <div class="search-box">
+                        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" id="searchInput" placeholder="Filter by title, assignee, or tag... (Press '/' to focus)" autocomplete="off">
+                        <button class="clear-search-btn" id="clearSearchBtn" title="Clear search" style="display: none;">&times;</button>
+                    </div>
+
+                    <!-- Dropdown Filters -->
+                    <div class="filter-group">
+                        <div class="select-wrapper">
+                            <select id="categoryFilter" aria-label="Category filter">
+                                <option value="All">All Categories</option>
+                            </select>
+                        </div>
+
+                        <div class="select-wrapper">
+                            <select id="priorityFilter" aria-label="Priority filter">
+                                <option value="All">All Priorities</option>
+                                <option value="Urgent">Urgent</option>
+                                <option value="High">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                            </select>
+                        </div>
+
+                        <div class="select-wrapper">
+                            <select id="assigneeFilter" aria-label="Assignee filter">
+                                <option value="All">All Assignees</option>
+                            </select>
+                        </div>
+
+                        <!-- Overdue Quick Filter Button -->
+                        <button class="btn btn-secondary btn-sm" id="overdueFilterBtn" title="Show only overdue tasks">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>Overdue Only</span>
+                        </button>
+
+                        <div class="select-wrapper">
+                            <select id="sortBySelect" aria-label="Sort tasks">
+                                <option value="created_at_desc">Newest First</option>
+                                <option value="priority_desc">Highest Priority</option>
+                                <option value="due_date_asc">Nearest Due Date</option>
+                                <option value="title_asc">Title (A-Z)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= VIEW 1: KANBAN BOARD ================= -->
+            <section class="view-container active" id="boardView">
+                <div class="kanban-grid">
+                    <!-- Column 1: Pending / Backlog -->
+                    <div class="kanban-col" data-status="pending">
+                        <div class="col-header col-header-pending">
+                            <div class="col-title-wrap">
+                                <span class="col-indicator indicator-pending"></span>
+                                <h3 class="col-title">Backlog</h3>
+                                <span class="col-count" id="countPending">0</span>
+                            </div>
+                            <button class="btn btn-icon btn-sm col-add-btn" data-status="pending" title="Add to Backlog">+</button>
+                        </div>
+                        <div class="col-cards-dropzone" id="cardsPending" data-status="pending">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Column 2: In Progress -->
+                    <div class="kanban-col" data-status="in_progress">
+                        <div class="col-header col-header-in_progress">
+                            <div class="col-title-wrap">
+                                <span class="col-indicator indicator-in_progress"></span>
+                                <h3 class="col-title">In Progress</h3>
+                                <span class="col-count" id="countInProgress">0</span>
+                            </div>
+                            <button class="btn btn-icon btn-sm col-add-btn" data-status="in_progress" title="Add to In Progress">+</button>
+                        </div>
+                        <div class="col-cards-dropzone" id="cardsInProgress" data-status="in_progress">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Review / QA -->
+                    <div class="kanban-col" data-status="review">
+                        <div class="col-header col-header-review">
+                            <div class="col-title-wrap">
+                                <span class="col-indicator indicator-review"></span>
+                                <h3 class="col-title">In Review</h3>
+                                <span class="col-count" id="countReview">0</span>
+                            </div>
+                            <button class="btn btn-icon btn-sm col-add-btn" data-status="review" title="Add to Review">+</button>
+                        </div>
+                        <div class="col-cards-dropzone" id="cardsReview" data-status="review">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Column 4: Completed -->
+                    <div class="kanban-col" data-status="completed">
+                        <div class="col-header col-header-completed">
+                            <div class="col-title-wrap">
+                                <span class="col-indicator indicator-completed"></span>
+                                <h3 class="col-title">Completed</h3>
+                                <span class="col-count" id="countCompleted">0</span>
+                            </div>
+                            <button class="btn btn-icon btn-sm col-add-btn" data-status="completed" title="Add to Completed">+</button>
+                        </div>
+                        <div class="col-cards-dropzone" id="cardsCompleted" data-status="completed">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= VIEW 2: DATA TABLE ================= -->
+            <section class="view-container" id="tableView" style="display: none;">
+                <!-- Floating Bulk Action Toolbar -->
+                <div class="bulk-toolbar" id="bulkToolbar" style="display: none;">
+                    <div class="bulk-info">
+                        <span class="bulk-count-badge" id="bulkCountBadge">0 selected</span>
+                    </div>
+                    <div class="bulk-actions">
+                        <div class="select-wrapper select-wrapper-sm">
+                            <select id="bulkStatusSelect">
+                                <option value="">Change Status...</option>
+                                <option value="pending">Move to Backlog</option>
+                                <option value="in_progress">Move to In Progress</option>
+                                <option value="review">Move to In Review</option>
+                                <option value="completed">Move to Completed</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-danger btn-sm" id="bulkDeleteBtn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                            Delete Selected
+                        </button>
+                        <button class="btn btn-ghost btn-sm" id="bulkDeselectBtn">Cancel</button>
+                    </div>
+                </div>
+
+                <!-- Table Card Container -->
+                <div class="table-card">
+                    <div class="table-responsive">
+                        <table class="data-table" id="tasksDataTable">
+                            <thead>
+                                <tr>
+                                    <th class="th-checkbox">
+                                        <input type="checkbox" id="selectAllCheckbox" aria-label="Select all tasks">
+                                    </th>
+                                    <th>Status</th>
+                                    <th>Task Title</th>
+                                    <th>Category</th>
+                                    <th>Priority</th>
+                                    <th>Assignee</th>
+                                    <th>Due Date</th>
+                                    <th>Subtasks</th>
+                                    <th class="th-actions">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableTasksBody">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= VIEW 3: ANALYTICS ================= -->
+            <section class="view-container" id="analyticsView" style="display: none;">
+                <div class="analytics-grid">
+                    <!-- Analytics Card 1: Executive KPI Progress -->
+                    <div class="analytics-card">
+                        <div class="card-header-clean">
+                            <h3>Workflow Health & Completion Velocity</h3>
+                            <span class="badge badge-subtle">Real-Time</span>
+                        </div>
+                        <div class="kpi-ring-wrapper">
+                            <div class="progress-ring-container">
+                                <div class="progress-ring-label">
+                                    <span class="progress-ring-number" id="analyticsRateVal">0%</span>
+                                    <span class="progress-ring-sub">Done</span>
+                                </div>
+                            </div>
+                            <div class="velocity-stats">
+                                <div class="vstat-item">
+                                    <span class="vstat-num text-success" id="anaCompletedCount">0</span>
+                                    <span class="vstat-lbl">Tasks Completed</span>
+                                </div>
+                                <div class="vstat-item">
+                                    <span class="vstat-num text-warning" id="anaActiveCount">0</span>
+                                    <span class="vstat-lbl">Active in Pipeline</span>
+                                </div>
+                                <div class="vstat-item">
+                                    <span class="vstat-num text-danger" id="anaOverdueCount">0</span>
+                                    <span class="vstat-lbl">Overdue Deadlines</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Analytics Card 2: Status Stage Breakdown -->
+                    <div class="analytics-card">
+                        <div class="card-header-clean">
+                            <h3>Status Stage Distribution</h3>
+                            <span class="card-subtitle">Task progression</span>
+                        </div>
+                        <div class="bar-chart-list" id="statusChartList">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Analytics Card 3: Priority Matrix -->
+                    <div class="analytics-card">
+                        <div class="card-header-clean">
+                            <h3>Priority Allocation</h3>
+                            <span class="card-subtitle">Urgency classification</span>
+                        </div>
+                        <div class="bar-chart-list" id="priorityChartList">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Analytics Card 4: Team Workload Distribution -->
+                    <div class="analytics-card">
+                        <div class="card-header-clean">
+                            <h3>Team Workload & Ownership</h3>
+                            <span class="card-subtitle">Tasks per assignee</span>
+                        </div>
+                        <div class="assignee-workload-list" id="assigneeWorkloadList">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overdue & Urgent Attention Needed Banner -->
+                <div class="attention-card" id="attentionCard" style="display: none;">
+                    <div class="attention-header">
+                        <div class="attention-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        </div>
+                        <div>
+                            <h4>Attention Required: Overdue & Urgent Deadlines</h4>
+                            <p>The following tasks require immediate triage to keep projects on schedule.</p>
+                        </div>
+                    </div>
+                    <div class="attention-tasks-list" id="attentionTasksList">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Global Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"></polyline>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                </div>
+                <h3>No matching tasks found</h3>
+                <p>Try clearing active filters or create a new task to continue.</p>
+                <button class="btn btn-primary" id="emptyStateCreateBtn">+ Create New Task</button>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-content">
+                <p>TaskFlow Studio 2.0 &bull; Enterprise Task & Project Hub (Flask &bull; SQLite &bull; REST API &bull; Kanban &bull; Analytics)</p>
+                <div class="api-links">
+                    <a href="/api/tasks" target="_blank" class="api-link">API Tasks</a>
+                    <span class="divider">&bull;</span>
+                    <a href="/api/stats" target="_blank" class="api-link">API Stats</a>
+                    <span class="divider">&bull;</span>
+                    <a href="/api/health" target="_blank" class="api-link">API Health</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal for Task Create / Edit -->
+    <div class="modal-overlay" id="taskModalOverlay" aria-hidden="true">
+        <div class="modal" id="taskModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Create New Task</h3>
+                <button class="btn-close" id="closeModalBtn" aria-label="Close modal">&times;</button>
+            </div>
+            <form id="taskForm">
+                <input type="hidden" id="taskIdInput" value="">
+
+                <div class="form-group">
+                    <label for="taskTitleInput">Task Title <span class="required">*</span></label>
+                    <input type="text" id="taskTitleInput" placeholder="e.g. Architect Core GraphQL / REST Gateway" required maxlength="150">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group flex-1">
+                        <label for="taskCategoryInput">Category</label>
+                        <input type="text" id="taskCategoryInput" list="categoryOptions" placeholder="e.g. Frontend, Backend, DevOps" maxlength="50">
+                        <datalist id="categoryOptions">
+                            <option value="Frontend">
+                            <option value="Backend">
+                            <option value="Design">
+                            <option value="DevOps">
+                            <option value="Marketing">
+                            <option value="Research">
+                            <option value="Documentation">
+                        </datalist>
+                    </div>
+
+                    <div class="form-group flex-1">
+                        <label for="taskAssigneeInput">Assignee</label>
+                        <input type="text" id="taskAssigneeInput" list="assigneeOptions" placeholder="e.g. Alex Chen, Sarah Lin" maxlength="80">
+                        <datalist id="assigneeOptions">
+                            <option value="Alex Chen">
+                            <option value="Sarah Lin">
+                            <option value="Marcus Brody">
+                            <option value="Elena Vance">
+                            <option value="Unassigned">
+                        </datalist>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group flex-1">
+                        <label for="taskPriorityInput">Priority</label>
+                        <select id="taskPriorityInput">
+                            <option value="Low">Low</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="High">High</option>
+                            <option value="Urgent">Urgent</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group flex-1">
+                        <label for="taskStatusInput">Workflow Stage</label>
+                        <select id="taskStatusInput">
+                            <option value="pending" selected>Backlog / Pending</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="review">In Review / QA</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group flex-1">
+                        <label for="taskDueDateInput">Due Date</label>
+                        <input type="date" id="taskDueDateInput">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="taskDescInput">Description & Acceptance Criteria</label>
+                    <textarea id="taskDescInput" rows="3" placeholder="Provide extra background, notes, or technical criteria..."></textarea>
+                </div>
+
+                <!-- Interactive Subtask Checklist Section -->
+                <div class="form-group checklist-form-group">
+                    <div class="checklist-header-row">
+                        <label>Subtask Checklist</label>
+                        <span class="checklist-count-hint" id="modalChecklistHint">0 items</span>
+                    </div>
+                    <div class="checklist-items-list" id="modalChecklistItems">
+                        <!-- Injected by JS -->
+                    </div>
+                    <div class="add-checklist-row">
+                        <input type="text" id="newChecklistItemInput" placeholder="Add a checklist item (press Enter or click +)..." maxlength="120">
+                        <button type="button" class="btn btn-secondary btn-sm" id="addChecklistItemBtn">+ Add</button>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelModalBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="saveTaskSubmitBtn">Save Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Hidden File Input for JSON Import -->
+    <input type="file" id="importFileInput" accept=".json" style="display: none;">
+
+    <!-- Floating Toast Notification Container -->
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <!-- Application JavaScript -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

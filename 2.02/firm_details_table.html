@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firm Details & Services Table Editor | Bengaluru Sanctions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0B132B;
+      --bg-card: #1C2541;
+      --bg-card-hover: #223055;
+      --accent: #E5A93C;
+      --accent-hover: #F6BD60;
+      --accent-glow: rgba(229, 169, 60, 0.25);
+      --text-main: #FFFFFF;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      --border: rgba(255, 255, 255, 0.1);
+      --border-focus: #E5A93C;
+      --success: #10B981;
+      --info: #38BDF8;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 32px 24px 80px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header-card {
+      background: linear-gradient(135deg, rgba(28, 37, 65, 0.95), rgba(11, 19, 43, 0.98));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .header-info h1 {
+      font-size: 26px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+    }
+
+    .header-info h1 span.badge {
+      background: var(--accent-glow);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      font-size: 13px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .header-info p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    /* Tabs */
+    .tab-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: #0B132B;
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Actions Bar */
+    .action-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      position: sticky;
+      top: 16px;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
+      gap: 10px;
+      width: 320px;
+      max-width: 100%;
+    }
+
+    .search-box input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: 14px;
+      width: 100%;
+    }
+
+    .search-box input::placeholder {
+      color: var(--text-dim);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0B132B;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+
+    .btn-success {
+      background: rgba(16, 185, 129, 0.2);
+      color: #10B981;
+      border: 1px solid #10B981;
+    }
+
+    .btn-success:hover {
+      background: #10B981;
+      color: #fff;
+    }
+
+    /* Table Container */
+    .table-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    thead th {
+      background: #141D38;
+      padding: 14px 20px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      transition: background 0.15s ease;
+    }
+
+    tbody tr:hover {
+      background: var(--bg-card-hover);
+    }
+
+    tbody td {
+      padding: 16px 20px;
+      font-size: 14px;
+      vertical-align: middle;
+    }
+
+    .section-pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .pill-identity { background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .pill-contact { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .pill-location { background: rgba(245, 158, 11, 0.15); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .pill-admin { background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .pill-badges { background: rgba(168, 85, 247, 0.15); color: #A855F7; border: 1px solid rgba(168, 85, 247, 0.3); }
+
+    .field-key-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #E2E8F0;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: block;
+      margin-top: 4px;
+    }
+
+    .input-field {
+      width: 100%;
+      background: rgba(11, 19, 43, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-sm);
+      color: #fff;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .input-field:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+      background: rgba(11, 19, 43, 0.95);
+    }
+
+    textarea.input-field {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .desc-text {
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #10B981;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .notice-bar {
+      background: rgba(229, 169, 60, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 12px 18px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #F6BD60;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header-card">
+      <div class="header-info">
+        <h1>
+          🏛️ Firm Configuration Table
+          <span class="badge">Visual Table Editor</span>
+        </h1>
+        <p>Edit your firm details and services directly in the table below. When finished, click <strong>Save & Download CSV</strong> to update your website.</p>
+      </div>
+      <div>
+        <a href="index.html" class="btn btn-secondary">🌐 View Live Website</a>
+      </div>
+    </div>
+
+    <!-- Notice -->
+    <div class="notice-bar">
+      💡 <strong>How it works:</strong> Type your changes directly into the table cells. Click <strong>Download firm_details.csv</strong> and replace the file in your folder, or click <strong>Copy CSV</strong> to copy the contents instantly.
+    </div>
+
+    <!-- Tabs -->
+    <div class="tab-bar">
+      <button class="tab-btn active" id="tab-firm" onclick="switchView('firm')">🏢 Firm Details (firm_details.csv)</button>
+      <button class="tab-btn" id="tab-services" onclick="switchView('services')">📋 Services Catalog (firm_services.csv)</button>
+    </div>
+
+    <!-- Actions Bar -->
+    <div class="action-bar">
+      <div class="search-box">
+        <span>🔍</span>
+        <input type="text" id="search-input" placeholder="Search fields, keys, or values..." oninput="filterTable()">
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-secondary" onclick="copyCsv()">📋 Copy CSV</button>
+        <button class="btn btn-primary" onclick="downloadCsv()">💾 Download firm_details.csv</button>
+        <button class="btn btn-success" id="btn-save-project" onclick="directSaveCsv()">⚡ Direct Save</button>
+      </div>
+    </div>
+
+    <!-- FIRM DETAILS TABLE -->
+    <div id="view-firm" class="table-card">
+      <table id="firm-table">
+        <thead>
+          <tr>
+            <th style="width: 15%;">Section</th>
+            <th style="width: 25%;">Field Key & Label</th>
+            <th style="width: 35%;">Value (Editable)</th>
+            <th style="width: 25%;">Where It Appears</th>
+          </tr>
+        </thead>
+        <tbody id="firm-tbody">
+          <!-- Populated by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SERVICES TABLE -->
+    <div id="view-services" class="table-card" style="display: none;">
+      <table id="services-table">
+        <thead>
+          <tr>
+            <th style="width: 25%;">Service Title</th>
+            <th style="width: 15%;">Category</th>
+            <th style="width: 12%;">Base Fee (₹)</th>
+            <th style="width: 13%;">Turnaround</th>
+            <th style="width: 35%;">Key Features</th>
+          </tr>
+        </thead>
+        <tbody id="services-tbody">
+          <!-- Populated by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">
+    <span id="toast-msg">CSV copied to clipboard!</span>
+  </div>
+
+  <script>
+    // Initial Firm Data
+    const firmData = [
+      { section: "General_Identity", pill: "pill-identity", key: "firm_name", label: "Firm Brand Name", value: "Sri Sai Enterprises", desc: "The brand name of your firm displayed in header, hero, and footer." },
+      { section: "General_Identity", pill: "pill-identity", key: "tagline", label: "Tagline / Subtitle", value: "Council of Architecture Reg. Practice", desc: "Subtitle or credential tag below your firm logo." },
+      { section: "General_Identity", pill: "pill-identity", key: "principal_architect", label: "Principal Architect", value: "S M Thyagaraja (Draftsman Civil)", desc: "Name and credentials of the Principal / Lead Architect." },
+      { section: "General_Identity", pill: "pill-identity", key: "coa_registration_no", label: "COA Reg. Number", value: "CA/2009/44120", desc: "Council of Architecture (COA) registration number." },
+      { section: "General_Identity", pill: "pill-identity", key: "experience_years", label: "Years of Experience", value: "37", desc: "Years of architectural liaisoning experience in Bengaluru." },
+      { section: "General_Identity", pill: "pill-identity", key: "sanctions_delivered", label: "Sanctions Delivered", value: "23000+", desc: "Number of building plan sanctions successfully delivered counter." },
+      { section: "General_Identity", pill: "pill-identity", key: "sakala_sla_days", label: "Sakala Turnaround SLA", value: "5-7 Days", desc: "Guaranteed statutory turnaround time under Sakala." },
+      { section: "General_Identity", pill: "pill-identity", key: "approval_rate", label: "Approval Rate Track Record", value: "100%", desc: "GBA & BBMP compliance track record percentage." },
+
+      { section: "Contact_Info", pill: "pill-contact", key: "primary_phone", label: "Primary Mobile / Phone", value: "94480 54185", desc: "Primary phone displayed across the top header, hero & CTAs." },
+      { section: "Contact_Info", pill: "pill-contact", key: "secondary_phone", label: "Landline / Alternate Phone", value: "080 233 255 09", desc: "Office landline or alternate contact number in footer." },
+      { section: "Contact_Info", pill: "pill-contact", key: "whatsapp_number", label: "WhatsApp Number", value: "94480 54185", desc: "WhatsApp number with country code (no + or spaces e.g. 919845012345)." },
+      { section: "Contact_Info", pill: "pill-contact", key: "official_email", label: "Official Inquiry Email", value: "smthyagaraj@gmail.com", desc: "Email address for client consultations and inbound leads." },
+
+      { section: "Office_Location", pill: "pill-location", key: "office_address", label: "Office / Studio Address", value: "#3309, 1st Main Road, Gayathrinagara, Bengaluru - 560021", desc: "Complete physical studio address for client visits." },
+      { section: "Office_Location", pill: "pill-location", key: "office_landmark", label: "Nearest Landmark", value: "Opp. More Retail Store", desc: "Nearest landmark or public transit connectivity info." },
+      { section: "Office_Location", pill: "pill-location", key: "google_maps_url", label: "Google Maps URL", value: "https://maps.google.com/?q=Gayathrinagara+Bengaluru", desc: "Google Maps direction link for the office contact card." },
+      { section: "Office_Location", pill: "pill-location", key: "working_hours", label: "Working Hours", value: "Mon - Sat: 9:30 AM - 7:30 PM", desc: "Studio operational consultation hours." },
+
+      { section: "Admin_Account", pill: "pill-admin", key: "admin_name", label: "Admin Name", value: "Principal Architect / Director", desc: "Display name of the agency administrator." },
+      { section: "Admin_Account", pill: "pill-admin", key: "admin_email", label: "Admin Login Email", value: "admin@bengaluruapprovals.com", desc: "Email address used to log into the Admin CRM & CMS console." },
+      { section: "Admin_Account", pill: "pill-admin", key: "admin_password", label: "Admin Login Password", value: "admin123", desc: "Secure password for Admin CRM & CMS access." },
+
+      { section: "Regulatory_Badges", pill: "pill-badges", key: "layout_authorities", label: "Liaison Authorities", value: "GBA, BBMP, BDA, BIAAPA, BMRDA, STRR, BMICPA", desc: "Municipal authorities your firm liaises with (displayed on badges)." },
+      { section: "Regulatory_Badges", pill: "pill-badges", key: "specialization", label: "Specialization Tags", value: "Nambike Nakshe, AutoDCR CAD, e-Khata, CFO NOC, AAI Clearance", desc: "Key specialization tags displayed in hero section." }
+    ];
+
+    // Services Catalog Data
+    const servicesData = [
+      { title: "Plan Sanctions & Approvals", category: "Municipal Approvals", fee: "35000", turnaround: "14 to 21 Days", features: "Greater Bengaluru Authority (GBA) & BBMP 8 Zonal Sanctions | BDA Layout Approval & CDP 2031 Land-use verification | Nambike Nakshe Fast-Track Provisional Sanction for plots <= 50x80 ft | Full liaisoning with Assistant Director of Town Planning (ADTP)" },
+      { title: "e-Khata Services & Conversions", category: "Property Titling", fee: "18000", turnaround: "10 to 15 Days", features: "New Digital e-Khata Certificate Extraction (e-Aasthi) | B-Khata to A-Khata Upgradation & Betterment Payment Filing | Khata Transfer post Registration / Inheritance / Gift Deed | Encumbrance Certificate (EC) 30-Year Chain Search" },
+      { title: "AutoDCR & PreDCR CAD Drafting", category: "CAD Engineering", fee: "22000", turnaround: "3 to 5 Days", features: "100% PreDCR algorithmic compliance with zero-error validation | Standardized layer codes for Floor Area, Setbacks, and Light Ventilation | Rainwater Harvesting (RWH) chamber & Solar Water Heater 3D geometry | Preparation of DXF / DWG ready for government portal ingestion" },
+      { title: "Turnkey Construction & Architectural Design", category: "Architecture & Build", fee: "50000", turnaround: "Project Milestones", features: "Contemporary 3D Elevation Modeling & VR Walkthroughs | Vastu Purusha Mandala Alignment for Residential Plots | Seismic Zone-II Structural Engineering & Soil Capacity Analysis | Turnkey Construction packages (₹1,950 to ₹3,400 per sq ft)" },
+      { title: "NOC Procurement & Clearances", category: "Regulatory Liaisoning", fee: "28000", turnaround: "15 to 30 Days", features: "BWSSB Water Supply & Under-Ground Drainage (UGD) Clearance | BESCOM Transformer Feasibility & Load Sanction | Fire & Emergency Services Initial & Final NOC | AAI / HAL Airport Height Clearance via NOCAS Portal" }
+    ];
+
+    let currentTab = 'firm';
+
+    function renderFirmTable() {
+      const tbody = document.getElementById('firm-tbody');
+      tbody.innerHTML = '';
+
+      firmData.forEach((item, idx) => {
+        const tr = document.createElement('tr');
+        tr.dataset.index = idx;
+        const isLong = item.key === 'office_address' || item.key === 'layout_authorities' || item.key === 'specialization';
+
+        tr.innerHTML = `
+          <td>
+            <span class="section-pill ${item.pill}">${item.section.replace('_', ' ')}</span>
+          </td>
+          <td>
+            <strong>${item.label}</strong>
+            <span class="field-key-code">${item.key}</span>
+          </td>
+          <td>
+            ${isLong 
+              ? `<textarea class="input-field" rows="2" data-key="${item.key}" oninput="updateVal(${idx}, this.value)">${item.value}</textarea>` 
+              : `<input type="text" class="input-field" data-key="${item.key}" value="${item.value.replace(/"/g, '&quot;')}" oninput="updateVal(${idx}, this.value)">`
+            }
+          </td>
+          <td>
+            <span class="desc-text">${item.desc}</span>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderServicesTable() {
+      const tbody = document.getElementById('services-tbody');
+      tbody.innerHTML = '';
+
+      servicesData.forEach((item, idx) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>
+            <input type="text" class="input-field" value="${item.title}" oninput="servicesData[${idx}].title = this.value">
+          </td>
+          <td>
+            <input type="text" class="input-field" value="${item.category}" oninput="servicesData[${idx}].category = this.value">
+          </td>
+          <td>
+            <input type="number" class="input-field" value="${item.fee}" oninput="servicesData[${idx}].fee = this.value">
+          </td>
+          <td>
+            <input type="text" class="input-field" value="${item.turnaround}" oninput="servicesData[${idx}].turnaround = this.value">
+          </td>
+          <td>
+            <textarea class="input-field" rows="3" oninput="servicesData[${idx}].features = this.value">${item.features}</textarea>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function updateVal(index, val) {
+      firmData[index].value = val;
+    }
+
+    function switchView(tab) {
+      currentTab = tab;
+      document.getElementById('tab-firm').classList.toggle('active', tab === 'firm');
+      document.getElementById('tab-services').classList.toggle('active', tab === 'services');
+      document.getElementById('view-firm').style.display = tab === 'firm' ? 'block' : 'none';
+      document.getElementById('view-services').style.display = tab === 'services' ? 'block' : 'none';
+      
+      const btn = document.querySelector('.btn-primary');
+      if (tab === 'firm') {
+        btn.innerHTML = '💾 Download firm_details.csv';
+      } else {
+        btn.innerHTML = '💾 Download firm_services.csv';
+      }
+    }
+
+    function generateCsv() {
+      if (currentTab === 'firm') {
+        let csv = 'sep=;\nSection;Field_Key;Value;Description_And_Instructions\n';
+        firmData.forEach(row => {
+          const val = row.value.replace(/\n/g, ' ');
+          csv += `${row.section};${row.key};${val};${row.desc}\n`;
+        });
+        return csv;
+      } else {
+        let csv = 'sep=;\nTitle;Category;Base_Fee_INR;Betterment_Rate_SqFt;Scrutiny_Rate_SqFt;Turnaround_Days;Short_Description;Key_Features\n';
+        servicesData.forEach(row => {
+          csv += `${row.title};${row.category};${row.fee};0;0;${row.turnaround};${row.title};${row.features}\n`;
+        });
+        return csv;
+      }
+    }
+
+    function downloadCsv() {
+      const csvContent = generateCsv();
+      const filename = currentTab === 'firm' ? 'firm_details.csv' : 'firm_services.csv';
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast(`Saved & Downloaded ${filename}! Replace it in this folder.`);
+    }
+
+    async function directSaveCsv() {
+      const csvContent = generateCsv();
+      const filename = currentTab === 'firm' ? 'firm_details.csv' : 'firm_services.csv';
+      
+      // Modern File System Access API
+      if (window.showSaveFilePicker) {
+        try {
+          const handle = await window.showSaveFilePicker({
+            suggestedName: filename,
+            types: [{
+              description: 'CSV File',
+              accept: { 'text/csv': ['.csv'] }
+            }]
+          });
+          const writable = await handle.createWritable();
+          await writable.write(csvContent);
+          await writable.close();
+          showToast(`Directly saved ${filename} successfully!`);
+          return;
+        } catch (err) {
+          if (err.name !== 'AbortError') {
+            console.warn('File picker error, falling back to download:', err);
+          } else {
+            return;
+          }
+        }
+      }
+      // Fallback
+      downloadCsv();
+    }
+
+    function copyCsv() {
+      const csvContent = generateCsv();
+      navigator.clipboard.writeText(csvContent).then(() => {
+        showToast('CSV copied to clipboard!');
+      }).catch(err => {
+        showToast('Error copying to clipboard');
+      });
+    }
+
+    function filterTable() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const rows = document.querySelectorAll('#firm-tbody tr');
+      rows.forEach(tr => {
+        const text = tr.innerText.toLowerCase();
+        tr.style.display = text.includes(query) ? '' : 'none';
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3200);
+    }
+
+    // Initialize
+    renderFirmTable();
+    renderServicesTable();
+  </script>
+</body>
+</html>

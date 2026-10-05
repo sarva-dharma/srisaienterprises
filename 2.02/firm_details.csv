@@ -1,0 +1,22 @@
+Section,Field_Key,Value,Description_And_Instructions
+General_Identity,firm_name,Sri Sai Enterprises,The brand name of your firm displayed in header and hero
+General_Identity,tagline,Council of Architecture Reg. Practice,Subtitle or credential tag below your firm logo
+General_Identity,principal_architect,S M Thyagaraja (Draftsman Civil),Name and qualifications of the Principal / Lead Architect
+General_Identity,coa_registration_no,CA/2009/44120,Council of Architecture (COA) registration number
+General_Identity,experience_years,37,Years of architectural liaisoning experience in Bengaluru
+General_Identity,sanctions_delivered,23000+,Number of building plan sanctions successfully delivered
+General_Identity,sakala_sla_days,5-7 Days,Guaranteed statutory turnaround time under Sakala
+General_Identity,approval_rate,100%,GBA & BBMP compliance track record percentage
+Contact_Info,primary_phone,94480 54185,Primary mobile number displayed across site and CTAs
+Contact_Info,secondary_phone,080 233 255 09,Office landline or alternate contact number
+Contact_Info,whatsapp_number,94480 54185,WhatsApp number with country code (no + or spaces e.g. 919845012345)
+Contact_Info,official_email,smthyagaraj@gmail.com,Inquiry email address for client consultation leads
+Office_Location,office_address,"#3309, !st Main Road, Gayathrinagara, Bengaluru - 560021",Complete physical studio address for client visits
+Office_Location,office_landmark,Opp. More Retail Store,Nearest landmark or public transit connectivity
+Office_Location,google_maps_url,https://maps.google.com/?q=MG+Road+Bengaluru,Google Maps direction link for the office visit card
+Office_Location,working_hours,Mon - Sat: 9:30 AM - 7:30 PM,Office working hours for consultation
+Admin_Account,admin_name,Principal Architect / Director,Display name of the agency administrator
+Admin_Account,admin_email,admin@bengaluruapprovals.com,Email address used to log into the Admin CRM & CMS console
+Admin_Account,admin_password,admin123,Secure password for Admin CRM & CMS access
+Regulatory_Badges,layout_authorities,"GBA, BBMP, BDA, BIAAPA, BMRDA, STRR, BMICPA",Municipal authorities your firm liaises with
+Regulatory_Badges,specialization,"Nambike Nakshe, AutoDCR CAD, e-Khata, CFO NOC, AAI Clearance",Key specialization tags
