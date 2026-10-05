@@ -3,7 +3,7 @@
 
 Official Web Platform for **Sri Sai Enterprises** (Council of Architecture Reg. Practice).
 
-* **Live GitHub Pages URL**: [https://sarva-dharma.github.io/sri-sai-enterprises/](https://sarva-dharma.github.io/sri-sai-enterprises/)
+* **Live GitHub Pages URL**: [https://sarva-dharma.github.io/srisaienterprises/](https://sarva-dharma.github.io/srisaienterprises/)
 * **Principal Architect / Liaison**: S M Thyagaraja (Draftsman Civil) &bull; COA Reg. CA/2009/44120
 * **Experience**: 37+ Years | 23,000+ Sanctions Delivered
 * **Office Address**: #3309, 1st Main Road, Gayathrinagara, Bengaluru - 560021 (Opp. More Retail Store)
