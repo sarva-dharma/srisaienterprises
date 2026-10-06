@@ -82,7 +82,7 @@ const AdminPanel = {
   },
 
   openDashboard() {
-    const modal = document.getElementById('admin-dashboard-modal');
+    const modal = document.getElementById('admin-panel-modal');
     if (modal) {
       modal.classList.remove('hidden');
       this.switchTab('leads');
@@ -90,15 +90,20 @@ const AdminPanel = {
     }
   },
 
+  logout() {
+    closeModal('admin-panel-modal');
+    showToast('Logged out of Admin Console');
+  },
+
   switchTab(tabName) {
     this.currentTab = tabName;
     document.querySelectorAll('.admin-tab-btn').forEach(btn => {
       if (btn.dataset.tab === tabName) {
-        btn.classList.add('bg-amber-500/20', 'text-amber-300', 'border-amber-400/40');
-        btn.classList.remove('text-slate-400', 'border-transparent');
+        btn.classList.add('text-amber-700', 'border-b-2', 'border-amber-600');
+        btn.classList.remove('text-slate-500');
       } else {
-        btn.classList.remove('bg-amber-500/20', 'text-amber-300', 'border-amber-400/40');
-        btn.classList.add('text-slate-400', 'border-transparent');
+        btn.classList.remove('text-amber-700', 'border-b-2', 'border-amber-600');
+        btn.classList.add('text-slate-500');
       }
     });
 
@@ -119,10 +124,14 @@ const AdminPanel = {
       const data = await API.getAdminMetrics();
       if (data.error) return;
 
-      document.getElementById('metric-total-leads').textContent = data.total_leads;
-      document.getElementById('metric-new-leads').textContent = data.new_leads;
-      document.getElementById('metric-active-projects').textContent = data.active_projects;
-      document.getElementById('metric-approved-projects').textContent = data.approved_projects;
+      const elTotal = document.getElementById('metric-total-leads');
+      const elNew = document.getElementById('metric-new-leads');
+      const elActive = document.getElementById('metric-active-projects');
+      const elApproved = document.getElementById('metric-approved-projects');
+      if (elTotal) elTotal.textContent = data.total_leads;
+      if (elNew) elNew.textContent = data.new_leads;
+      if (elActive) elActive.textContent = data.active_projects;
+      if (elApproved) elApproved.textContent = data.approved_projects;
     } catch (err) {
       console.error(err);
     }
@@ -131,60 +140,53 @@ const AdminPanel = {
   // LEADS CRM
   async loadLeads() {
     const filter = document.getElementById('admin-lead-filter')?.value || '';
-    const tableBody = document.getElementById('admin-leads-table-body');
-    if (!tableBody) return;
+    const container = document.getElementById('admin-leads-list');
+    if (!container) return;
 
-    tableBody.innerHTML = '<tr><td colspan="6" class="p-6 text-center text-slate-400">Loading incoming consultations...</td></tr>';
+    container.innerHTML = '<div class="p-8 text-center text-slate-500">Loading incoming consultations...</div>';
 
     try {
       const data = await API.getAdminLeads(filter);
       if (!data.leads || data.leads.length === 0) {
-        tableBody.innerHTML = '<tr><td colspan="6" class="p-6 text-center text-slate-400">No leads match this criteria.</td></tr>';
+        container.innerHTML = '<div class="p-8 text-center text-slate-500">No leads match this criteria.</div>';
         return;
       }
 
-      tableBody.innerHTML = data.leads.map(lead => {
+      container.innerHTML = data.leads.map(lead => {
         const cleanPhone = lead.phone.replace(/[^0-9]/g, '');
         const waLink = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(`Hi ${lead.full_name}, thank you for contacting our Bengaluru Building Plan Sanction desk regarding your plot at ${lead.plot_location || 'Bengaluru'}.`)}`;
 
         return `
-          <tr class="border-b border-white/5 hover:bg-slate-800/30 text-sm">
-            <td class="p-4 font-semibold text-white">
-              <div>${lead.full_name}</div>
-              <div class="text-xs text-slate-400 font-normal">${lead.email} &bull; ${lead.phone}</div>
-            </td>
-            <td class="p-4 text-slate-300">
-              <div>${lead.plot_location || 'Not Specified'}</div>
-              <div class="text-xs text-amber-400/80">${lead.plot_dimensions || ''}</div>
-            </td>
-            <td class="p-4 text-slate-300 text-xs">
-              <span class="px-2 py-1 rounded bg-slate-800 text-slate-200">${lead.service_title}</span>
-            </td>
-            <td class="p-4">
-              <select onchange="AdminPanel.updateLeadStatus(${lead.id}, this.value)" class="text-xs bg-slate-900 text-white rounded border border-slate-700 px-2 py-1">
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-900">${lead.full_name}</span>
+                <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-900 border border-amber-200">${lead.service_title}</span>
+              </div>
+              <div class="text-xs text-slate-600 font-medium">
+                ${lead.phone} &bull; ${lead.email || 'No email'} &bull; Location: <strong class="text-slate-800">${lead.plot_location || 'Bengaluru'}</strong> (${lead.plot_dimensions || 'N/A'})
+              </div>
+              ${lead.message ? `<div class="text-xs italic text-slate-500">"${lead.message}"</div>` : ''}
+            </div>
+
+            <div class="flex items-center gap-3">
+              <select onchange="AdminPanel.updateLeadStatus(${lead.id}, this.value)" class="text-xs bg-white text-slate-800 rounded-lg border border-slate-300 px-2.5 py-1.5 shadow-sm font-medium">
                 <option value="new" ${lead.status === 'new' ? 'selected' : ''}>New Inquiry</option>
                 <option value="contacted" ${lead.status === 'contacted' ? 'selected' : ''}>Contacted</option>
                 <option value="quotation_sent" ${lead.status === 'quotation_sent' ? 'selected' : ''}>Quote Sent</option>
-                <option value="converted" ${lead.status === 'converted' ? 'selected' : ''}>Converted to Project</option>
+                <option value="converted" ${lead.status === 'converted' ? 'selected' : ''}>Converted</option>
                 <option value="archived" ${lead.status === 'archived' ? 'selected' : ''}>Archived</option>
               </select>
-            </td>
-            <td class="p-4 text-xs text-slate-400">
-              ${lead.message ? `<div class="italic mb-1">"${lead.message.substring(0, 70)}..."</div>` : ''}
-              <input type="text" placeholder="Add internal note..." value="${lead.internal_notes || ''}" 
-                onblur="AdminPanel.saveLeadNote(${lead.id}, this.value)"
-                class="bg-slate-950/80 border border-slate-700/60 rounded px-2 py-1 w-full text-xs text-slate-200">
-            </td>
-            <td class="p-4 text-right">
-              <a href="${waLink}" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 text-xs font-semibold inline-flex items-center gap-1">
+
+              <a href="${waLink}" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 text-xs font-bold inline-flex items-center gap-1 shadow-sm">
                 WhatsApp
               </a>
-            </td>
-          </tr>
+            </div>
+          </div>
         `;
       }).join('');
     } catch (err) {
-      tableBody.innerHTML = `<tr><td colspan="6" class="p-6 text-center text-rose-400">${err.message}</td></tr>`;
+      container.innerHTML = `<div class="p-6 text-center text-rose-600">${err.message}</div>`;
     }
   },
 
@@ -212,12 +214,12 @@ const AdminPanel = {
     const container = document.getElementById('admin-projects-list');
     if (!container) return;
 
-    container.innerHTML = '<div class="p-8 text-center text-slate-400">Loading active files...</div>';
+    container.innerHTML = '<div class="p-8 text-center text-slate-500">Loading active files...</div>';
 
     try {
       const data = await API.getAdminProjects();
       if (!data.projects || data.projects.length === 0) {
-        container.innerHTML = '<div class="p-8 text-center text-slate-400">No projects found. Create one using the form below.</div>';
+        container.innerHTML = '<div class="p-8 text-center text-slate-500">No projects found.</div>';
         return;
       }
 
@@ -225,42 +227,42 @@ const AdminPanel = {
 
       container.innerHTML = data.projects.map(proj => {
         return `
-          <div class="p-6 rounded-xl bg-slate-900/60 border border-white/10 space-y-4">
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-4">
             <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div>
                 <div class="flex items-center gap-2 mb-1">
-                  <span class="text-xs px-2 py-0.5 rounded bg-amber-400/10 text-amber-300 font-bold">${proj.authority}</span>
-                  <span class="text-xs font-mono text-slate-400">Ref: ${proj.reference_no}</span>
+                  <span class="text-xs px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 font-bold border border-amber-200">${proj.authority}</span>
+                  <span class="text-xs font-mono text-slate-500 font-semibold">Ref: ${proj.reference_no}</span>
                 </div>
-                <h4 class="text-lg font-bold text-white">${proj.title}</h4>
-                <p class="text-xs text-slate-400">Client: <strong class="text-slate-200">${proj.client_name}</strong> &bull; ${proj.plot_location}</p>
+                <h4 class="text-lg font-bold text-slate-900">${proj.title}</h4>
+                <p class="text-xs text-slate-600">Client: <strong class="text-slate-800">${proj.client_name}</strong> &bull; ${proj.plot_location}</p>
               </div>
 
               <!-- Stage Advance Selector -->
-              <div class="flex items-center gap-3 bg-slate-950/60 p-3 rounded-lg border border-slate-800">
-                <div class="text-xs text-slate-400 font-medium">Advance Stage:</div>
-                <select onchange="AdminPanel.advanceStage(${proj.id}, this.value)" class="bg-slate-900 border border-amber-500/40 text-amber-300 text-xs rounded-lg px-3 py-1.5 font-bold">
+              <div class="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <div class="text-xs text-slate-600 font-semibold">Advance Stage:</div>
+                <select onchange="AdminPanel.advanceStage(${proj.id}, this.value)" class="bg-white border border-amber-500 text-amber-900 text-xs rounded-lg px-3 py-1.5 font-bold shadow-sm">
                   ${stages.map(s => `
                     <option value="${s}" ${proj.current_stage === s ? 'selected' : ''}>${s}</option>
                   `).join('')}
                 </select>
-                <button onclick="ClientPortal.trackByReference('${proj.reference_no}')" class="btn-outline-gold px-3 py-1.5 rounded text-xs font-semibold">
-                  View in Client Portal
+                <button onclick="ClientPortal.trackByReference('${proj.reference_no}')" class="btn-outline-gold px-3 py-1.5 rounded-lg text-xs font-semibold">
+                  View in Portal
                 </button>
               </div>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs bg-slate-950/40 p-3 rounded-lg border border-white/5">
-              <div><span class="text-slate-400">Plot Area:</span> <strong class="text-white">${proj.plot_area_sqft} sq.ft</strong></div>
-              <div><span class="text-slate-400">Built-Up:</span> <strong class="text-white">${proj.builtup_area_sqft} sq.ft</strong></div>
-              <div><span class="text-slate-400">Nambike Nakshe:</span> <strong class="${proj.nambike_nakshe_eligible ? 'text-emerald-400' : 'text-slate-400'}">${proj.nambike_nakshe_eligible ? 'Yes' : 'No'}</strong></div>
-              <div><span class="text-slate-400">Progress:</span> <strong class="text-amber-400">${proj.completion_percent}%</strong></div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs bg-slate-50 p-3 rounded-xl border border-slate-200">
+              <div><span class="text-slate-500">Plot Area:</span> <strong class="text-slate-900">${proj.plot_area_sqft} sq.ft</strong></div>
+              <div><span class="text-slate-500">Built-Up:</span> <strong class="text-slate-900">${proj.builtup_area_sqft} sq.ft</strong></div>
+              <div><span class="text-slate-500">Nambike Nakshe:</span> <strong class="${proj.nambike_nakshe_eligible ? 'text-emerald-700 font-bold' : 'text-slate-500'}">${proj.nambike_nakshe_eligible ? 'Yes' : 'No'}</strong></div>
+              <div><span class="text-slate-500">Progress:</span> <strong class="text-amber-800 font-bold">${proj.completion_percent}%</strong></div>
             </div>
           </div>
         `;
       }).join('');
     } catch (err) {
-      container.innerHTML = `<div class="p-6 text-center text-rose-400">${err.message}</div>`;
+      container.innerHTML = `<div class="p-6 text-center text-rose-600">${err.message}</div>`;
     }
   },
 
@@ -318,39 +320,39 @@ const AdminPanel = {
       const data = await API.getAdminServices();
       container.innerHTML = data.services.map(s => {
         return `
-          <div class="p-6 rounded-xl bg-slate-900/60 border border-white/10 space-y-4">
+          <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-4">
             <div class="flex items-center justify-between">
               <div>
-                <span class="text-xs font-bold uppercase tracking-wider text-amber-400">${s.category}</span>
-                <h4 class="text-lg font-bold text-white">${s.title}</h4>
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-800">${s.category}</span>
+                <h4 class="text-lg font-bold text-slate-900">${s.title}</h4>
               </div>
-              <span class="text-xs px-2 py-0.5 rounded ${s.is_active ? 'bg-emerald-500/20 text-emerald-300' : 'bg-rose-500/20 text-rose-300'}">
+              <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold ${s.is_active ? 'bg-emerald-100 text-emerald-800 border border-emerald-200' : 'bg-rose-100 text-rose-800 border border-rose-200'}">
                 ${s.is_active ? 'Active on Website' : 'Hidden'}
               </span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
               <div>
-                <label class="text-slate-400 block mb-1">Base Fee (INR):</label>
-                <input type="number" id="srv-base-${s.id}" value="${s.base_fee}" class="w-full bg-slate-950 border border-slate-700 rounded px-2.5 py-1.5 text-white font-mono">
+                <label class="text-slate-600 block mb-1 font-medium">Base Fee (INR):</label>
+                <input type="number" id="srv-base-${s.id}" value="${s.base_fee}" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-900 font-mono shadow-sm">
               </div>
               <div>
-                <label class="text-slate-400 block mb-1">Betterment Rate (₹/sq.ft):</label>
-                <input type="number" id="srv-betterment-${s.id}" value="${s.betterment_rate_sqft}" class="w-full bg-slate-950 border border-slate-700 rounded px-2.5 py-1.5 text-white font-mono">
+                <label class="text-slate-600 block mb-1 font-medium">Betterment Rate (₹/sq.ft):</label>
+                <input type="number" id="srv-betterment-${s.id}" value="${s.betterment_rate_sqft}" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-900 font-mono shadow-sm">
               </div>
               <div>
-                <label class="text-slate-400 block mb-1">Scrutiny Rate (₹/sq.ft):</label>
-                <input type="number" id="srv-scrutiny-${s.id}" value="${s.scrutiny_rate_sqft}" class="w-full bg-slate-950 border border-slate-700 rounded px-2.5 py-1.5 text-white font-mono">
+                <label class="text-slate-600 block mb-1 font-medium">Scrutiny Rate (₹/sq.ft):</label>
+                <input type="number" id="srv-scrutiny-${s.id}" value="${s.scrutiny_rate_sqft}" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-900 font-mono shadow-sm">
               </div>
             </div>
 
             <div>
-              <label class="text-slate-400 text-xs block mb-1">Short Description:</label>
-              <textarea id="srv-desc-${s.id}" rows="2" class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-xs text-slate-200">${s.short_desc}</textarea>
+              <label class="text-slate-600 text-xs block mb-1 font-medium">Short Description:</label>
+              <textarea id="srv-desc-${s.id}" rows="2" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2 text-xs text-slate-800 shadow-sm">${s.short_desc}</textarea>
             </div>
 
             <div class="flex justify-end gap-3 pt-2">
-              <button onclick="AdminPanel.saveService(${s.id})" class="btn-gold px-4 py-1.5 rounded text-xs font-semibold">
+              <button onclick="AdminPanel.saveService(${s.id})" class="btn-gold px-4 py-1.5 rounded-lg text-xs font-semibold shadow-sm">
                 Save Changes to Website
               </button>
             </div>
@@ -358,7 +360,7 @@ const AdminPanel = {
         `;
       }).join('');
     } catch (err) {
-      container.innerHTML = `<div class="p-4 text-rose-400">${err.message}</div>`;
+      container.innerHTML = `<div class="p-4 text-rose-600">${err.message}</div>`;
     }
   },
 
@@ -376,7 +378,6 @@ const AdminPanel = {
         short_desc: shortDesc
       });
       showToast('Service & pricing updated live on website');
-      // Refresh public services
       if (window.loadPublicServices) window.loadPublicServices();
     } catch (err) {
       alert(err.message);
@@ -415,18 +416,18 @@ const AdminPanel = {
       const data = await API.getBlogs();
       container.innerHTML = data.blogs.map(b => {
         return `
-          <div class="p-4 rounded-xl bg-slate-900/60 border border-white/5 flex items-center justify-between">
+          <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-between">
             <div>
-              <span class="text-xs text-amber-400 font-semibold">${b.category}</span>
-              <h5 class="text-sm font-bold text-white mt-0.5">${b.title}</h5>
-              <div class="text-xs text-slate-400 mt-1">${b.author} &bull; ${b.created_at}</div>
+              <span class="text-xs text-amber-800 font-bold uppercase tracking-wider">${b.category}</span>
+              <h5 class="text-sm font-bold text-slate-900 mt-0.5">${b.title}</h5>
+              <div class="text-xs text-slate-500 mt-1">${b.author} &bull; ${b.created_at}</div>
             </div>
-            <span class="text-xs px-2 py-1 rounded bg-emerald-500/10 text-emerald-300 font-medium">Published</span>
+            <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">Published</span>
           </div>
         `;
       }).join('');
     } catch (err) {
-      container.innerHTML = `<div class="p-4 text-rose-400">${err.message}</div>`;
+      container.innerHTML = `<div class="p-4 text-rose-600">${err.message}</div>`;
     }
   },
 
