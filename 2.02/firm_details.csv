@@ -1,5 +1,6 @@
 Section,Field_Key,Value,Description_And_Instructions
-General_Identity,firm_name,Sri Sai Enterprises,The brand name of your firm displayed in header and hero
+General_Identity,firm_name,Sri Sai Enterprises,The brand name of your firm displayed on Line 1 in header and hero
+General_Identity,firm_name_kannada,ಶ್ರೀ ಸಾಯಿ ಎಂಟರ್‌ಪ್ರೈಸಸ್,The Kannada brand name displayed on Line 2 below Sri Sai Enterprises
 General_Identity,tagline,Council of Architecture Reg. Practice,Subtitle or credential tag below your firm logo
 General_Identity,principal_architect,S M Thyagaraja (Draftsman Civil),Name and qualifications of the Principal / Lead Architect
 General_Identity,coa_registration_no,CA/2009/44120,Council of Architecture (COA) registration number
