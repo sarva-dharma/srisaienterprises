@@ -77,9 +77,18 @@ window.loadPublicServices = async function() {
       'shield-check': '<svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>'
     };
 
+    const serviceKannadaTitles = {
+      'Plan Sanctions & Approvals': 'ಕಟ್ಟಡ ನಕ್ಷೆ ಮಂಜೂರಾತಿ ಮತ್ತು ಅನುಮೋದನೆ',
+      'e-Khata Services & Conversions': 'ಇ-ಖಾತಾ ನೋಂದಣಿ & ಖಾತಾ ವರ್ಗಾವಣೆ',
+      'AutoDCR & PreDCR CAD Drafting': 'ಆಟೋಡಿಸಿಆರ್ ಮತ್ತು ಪ್ರಿಡಿಸಿಆರ್ ಸಿಎಡಿ ವಿನ್ಯಾಸ',
+      'Architectural Design & Working Drawings': 'ವಾಸ್ತುಶಿಲ್ಪ ವಿನ್ಯಾಸ ಮತ್ತು 3D ಎಲಿವೇಶನ್',
+      'Statutory NOC Clearances & Liaisoning': 'ಸರ್ಕಾರಿ ಎನ್‌ಒಸಿ ಕ್ಲಿಯರೆನ್ಸ್ ಮತ್ತು ಅನುಮೋದನೆ'
+    };
+
     container.innerHTML = data.services.map(s => {
       const icon = iconSvgs[s.icon] || iconSvgs['building'];
       const basePrice = s.base_fee > 0 ? `From ₹${Math.round(s.base_fee).toLocaleString('en-IN')}` : 'Custom Scope';
+      const knTitle = serviceKannadaTitles[s.title] || '';
 
       return `
         <div class="glass-panel card-hover-gold p-6 md:p-8 rounded-2xl flex flex-col justify-between relative overflow-hidden group bg-white border border-slate-200/90 shadow-sm">
@@ -96,7 +105,8 @@ window.loadPublicServices = async function() {
             </div>
 
             <span class="text-xs font-bold uppercase tracking-wider text-amber-700">${s.category}</span>
-            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2.5">${s.title}</h3>
+            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-0.5 font-heading">${s.title}</h3>
+            ${knTitle ? `<div class="text-sm font-bold text-amber-800 font-kannada mb-2.5">${knTitle}</div>` : ''}
             <p class="text-sm text-slate-600 leading-relaxed mb-6">${s.short_desc}</p>
 
             ${s.features && s.features.length > 0 ? `
@@ -113,12 +123,12 @@ window.loadPublicServices = async function() {
 
           <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
             <div>
-              <div class="text-[11px] text-slate-500 uppercase tracking-wider">Starting At</div>
+              <div class="text-[11px] text-slate-500 uppercase tracking-wider">Starting At (ಆರಂಭಿಕ ಶುಲ್ಕ)</div>
               <div class="text-lg font-bold text-slate-900 font-mono">${basePrice}</div>
             </div>
 
             <button onclick="openBookingModal('${s.title}')" class="btn-outline-gold px-4 py-2 rounded-lg text-xs font-semibold">
-              Get Quote
+              Get Quote (ಕೋಟ್ ಪಡೆಯಿರಿ)
             </button>
           </div>
         </div>

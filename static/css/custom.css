@@ -25,10 +25,15 @@ body {
 }
 
 h1, h2, h3, h4, .font-heading {
-  font-family: 'Outfit', 'Inter', sans-serif;
+  font-family: 'Outfit', 'Noto Sans Kannada', 'Inter', sans-serif;
   letter-spacing: -0.02em;
   color: var(--text-primary);
 }
+
+.font-kannada {
+  font-family: 'Noto Sans Kannada', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
 
 /* Glassmorphism Light Containers */
 .glass-panel {

@@ -131,25 +131,25 @@ const JurisdictionChecker = {
         <!-- Bylaw Specs Grid -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-            <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Plot Area</div>
+            <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Plot Area (ನಿವೇಶನ)</div>
             <div class="text-lg font-bold text-slate-900 mt-1">${data.plot_details.area_sqft} sq.ft</div>
             <div class="text-xs text-amber-700 mt-0.5 font-medium">${data.plot_details.width} x ${data.plot_details.length} ft</div>
           </div>
 
           <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-            <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Permissible FAR</div>
+            <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Permissible FAR (ಎಫ್‌ಎಆರ್)</div>
             <div class="text-lg font-bold text-slate-900 mt-1">${data.zoning_metrics.max_far}</div>
             <div class="text-xs text-slate-600 mt-0.5">${data.plot_details.road_width} ft Abutting Road</div>
           </div>
 
           <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-            <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Max Permissible Built-up</div>
+            <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Max Built-up (ಗರಿಷ್ಠ ನಿರ್ಮಾಣ)</div>
             <div class="text-lg font-bold text-emerald-700 mt-1">${data.zoning_metrics.max_permissible_builtup_sqft} sq.ft</div>
             <div class="text-xs text-slate-600 mt-0.5">Master Plan 2031 Norms</div>
           </div>
 
           <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-            <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Betterment Rate (Est.)</div>
+            <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Betterment Rate (ಬೆಟರ್‌ಮೆಂಟ್)</div>
             <div class="text-lg font-bold text-amber-800 mt-1">₹${loc.typical_betterment_rate || 250}/sq.ft</div>
             <div class="text-xs text-slate-600 mt-0.5">For B-Khata Conversion</div>
           </div>
@@ -157,18 +157,18 @@ const JurisdictionChecker = {
 
         <!-- Setbacks Matrix -->
         <div>
-          <h4 class="text-sm font-bold uppercase tracking-wider text-slate-900 mb-2.5">Statutory Setbacks for this Plot</h4>
+          <h4 class="text-sm font-bold uppercase tracking-wider text-slate-900 mb-2.5">Statutory Setbacks for this Plot (ಕಡ್ಡಾಯ ಸೆಟ್‌ಬ್ಯಾಕ್‌ಗಳು)</h4>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-center">
             <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
-              <div class="text-xs text-slate-500 font-semibold">Front Setback</div>
+              <div class="text-xs text-slate-500 font-semibold">Front Setback (ಮುಂಭಾಗ)</div>
               <div class="font-bold text-slate-900 mt-1">${data.zoning_metrics.setbacks.front}</div>
             </div>
             <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
-              <div class="text-xs text-slate-500 font-semibold">Rear Setback</div>
+              <div class="text-xs text-slate-500 font-semibold">Rear Setback (ಹಿಂಭಾಗ)</div>
               <div class="font-bold text-slate-900 mt-1">${data.zoning_metrics.setbacks.rear}</div>
             </div>
             <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
-              <div class="text-xs text-slate-500 font-semibold">Side Setbacks</div>
+              <div class="text-xs text-slate-500 font-semibold">Side Setbacks (ಪಕ್ಕದ ಅಂತರ)</div>
               <div class="font-bold text-slate-900 mt-1">${data.zoning_metrics.setbacks.sides}</div>
             </div>
           </div>
@@ -176,7 +176,7 @@ const JurisdictionChecker = {
 
         <!-- Mandatory Clearances -->
         <div>
-          <h4 class="text-sm font-bold uppercase tracking-wider text-slate-900 mb-2.5">Mandatory Clearances for this Area</h4>
+          <h4 class="text-sm font-bold uppercase tracking-wider text-slate-900 mb-2.5">Mandatory Clearances for this Area (ಅಗತ್ಯವಿರುವ ಎನ್‌ಒಸಿಗಳು)</h4>
           <div class="space-y-2">
             ${data.zoning_metrics.mandatory_clearances.map(c => `
               <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
@@ -193,7 +193,7 @@ const JurisdictionChecker = {
             * Note: ${loc.guidelines || 'Strict adherence to GBA bylaws and fire buffer corridors.'}
           </div>
           <button onclick="openBookingModal('Plan Sanctions & Approvals', '${loc.name || ''}', '${data.plot_details.width}x${data.plot_details.length} ft')" class="btn-gold px-6 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap shadow-md">
-            Apply for ${isNambike ? 'Nambike Nakshe' : 'Sanction'} Now
+            Apply for ${isNambike ? 'Nambike Nakshe (ನಂಬಿಕೆ ನಕ್ಷೆ)' : 'Sanction (ನಕ್ಷೆ ಮಂಜೂರಾತಿ)'} Now
           </button>
         </div>
       </div>
