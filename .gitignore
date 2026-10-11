@@ -20,3 +20,7 @@ instance/
 # OS generated
 .DS_Store
 Thumbs.db
+
+# Agent skills junction link
+.agents/skills
+
