@@ -18,11 +18,11 @@ const FALLBACK_SERVICES = [
     "turnaround_days": "14 to 21 Days (Sakala Guarantee)",
     "is_active": true,
     "features": [
-      "Greater Bengaluru Authority (GBA) & BBMP 8 Zonal Sanctions",
-      "BDA Layout Approval & CDP 2031 Land-use verification",
-      "BIAAPA & STRR Peripheral Authority Single-Window Approvals",
+      "BBMP BPAS (bpas.bbmpgov.in) 8 Zonal Town Planning Sanctions",
       "Nambike Nakshe Fast-Track Provisional Sanction for plots <= 50x80 ft",
-      "Full liaisoning with Assistant Director of Town Planning (ADTP)"
+      "Commencement Certificate (CC) Plinth-Level Inspection Clearances",
+      "Occupancy Certificate (OC) Verification for BESCOM & BWSSB Utilities",
+      "Full liaisoning with Assistant Director of Town Planning (ADTP) & AEE"
     ]
   },
   {

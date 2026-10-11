@@ -81,8 +81,13 @@ window.loadPublicServices = async function() {
       'Plan Sanctions & Approvals': 'ಕಟ್ಟಡ ನಕ್ಷೆ ಮಂಜೂರಾತಿ ಮತ್ತು ಅನುಮೋದನೆ',
       'e-Khata Services & Conversions': 'ಇ-ಖಾತಾ ನೋಂದಣಿ & ಖಾತಾ ವರ್ಗಾವಣೆ',
       'AutoDCR & PreDCR CAD Drafting': 'ಆಟೋಡಿಸಿಆರ್ ಮತ್ತು ಪ್ರಿಡಿಸಿಆರ್ ಸಿಎಡಿ ವಿನ್ಯಾಸ',
+      'Turnkey Construction & Architectural Design': 'ಕಟ್ಟಡ ನಿರ್ಮಾಣ ಮತ್ತು ವಾಸ್ತುಶಿಲ್ಪ ವಿನ್ಯಾಸ',
       'Architectural Design & Working Drawings': 'ವಾಸ್ತುಶಿಲ್ಪ ವಿನ್ಯಾಸ ಮತ್ತು 3D ಎಲಿವೇಶನ್',
-      'Statutory NOC Clearances & Liaisoning': 'ಸರ್ಕಾರಿ ಎನ್‌ಒಸಿ ಕ್ಲಿಯರೆನ್ಸ್ ಮತ್ತು ಅನುಮೋದನೆ'
+      'NOC Procurement & Clearances': 'ಸರ್ಕಾರಿ ಎನ್‌ಒಸಿ ಕ್ಲಿಯರೆನ್ಸ್ ಮತ್ತು ಅನುಮೋದನೆ',
+      'Statutory NOC Clearances & Liaisoning': 'ಸರ್ಕಾರಿ ಎನ್‌ಒಸಿ ಕ್ಲಿಯರೆನ್ಸ್ ಮತ್ತು ಅನುಮೋದನೆ',
+      'Estimation & Costing': 'ವೆಚ್ಚದ ಅಂದಾಜು ಪಟ್ಟಿ ಮತ್ತು ಬಿಲ್ ಆಫ್ ಕ್ವಾಂಟಿಟೀಸ್',
+      'Land Surveying & Titling': 'ನಿವೇಶನ ಅಳತೆ, ಗಡಿ ಸರ್ವೆ & ಇ-ಖಾತಾ',
+      'Xerox & Blue Prints': 'ಜೆರಾಕ್ಸ್ & ದೊಡ್ಡ ಅಳತೆಯ ಬ್ಲೂ ಪ್ರಿಂಟ್ಸ್'
     };
 
     container.innerHTML = data.services.map(s => {
@@ -91,22 +96,22 @@ window.loadPublicServices = async function() {
       const knTitle = serviceKannadaTitles[s.title] || '';
 
       return `
-        <div class="glass-panel card-hover-gold p-6 md:p-8 rounded-2xl flex flex-col justify-between relative overflow-hidden group bg-white border border-slate-200/90 shadow-sm">
-          <div class="absolute top-0 right-0 w-24 h-24 bg-amber-500/5 rounded-bl-full pointer-events-none group-hover:bg-amber-500/10 transition-all"></div>
+        <div class="glass-panel-signboard card-hover-signboard p-6 md:p-8 rounded-2xl flex flex-col justify-between relative overflow-hidden group bg-white border border-slate-200/90 shadow-sm">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-red-500/5 rounded-bl-full pointer-events-none group-hover:bg-red-500/10 transition-all"></div>
           
           <div>
             <div class="flex items-center justify-between mb-4">
-              <div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200/80 flex items-center justify-center">
+              <div class="w-12 h-12 rounded-xl bg-red-50 border border-red-200/80 flex items-center justify-center text-red-700">
                 ${icon}
               </div>
-              <span class="text-xs px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold border border-slate-200">
+              <span class="text-xs px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-bold border border-slate-200">
                 ${s.turnaround_days}
               </span>
             </div>
 
-            <span class="text-xs font-bold uppercase tracking-wider text-amber-700">${s.category}</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-red-700">${s.category}</span>
             <h3 class="text-xl font-bold text-slate-900 mt-1 mb-0.5 font-heading">${s.title}</h3>
-            ${knTitle ? `<div class="text-sm font-bold text-amber-800 font-kannada mb-2.5">${knTitle}</div>` : ''}
+            ${knTitle ? `<div class="text-sm font-bold text-red-800 font-kannada mb-2.5">${knTitle}</div>` : ''}
             <p class="text-sm text-slate-600 leading-relaxed mb-6">${s.short_desc}</p>
 
             ${s.features && s.features.length > 0 ? `
