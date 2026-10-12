@@ -248,14 +248,18 @@
             <div class="pl-3 pr-2 text-sky-700">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
-            <input type="text" placeholder="Enter Sakala / EoDB Ref (e.g. SAKALA-GBA-2026-0894)" value="SAKALA-GBA-2026-0894" class="w-full bg-transparent text-sm text-slate-900 placeholder-slate-400 focus:outline-none font-mono font-medium px-2">
+            <input type="text" placeholder="Enter Sakala / EoDB Ref (e.g. SAKALA-GBA-2026-1041)" value="SAKALA-GBA-2026-1041" class="w-full bg-transparent text-sm text-slate-900 placeholder-slate-400 focus:outline-none font-mono font-medium px-2">
             <button type="submit" class="btn-gold px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap">
               Track File (ಪರಿಶೀಲಿಸಿ)
             </button>
           </form>
-          <div class="text-[11px] text-slate-500 mt-2.5 flex items-center justify-center gap-4 font-medium flex-wrap">
-            <span>&bull; Karnataka Sakala SLA Status (ಸಕಾಲ ಮಾಹಿತಿ)</span>
-            <span>&bull; AutoDCR Scrutiny Feedback (ಆಟೋಡಿಸಿಆರ್ ವರದಿ)</span>
+          <div class="text-[11px] text-slate-500 mt-2.5 flex items-center justify-center gap-1.5 font-medium flex-wrap">
+            <span class="text-slate-600 font-semibold">Live Samples:</span>
+            <button type="button" onclick="ClientPortal.trackByReference('SAKALA-GBA-2026-1041')" class="px-2 py-0.5 rounded-full bg-white hover:bg-amber-100 text-slate-700 hover:text-amber-900 border border-slate-200 transition-colors font-mono">1041 (Nandini)</button>
+            <button type="button" onclick="ClientPortal.trackByReference('SAKALA-GBA-2026-1042')" class="px-2 py-0.5 rounded-full bg-white hover:bg-amber-100 text-slate-700 hover:text-amber-900 border border-slate-200 transition-colors font-mono">1042 (Kiran)</button>
+            <button type="button" onclick="ClientPortal.trackByReference('SAKALA-GBA-2026-1043')" class="px-2 py-0.5 rounded-full bg-white hover:bg-amber-100 text-slate-700 hover:text-amber-900 border border-slate-200 transition-colors font-mono">1043 (Deepika)</button>
+            <button type="button" onclick="ClientPortal.trackByReference('SAKALA-GBA-2026-1044')" class="px-2 py-0.5 rounded-full bg-white hover:bg-amber-100 text-slate-700 hover:text-amber-900 border border-slate-200 transition-colors font-mono">1044 (Tariq)</button>
+            <button type="button" onclick="ClientPortal.trackByReference('SAKALA-BIAAPA-2026-1045')" class="px-2 py-0.5 rounded-full bg-white hover:bg-amber-100 text-slate-700 hover:text-amber-900 border border-slate-200 transition-colors font-mono">1045 (Dr. Ramesh)</button>
           </div>
         </div>
 
@@ -844,13 +848,33 @@
           <p class="text-sm text-slate-600 max-w-md mx-auto">
             Log in to view your projects or query using your unique reference number.
           </p>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            <button onclick="ClientPortal.trackByReference('SAKALA-GBA-2026-0894')" class="btn-gold px-6 py-2.5 rounded-xl text-xs font-semibold shadow w-full sm:w-auto">
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+            <button onclick="ClientPortal.trackByReference('SAKALA-GBA-2026-1041')" class="btn-gold px-6 py-2.5 rounded-xl text-xs font-semibold shadow w-full sm:w-auto">
               Load Live Demo (ಡೆಮೊ ಪ್ರಾಜೆಕ್ಟ್ ವೀಕ್ಷಿಸಿ)
             </button>
             <button onclick="openModal('client-login-modal')" class="btn-outline-gold px-6 py-2.5 rounded-xl text-xs font-semibold w-full sm:w-auto">
               Client Sign In (ಗ್ರಾಹಕರ ಲಾಗಿನ್)
             </button>
+          </div>
+          <div class="pt-3 border-t border-slate-200/60 max-w-2xl mx-auto">
+            <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">Instant Track Live Customer Files:</div>
+            <div class="flex flex-wrap items-center justify-center gap-2 text-xs">
+              <button onclick="ClientPortal.trackByReference('SAKALA-GBA-2026-1041')" class="px-3 py-1.5 rounded-xl bg-white border border-slate-300 hover:border-sky-500 hover:bg-sky-50 transition-colors shadow-xs font-medium text-slate-700">
+                Villa G+3 (Nandini &bull; 1041)
+              </button>
+              <button onclick="ClientPortal.trackByReference('SAKALA-GBA-2026-1042')" class="px-3 py-1.5 rounded-xl bg-white border border-slate-300 hover:border-sky-500 hover:bg-sky-50 transition-colors shadow-xs font-medium text-slate-700">
+                Nambike Nakshe (Kiran &bull; 1042)
+              </button>
+              <button onclick="ClientPortal.trackByReference('SAKALA-GBA-2026-1043')" class="px-3 py-1.5 rounded-xl bg-white border border-slate-300 hover:border-sky-500 hover:bg-sky-50 transition-colors shadow-xs font-medium text-slate-700">
+                Apartment G+4 (Deepika &bull; 1043)
+              </button>
+              <button onclick="ClientPortal.trackByReference('SAKALA-GBA-2026-1044')" class="px-3 py-1.5 rounded-xl bg-white border border-slate-300 hover:border-sky-500 hover:bg-sky-50 transition-colors shadow-xs font-medium text-slate-700">
+                Commercial (Tariq &bull; 1044)
+              </button>
+              <button onclick="ClientPortal.trackByReference('SAKALA-BIAAPA-2026-1045')" class="px-3 py-1.5 rounded-xl bg-white border border-slate-300 hover:border-sky-500 hover:bg-sky-50 transition-colors shadow-xs font-medium text-slate-700">
+                BIAAPA Hospital (Dr. Ramesh &bull; 1045)
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -1185,16 +1209,42 @@
       <form id="client-login-form" class="space-y-4">
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">Email Address / ಇಮೇಲ್</label>
-          <input type="email" id="client-email" value="client@example.com" required class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 shadow-sm">
+          <input type="email" id="client-email" value="nandini.ramanathan@gmail.com" required class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 shadow-sm">
         </div>
         <div>
           <label class="block text-xs font-bold text-slate-700 mb-1">Password / ಪಾಸ್‌ವರ್ಡ್</label>
-          <input type="password" id="client-password" value="client123" required class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 shadow-sm">
+          <input type="password" id="client-password" value="Nandini@Bangalore2026" required class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 shadow-sm">
         </div>
 
         <button type="submit" class="btn-gold w-full py-3 rounded-xl text-sm font-bold shadow-lg">
           Sign In to Portal (ಪ್ರವೇಶಿಸಿ)
         </button>
+
+        <div class="pt-3 border-t border-slate-100">
+          <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2 text-center">Quick Demo Client Accounts (ಒಂದು ಕ್ಲಿಕ್‌ನಲ್ಲಿ ಲಾಗಿನ್)</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs">
+            <button type="button" onclick="ClientPortal.quickFill('nandini.ramanathan@gmail.com', 'Nandini@Bangalore2026')" class="p-2 text-left rounded-xl border border-slate-200 hover:border-amber-400 hover:bg-amber-50/50 transition-colors">
+              <span class="font-bold text-slate-800 block text-[11px]">Nandini Ramanathan</span>
+              <span class="text-[10px] text-slate-500 font-mono">RMV Villa G+3 (1041)</span>
+            </button>
+            <button type="button" onclick="ClientPortal.quickFill('kiran.gowda@techblr.io', 'Kiran@Gowda2026')" class="p-2 text-left rounded-xl border border-slate-200 hover:border-amber-400 hover:bg-amber-50/50 transition-colors">
+              <span class="font-bold text-slate-800 block text-[11px]">Kiran Kumar Gowda</span>
+              <span class="text-[10px] text-slate-500 font-mono">JP Nagar Duplex (1042)</span>
+            </button>
+            <button type="button" onclick="ClientPortal.quickFill('deepika.shastry@outlook.com', 'Deepika@Shastry2026')" class="p-2 text-left rounded-xl border border-slate-200 hover:border-amber-400 hover:bg-amber-50/50 transition-colors">
+              <span class="font-bold text-slate-800 block text-[11px]">Deepika Shastry</span>
+              <span class="text-[10px] text-slate-500 font-mono">HSR Apartment G+4 (1043)</span>
+            </button>
+            <button type="button" onclick="ClientPortal.quickFill('tariq.mansoor@gmail.com', 'Tariq@Mansoor2026')" class="p-2 text-left rounded-xl border border-slate-200 hover:border-amber-400 hover:bg-amber-50/50 transition-colors">
+              <span class="font-bold text-slate-800 block text-[11px]">Tariq Mansoor</span>
+              <span class="text-[10px] text-slate-500 font-mono">Whitefield Comm (1044)</span>
+            </button>
+            <button type="button" onclick="ClientPortal.quickFill('dr.ramesh.chandra@manipal.edu', 'Ramesh@Chandra2026')" class="p-2 text-left rounded-xl border border-slate-200 hover:border-amber-400 hover:bg-amber-50/50 transition-colors col-span-1 sm:col-span-2">
+              <span class="font-bold text-slate-800 block text-[11px]">Dr. Ramesh Chandrasekhar</span>
+              <span class="text-[10px] text-slate-500 font-mono">BIAAPA Healthcare Sanction (1045)</span>
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   </div>

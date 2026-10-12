@@ -52,6 +52,16 @@ const ClientPortal = {
     }
   },
 
+  quickFill(email, password) {
+    const emailInput = document.getElementById('client-email');
+    const passInput = document.getElementById('client-password');
+    if (emailInput && passInput) {
+      emailInput.value = email;
+      passInput.value = password;
+      this.handleLogin(email, password);
+    }
+  },
+
   async loadMyApplications() {
     try {
       const res = await API.getClientProjects();
@@ -86,7 +96,13 @@ const ClientPortal = {
           <div class="p-8 text-center bg-rose-50 rounded-2xl border border-rose-200">
             <div class="w-12 h-12 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center mx-auto mb-3 text-xl font-bold">!</div>
             <h3 class="text-xl font-bold text-slate-900 mb-2">No Application Found</h3>
-            <p class="text-sm text-slate-600 mb-4">Reference "${refNo}" not found in our database. Try sample demo reference: <strong class="text-amber-800 cursor-pointer underline font-bold" onclick="ClientPortal.trackByReference('SAKALA-GBA-2026-0894')">SAKALA-GBA-2026-0894</strong></p>
+            <p class="text-sm text-slate-600 mb-4">Reference "${refNo}" not found. Try sample demo references: 
+              <span class="inline-flex gap-2 flex-wrap justify-center mt-2">
+                <strong class="text-amber-800 cursor-pointer underline font-mono text-xs" onclick="ClientPortal.trackByReference('SAKALA-GBA-2026-1041')">SAKALA-GBA-2026-1041</strong>
+                <strong class="text-amber-800 cursor-pointer underline font-mono text-xs" onclick="ClientPortal.trackByReference('SAKALA-GBA-2026-1042')">SAKALA-GBA-2026-1042</strong>
+                <strong class="text-amber-800 cursor-pointer underline font-mono text-xs" onclick="ClientPortal.trackByReference('SAKALA-GBA-2026-1043')">SAKALA-GBA-2026-1043</strong>
+              </span>
+            </p>
           </div>
         `;
         return;
@@ -118,17 +134,23 @@ const ClientPortal = {
         <!-- Application Header Bar -->
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-200">
           <div>
-            <div class="flex items-center gap-3 mb-2 flex-wrap">
+            <div class="flex items-center gap-2.5 mb-2 flex-wrap">
               <span class="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full bg-amber-50 text-amber-800 border border-amber-200">
-                GBA / BBMP Authority
+                ${project.authority || 'GBA / BBMP'}
               </span>
-              <span class="text-xs text-slate-500 font-mono font-semibold">Ref: ${project.reference_no}</span>
-              <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
-                Nambike Nakshe Self-Declaration
-              </span>
+              <span class="text-xs text-slate-700 font-mono font-bold bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200">Ref: ${project.reference_no}</span>
+              ${project.nambike_eligible ? `
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  Nambike Nakshe Self-Declaration
+                </span>
+              ` : `
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-blue-50 text-blue-800 border border-blue-200">
+                  Standard Municipal Scrutiny
+                </span>
+              `}
             </div>
             <h3 class="text-2xl md:text-3xl font-bold text-slate-900">${project.project_title}</h3>
-            <p class="text-sm text-slate-600 mt-1">${project.locality} &bull; Dimensions: <span class="text-slate-900 font-medium">${project.plot_dimensions}</span></p>
+            <p class="text-sm text-slate-600 mt-1">${project.locality} &bull; Dimensions: <span class="text-slate-900 font-medium">${project.plot_dimensions}</span> &bull; Client: <strong class="text-slate-900">${project.client_name}</strong></p>
           </div>
 
           <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200">

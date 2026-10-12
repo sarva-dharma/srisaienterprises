@@ -231,6 +231,218 @@ const FALLBACK_BLOGS = [
   }
 ];
 
+const FALLBACK_CUSTOMERS = [
+  {
+    id: 3,
+    name: "Nandini Ramanathan",
+    email: "nandini.ramanathan@gmail.com",
+    phone: "+91 98450 12345",
+    password: "Nandini@Bangalore2026",
+    role: "client",
+    ref_no: "SAKALA-GBA-2026-1041",
+    project_title: "G+3 Luxury Residential Villa - RMV 2nd Stage",
+    location: "RMV 2nd Stage, Ward 18, Bengaluru"
+  },
+  {
+    id: 4,
+    name: "Kiran Kumar Gowda",
+    email: "kiran.gowda@techblr.io",
+    phone: "+91 99002 67890",
+    password: "Kiran@Gowda2026",
+    role: "client",
+    ref_no: "SAKALA-GBA-2026-1042",
+    project_title: "Duplex House Trust-Based Approval - JP Nagar",
+    location: "JP Nagar 7th Phase, Ward 187, Bengaluru"
+  },
+  {
+    id: 5,
+    name: "Deepika Shastry",
+    email: "deepika.shastry@outlook.com",
+    phone: "+91 97411 98765",
+    password: "Deepika@Shastry2026",
+    role: "client",
+    ref_no: "SAKALA-GBA-2026-1043",
+    project_title: "Residential Apartment Complex (6 Units) - HSR Layout",
+    location: "HSR Layout Sector 2, Ward 174, Bengaluru"
+  },
+  {
+    id: 6,
+    name: "Mohammed Tariq Mansoor",
+    email: "tariq.mansoor@gmail.com",
+    phone: "+91 98860 45678",
+    password: "Tariq@Mansoor2026",
+    role: "client",
+    ref_no: "SAKALA-GBA-2026-1044",
+    project_title: "B-Khata Betterment & Sanction - Whitefield",
+    location: "Whitefield Borewell Road, Ward 84, Bengaluru"
+  },
+  {
+    id: 7,
+    name: "Dr. Ramesh Chandrasekhar",
+    email: "dr.ramesh.chandra@manipal.edu",
+    phone: "+91 94481 87654",
+    password: "Ramesh@Chandra2026",
+    role: "client",
+    ref_no: "SAKALA-BIAAPA-2026-1045",
+    project_title: "Commercial Healthcare & Diagnostic Center - Devanahalli",
+    location: "Devanahalli Airport Corridor, Bengaluru"
+  }
+];
+
+const FALLBACK_PROJECTS = [
+  {
+    id: 101,
+    reference_no: "SAKALA-GBA-2026-1041",
+    project_title: "G+3 Luxury Residential Villa - RMV 2nd Stage",
+    client_name: "Nandini Ramanathan",
+    client_email: "nandini.ramanathan@gmail.com",
+    locality: "RMV 2nd Stage, Ward 18, Bengaluru",
+    plot_dimensions: "40x60 ft (2,400 sq.ft)",
+    authority: "GBA / BBMP",
+    current_stage: "Stage 2: PreDCR Scrutiny & Municipal Layer Coding",
+    sakala_guaranteed_date: "28 Oct 2026",
+    status: "IN_PROGRESS",
+    progress_percent: 45,
+    nambike_eligible: false,
+    timeline: [
+      { stage: "Stage 1: Drafting & Title Clearance", date: "28 Sep 2026", completed: true },
+      { stage: "Stage 2: PreDCR Scrutiny & Municipal Layer Coding", date: "06 Oct 2026", completed: true },
+      { stage: "Stage 3: AutoDCR Submission & Challan Generation", date: "15 Oct 2026", completed: false },
+      { stage: "Stage 4: ADTP Final Sanction Certificate (LP)", date: "22 Oct 2026", completed: false }
+    ],
+    documents: [
+      { id: 1, name: "Nandini_AutoDCR_Plan_Drawing.dwg", size: "3.2 MB" },
+      { id: 2, name: "Sakala_Municipal_Sanction_Acknowledgement.pdf", size: "580 KB" }
+    ]
+  },
+  {
+    id: 102,
+    reference_no: "SAKALA-GBA-2026-1042",
+    project_title: "Duplex House Trust-Based Approval - JP Nagar",
+    client_name: "Kiran Kumar Gowda",
+    client_email: "kiran.gowda@techblr.io",
+    locality: "JP Nagar 7th Phase, Ward 187, Bengaluru",
+    plot_dimensions: "30x40 ft (1,200 sq.ft)",
+    authority: "GBA / BBMP",
+    current_stage: "Stage 3: AutoDCR Submission & Algorithmic Validation",
+    sakala_guaranteed_date: "16 Oct 2026",
+    status: "IN_PROGRESS",
+    progress_percent: 60,
+    nambike_eligible: true,
+    timeline: [
+      { stage: "Stage 1: Drafting & Verification", date: "01 Oct 2026", completed: true },
+      { stage: "Stage 2: Nambike Nakshe Self-Declaration", date: "04 Oct 2026", completed: true },
+      { stage: "Stage 3: AutoDCR Submission (100% Pass)", date: "06 Oct 2026", completed: true },
+      { stage: "Stage 4: Provisional Digital Plan Download", date: "12 Oct 2026", completed: false }
+    ],
+    documents: [
+      { id: 1, name: "Kiran_Nambike_Nakshe_Provisional.pdf", size: "1.4 MB" },
+      { id: 2, name: "Kiran_AutoDCR_Plan_Drawing.dwg", size: "2.8 MB" }
+    ]
+  },
+  {
+    id: 103,
+    reference_no: "SAKALA-GBA-2026-1043",
+    project_title: "Residential Apartment Complex (6 Units) - HSR Layout",
+    client_name: "Deepika Shastry",
+    client_email: "deepika.shastry@outlook.com",
+    locality: "HSR Layout Sector 2, Ward 174, Bengaluru",
+    plot_dimensions: "50x80 ft (4,000 sq.ft)",
+    authority: "GBA / BBMP",
+    current_stage: "Stage 3: Site Inspection Coordination by Ward AEE",
+    sakala_guaranteed_date: "20 Oct 2026",
+    status: "IN_PROGRESS",
+    progress_percent: 75,
+    nambike_eligible: false,
+    timeline: [
+      { stage: "Stage 1: PreDCR Layer Coding", date: "24 Sep 2026", completed: true },
+      { stage: "Stage 2: Municipal Scrutiny Submission", date: "29 Sep 2026", completed: true },
+      { stage: "Stage 3: Site Inspection by Ward AEE", date: "06 Oct 2026", completed: true },
+      { stage: "Stage 4: Final Sanction Order & Betterment Receipt", date: "14 Oct 2026", completed: false }
+    ],
+    documents: [
+      { id: 1, name: "Deepika_PreDCR_Architectural_Working.dwg", size: "4.5 MB" },
+      { id: 2, name: "BBMP_Site_Inspection_Notice.pdf", size: "620 KB" }
+    ]
+  },
+  {
+    id: 104,
+    reference_no: "SAKALA-GBA-2026-1044",
+    project_title: "B-Khata Betterment & Sanction - Whitefield",
+    client_name: "Mohammed Tariq Mansoor",
+    client_email: "tariq.mansoor@gmail.com",
+    locality: "Whitefield Borewell Road, Ward 84, Bengaluru",
+    plot_dimensions: "30x50 ft (1,500 sq.ft)",
+    authority: "GBA / BBMP",
+    current_stage: "Stage 1: e-Aasthi Document Ingestion & Title Check",
+    sakala_guaranteed_date: "04 Nov 2026",
+    status: "IN_PROGRESS",
+    progress_percent: 25,
+    nambike_eligible: true,
+    timeline: [
+      { stage: "Stage 1: e-Aasthi Document Ingestion & Title Check", date: "05 Oct 2026", completed: true },
+      { stage: "Stage 2: Betterment Fee Estimation & Challan", date: "10 Oct 2026", completed: false },
+      { stage: "Stage 3: AutoDCR Sanction Filing", date: "18 Oct 2026", completed: false },
+      { stage: "Stage 4: A-Khata Certificate & Sanction Order", date: "25 Oct 2026", completed: false }
+    ],
+    documents: [
+      { id: 1, name: "Tariq_eKhata_Title_Scrutiny.pdf", size: "920 KB" },
+      { id: 2, name: "Tariq_BKhata_Betterment_Worksheet.pdf", size: "340 KB" }
+    ]
+  },
+  {
+    id: 105,
+    reference_no: "SAKALA-BIAAPA-2026-1045",
+    project_title: "Commercial Healthcare & Diagnostic Center - Devanahalli",
+    client_name: "Dr. Ramesh Chandrasekhar",
+    client_email: "dr.ramesh.chandra@manipal.edu",
+    locality: "Devanahalli Airport Corridor, Bengaluru",
+    plot_dimensions: "60x100 ft (6,000 sq.ft)",
+    authority: "BIAAPA / STRR",
+    current_stage: "Stage 3: BIAAPA Technical Committee & AAI Height Clearance",
+    sakala_guaranteed_date: "25 Oct 2026",
+    status: "IN_PROGRESS",
+    progress_percent: 85,
+    nambike_eligible: false,
+    timeline: [
+      { stage: "Stage 1: Master Plan Zonal Alignment Check", date: "18 Sep 2026", completed: true },
+      { stage: "Stage 2: AAI Height NOC & Fire Safety Clearance", date: "27 Sep 2026", completed: true },
+      { stage: "Stage 3: BIAAPA Technical Committee Clearance", date: "06 Oct 2026", completed: true },
+      { stage: "Stage 4: Final Commercial Sanction & License", date: "14 Oct 2026", completed: false }
+    ],
+    documents: [
+      { id: 1, name: "Ramesh_BIAAPA_Commercial_Approval.pdf", size: "2.1 MB" },
+      { id: 2, name: "AAI_NOCAS_Height_Clearance.pdf", size: "780 KB" }
+    ]
+  },
+  {
+    id: 100,
+    reference_no: "SAKALA-GBA-2026-0894",
+    project_title: "Residential G+3 Villa Sanction & Nambike Nakshe Filing",
+    client_name: "Srikanth Rao & Family",
+    client_email: "client@example.com",
+    locality: "Whitefield (Mahadevapura Zone)",
+    plot_dimensions: "40 x 60 ft (2,400 sq.ft)",
+    authority: "GBA / BBMP",
+    current_stage: "Stage 3: AutoDCR Algorithmic Validation Complete",
+    sakala_guaranteed_date: "12 Oct 2026",
+    status: "IN_PROGRESS",
+    progress_percent: 75,
+    nambike_eligible: true,
+    timeline: [
+      { stage: "Stage 1: Document Scrutiny & 30-Yr EC Title Verification", date: "28 Sep 2026", completed: true },
+      { stage: "Stage 2: PreDCR Architectural Layer Coding & CAD Preparation", date: "01 Oct 2026", completed: true },
+      { stage: "Stage 3: AutoDCR Municipal Bypass Scrutiny (100% Pass)", date: "04 Oct 2026", completed: true },
+      { stage: "Stage 4: ADTP Final Digital Signature & Sanction Plan Dispatch", date: "09 Oct 2026", completed: false }
+    ],
+    documents: [
+      { id: 1, name: "Sanction_Drawing_PreDCR_Approved.dwg", size: "3.8 MB" },
+      { id: 2, name: "Sakala_Application_Receipt_Ack.pdf", size: "480 KB" },
+      { id: 3, name: "Nambike_Nakshe_Self_Declaration_Certificate.pdf", size: "1.2 MB" }
+    ]
+  }
+];
+
 const API = {
   // Public
   async getServices() {
@@ -385,12 +597,31 @@ const API = {
       if (res.ok) return await res.json();
     } catch (e) {}
 
-    if (email === 'admin@bengaluruapprovals.com' || password === 'admin123') {
-      const user = { name: "Principal Architect", email, role: "admin" };
+    const cleanEmail = (email || '').trim().toLowerCase();
+
+    if (cleanEmail === 'admin@bengaluruapprovals.com' || password === 'admin123') {
+      const user = { name: "Principal Architect", email: cleanEmail, role: "admin" };
       localStorage.setItem('auth_user', JSON.stringify(user));
       return { success: true, user };
     }
-    const user = { name: "Client User", email, role: "client" };
+
+    const matchedCustomer = FALLBACK_CUSTOMERS.find(c => c.email.toLowerCase() === cleanEmail);
+    if (matchedCustomer) {
+      const user = {
+        id: matchedCustomer.id,
+        name: matchedCustomer.name,
+        email: matchedCustomer.email,
+        phone: matchedCustomer.phone,
+        role: "client",
+        ref_no: matchedCustomer.ref_no,
+        project_title: matchedCustomer.project_title,
+        location: matchedCustomer.location
+      };
+      localStorage.setItem('auth_user', JSON.stringify(user));
+      return { success: true, user };
+    }
+
+    const user = { name: "Client User", email: cleanEmail, role: "client", ref_no: "SAKALA-GBA-2026-1041" };
     localStorage.setItem('auth_user', JSON.stringify(user));
     return { success: true, user };
   },
@@ -434,34 +665,38 @@ const API = {
       if (res.ok) return await res.json();
     } catch (e) {}
 
-    // Static project demo record
+    const cleanRef = (referenceNo || '').trim().toUpperCase();
+
+    if (cleanRef) {
+      const matched = FALLBACK_PROJECTS.find(p => p.reference_no.toUpperCase() === cleanRef || p.reference_no.toUpperCase().includes(cleanRef));
+      if (matched) {
+        return { success: true, projects: [matched] };
+      }
+      return {
+        success: false,
+        error: `No application found with Sakala reference: ${referenceNo}`
+      };
+    }
+
+    // Check logged-in user
+    const uStr = localStorage.getItem('auth_user');
+    if (uStr) {
+      try {
+        const u = JSON.parse(uStr);
+        if (u.ref_no) {
+          const matched = FALLBACK_PROJECTS.find(p => p.reference_no === u.ref_no);
+          if (matched) return { success: true, projects: [matched] };
+        }
+        if (u.email) {
+          const matched = FALLBACK_PROJECTS.find(p => p.client_email && p.client_email.toLowerCase() === u.email.toLowerCase());
+          if (matched) return { success: true, projects: [matched] };
+        }
+      } catch (e) {}
+    }
+
     return {
       success: true,
-      projects: [
-        {
-          id: 101,
-          reference_no: referenceNo || "SAKALA-GBA-2026-0894",
-          project_title: "Residential G+3 Villa Sanction & Nambike Nakshe Filing",
-          client_name: "Srikanth Rao & Family",
-          locality: "Whitefield (Mahadevapura Zone)",
-          plot_dimensions: "40 x 60 ft (2,400 sq.ft)",
-          current_stage: "Stage 3: AutoDCR Algorithmic Validation Complete",
-          sakala_guaranteed_date: "12 Oct 2026",
-          status: "IN_PROGRESS",
-          progress_percent: 75,
-          timeline: [
-            { stage: "Stage 1: Document Scrutiny & 30-Yr EC Title Verification", date: "28 Sep 2026", completed: true },
-            { stage: "Stage 2: PreDCR Architectural Layer Coding & CAD Preparation", date: "01 Oct 2026", completed: true },
-            { stage: "Stage 3: AutoDCR Municipal Bypass Scrutiny (100% Pass)", date: "04 Oct 2026", completed: true },
-            { stage: "Stage 4: ADTP Final Digital Signature & Sanction Plan Dispatch", date: "09 Oct 2026", completed: false }
-          ],
-          documents: [
-            { id: 1, name: "Sanction_Drawing_PreDCR_Approved.dwg", size: "3.8 MB" },
-            { id: 2, name: "Sakala_Application_Receipt_Ack.pdf", size: "480 KB" },
-            { id: 3, name: "Nambike_Nakshe_Self_Declaration_Certificate.pdf", size: "1.2 MB" }
-          ]
-        }
-      ]
+      projects: FALLBACK_PROJECTS
     };
   },
 
