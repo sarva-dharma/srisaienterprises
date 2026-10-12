@@ -195,13 +195,82 @@ window.closeModal = function(modalId) {
   }
 };
 
-window.openBookingModal = function(serviceTitle = '', locality = '', dimensions = '') {
+window.openBookingModal = function(serviceTitle = '', locality = '', dimensions = '', audienceType = '') {
   const modal = document.getElementById('booking-modal');
   if (modal) {
-    if (serviceTitle) document.getElementById('lead-service').value = serviceTitle;
-    if (locality) document.getElementById('lead-location').value = locality;
-    if (dimensions) document.getElementById('lead-dimensions').value = dimensions;
+    if (serviceTitle) {
+      const select = document.getElementById('lead-service');
+      if (select) select.value = serviceTitle;
+    }
+    if (locality) {
+      const loc = document.getElementById('lead-location');
+      if (loc) loc.value = locality;
+    }
+    if (dimensions) {
+      const dim = document.getElementById('lead-dimensions');
+      if (dim) dim.value = dimensions;
+    }
+    if (audienceType && window.selectAudienceInModal) {
+      window.selectAudienceInModal(audienceType);
+    }
     openModal('booking-modal');
+  }
+};
+
+// Audience Navigator Tab Switcher
+window.switchAudienceTab = function(tabId) {
+  const tabs = document.querySelectorAll('.audience-tab-btn');
+  const panes = document.querySelectorAll('.audience-pane');
+  
+  tabs.forEach(btn => {
+    if (btn.getAttribute('data-tab') === tabId) {
+      btn.classList.add('active', 'bg-red-800', 'text-white', 'border-red-900', 'shadow-md');
+      btn.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
+    } else {
+      btn.classList.remove('active', 'bg-red-800', 'text-white', 'border-red-900', 'shadow-md');
+      btn.classList.add('bg-white', 'text-slate-700', 'border-slate-200');
+    }
+  });
+
+  panes.forEach(pane => {
+    if (pane.id === `audience-pane-${tabId}`) {
+      pane.classList.remove('hidden');
+      pane.classList.add('block');
+    } else {
+      pane.classList.add('hidden');
+      pane.classList.remove('block');
+    }
+  });
+};
+
+// Audience Selector inside Booking Modal
+window.selectAudienceInModal = function(type) {
+  const buttons = document.querySelectorAll('.modal-audience-pill');
+  buttons.forEach(btn => {
+    if (btn.getAttribute('data-audience') === type) {
+      btn.classList.add('bg-red-700', 'text-white', 'border-red-800');
+      btn.classList.remove('bg-slate-100', 'text-slate-700', 'border-slate-200');
+    } else {
+      btn.classList.remove('bg-red-700', 'text-white', 'border-red-800');
+      btn.classList.add('bg-slate-100', 'text-slate-700', 'border-slate-200');
+    }
+  });
+
+  const messageBox = document.getElementById('lead-message');
+  const serviceSelect = document.getElementById('lead-service');
+  
+  if (type === 'first-timer') {
+    if (serviceSelect) serviceSelect.value = 'Plan Sanctions & Approvals';
+    if (messageBox && !messageBox.value) messageBox.placeholder = 'I own a plot in Bengaluru and need step-by-step guidance on where to start (title, bylaws, setbacks, and building plans)...';
+  } else if (type === 'tech-pro') {
+    if (serviceSelect) serviceSelect.value = 'Plan Sanctions & Approvals';
+    if (messageBox && !messageBox.value) messageBox.placeholder = 'I am a busy tech employee looking for 100% remote digital plan sanction with Sakala tracking and bank loan estimation...';
+  } else if (type === 'architect') {
+    if (serviceSelect) serviceSelect.value = 'AutoDCR & PreDCR CAD Drafting';
+    if (messageBox && !messageBox.value) messageBox.placeholder = 'I am an architect / interior designer looking for PreDCR CAD layer formatting, municipal scrutiny compliance, and BBMP liaison...';
+  } else if (type === 'local-walkin') {
+    if (serviceSelect) serviceSelect.value = 'Estimation & Costing';
+    if (messageBox && !messageBox.value) messageBox.placeholder = 'I found your office on Google Maps and would like to visit Gayathrinagar for plan prints, estimation, or E-Khata...';
   }
 };
 
