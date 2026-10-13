@@ -1,0 +1,170 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!--[if gte mso 9]>
+  <xml>
+    <x:ExcelWorkbook>
+      <x:ExcelWorksheets>
+        <x:ExcelWorksheet>
+          <x:Name>Firm Details</x:Name>
+          <x:WorksheetOptions>
+            <x:DisplayGridlines/>
+          </x:WorksheetOptions>
+        </x:ExcelWorksheet>
+      </x:ExcelWorksheets>
+    </x:ExcelWorkbook>
+  </xml>
+  <![endif]-->
+  <style>
+    body { font-family: Calibri, Arial, sans-serif; }
+    th { background-color: #1C2541; color: #FFFFFF; font-weight: bold; border: 1px solid #999999; padding: 10px; font-size: 13px; }
+    td { border: 1px solid #DDDDDD; padding: 8px; font-size: 12px; vertical-align: top; }
+    .section-cell { background-color: #F1F5F9; font-weight: bold; color: #0B132B; }
+    .key-cell { font-family: Consolas, monospace; background-color: #F8FAFC; color: #334155; }
+    .val-cell { background-color: #FFFFFF; font-weight: 500; color: #0F172A; }
+    .desc-cell { color: #64748B; font-size: 11px; }
+  </style>
+</head>
+<body>
+  <h2>🏛️ Bengaluru Sanctions & Architecture — Firm Configuration Table</h2>
+  <p>Edit the values in the <strong>Value</strong> column below.</p>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+      <tr>
+        <th style="width: 140px;">Section</th>
+        <th style="width: 180px;">Field_Key</th>
+        <th style="width: 320px;">Value</th>
+        <th style="width: 350px;">Description_And_Instructions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="section-cell">General_Identity</td>
+        <td class="key-cell">firm_name</td>
+        <td class="val-cell">Sri Sai Enterprises</td>
+        <td class="desc-cell">The brand name of your firm displayed in header and hero</td>
+      </tr>
+      <tr>
+        <td class="section-cell">General_Identity</td>
+        <td class="key-cell">tagline</td>
+        <td class="val-cell">Council of Architecture Reg. Practice</td>
+        <td class="desc-cell">Subtitle or credential tag below your firm logo</td>
+      </tr>
+      <tr>
+        <td class="section-cell">General_Identity</td>
+        <td class="key-cell">principal_architect</td>
+        <td class="val-cell">S M Thyagaraja (Draftsman Civil)</td>
+        <td class="desc-cell">Name and qualifications of the Principal / Lead Architect</td>
+      </tr>
+      <tr>
+        <td class="section-cell">General_Identity</td>
+        <td class="key-cell">coa_registration_no</td>
+        <td class="val-cell">CA/2009/44120</td>
+        <td class="desc-cell">Council of Architecture (COA) registration number</td>
+      </tr>
+      <tr>
+        <td class="section-cell">General_Identity</td>
+        <td class="key-cell">experience_years</td>
+        <td class="val-cell">37</td>
+        <td class="desc-cell">Years of architectural liaisoning experience in Bengaluru</td>
+      </tr>
+      <tr>
+        <td class="section-cell">General_Identity</td>
+        <td class="key-cell">sanctions_delivered</td>
+        <td class="val-cell">23000+</td>
+        <td class="desc-cell">Number of building plan sanctions successfully delivered</td>
+      </tr>
+      <tr>
+        <td class="section-cell">General_Identity</td>
+        <td class="key-cell">sakala_sla_days</td>
+        <td class="val-cell">5-7 Days</td>
+        <td class="desc-cell">Guaranteed statutory turnaround time under Sakala</td>
+      </tr>
+      <tr>
+        <td class="section-cell">General_Identity</td>
+        <td class="key-cell">approval_rate</td>
+        <td class="val-cell">100%</td>
+        <td class="desc-cell">GBA & BBMP compliance track record percentage</td>
+      </tr>
+      <tr>
+        <td class="section-cell">Contact_Info</td>
+        <td class="key-cell">primary_phone</td>
+        <td class="val-cell">94480 54185</td>
+        <td class="desc-cell">Primary mobile number displayed across site and CTAs</td>
+      </tr>
+      <tr>
+        <td class="section-cell">Contact_Info</td>
+        <td class="key-cell">secondary_phone</td>
+        <td class="val-cell">080 233 255 09</td>
+        <td class="desc-cell">Office landline or alternate contact number</td>
+      </tr>
+      <tr>
+        <td class="section-cell">Contact_Info</td>
+        <td class="key-cell">whatsapp_number</td>
+        <td class="val-cell">94480 54185</td>
+        <td class="desc-cell">WhatsApp number with country code (no + or spaces e.g. 919845012345)</td>
+      </tr>
+      <tr>
+        <td class="section-cell">Contact_Info</td>
+        <td class="key-cell">official_email</td>
+        <td class="val-cell">smthyagaraj@gmail.com</td>
+        <td class="desc-cell">Inquiry email address for client consultation leads</td>
+      </tr>
+      <tr>
+        <td class="section-cell">Office_Location</td>
+        <td class="key-cell">office_address</td>
+        <td class="val-cell">#3309, 1st Main Road, Gayathrinagara, Bengaluru - 560021</td>
+        <td class="desc-cell">Complete physical studio address for client visits</td>
+      </tr>
+      <tr>
+        <td class="section-cell">Office_Location</td>
+        <td class="key-cell">office_landmark</td>
+        <td class="val-cell">Opp. More Retail Store</td>
+        <td class="desc-cell">Nearest landmark or public transit connectivity</td>
+      </tr>
+      <tr>
+        <td class="section-cell">Office_Location</td>
+        <td class="key-cell">google_maps_url</td>
+        <td class="val-cell">https://maps.google.com/?q=Gayathrinagara+Bengaluru</td>
+        <td class="desc-cell">Google Maps direction link for the office visit card</td>
+      </tr>
+      <tr>
+        <td class="section-cell">Office_Location</td>
+        <td class="key-cell">working_hours</td>
+        <td class="val-cell">Mon - Sat: 9:30 AM - 7:30 PM</td>
+        <td class="desc-cell">Office working hours for consultation</td>
+      </tr>
+      <tr>
+        <td class="section-cell">Admin_Account</td>
+        <td class="key-cell">admin_name</td>
+        <td class="val-cell">Principal Architect / Director</td>
+        <td class="desc-cell">Display name of the agency administrator</td>
+      </tr>
+      <tr>
+        <td class="section-cell">Admin_Account</td>
+        <td class="key-cell">admin_email</td>
+        <td class="val-cell">admin@bengaluruapprovals.com</td>
+        <td class="desc-cell">Email address used to log into the Admin CRM & CMS console</td>
+      </tr>
+      <tr>
+        <td class="section-cell">Admin_Account</td>
+        <td class="key-cell">admin_password</td>
+        <td class="val-cell">admin123</td>
+        <td class="desc-cell">Secure password for Admin CRM & CMS access</td>
+      </tr>
+      <tr>
+        <td class="section-cell">Regulatory_Badges</td>
+        <td class="key-cell">layout_authorities</td>
+        <td class="val-cell">GBA, BBMP, BDA, BIAAPA, BMRDA, STRR, BMICPA</td>
+        <td class="desc-cell">Municipal authorities your firm liaises with</td>
+      </tr>
+      <tr>
+        <td class="section-cell">Regulatory_Badges</td>
+        <td class="key-cell">specialization</td>
+        <td class="val-cell">Nambike Nakshe, AutoDCR CAD, e-Khata, CFO NOC, AAI Clearance</td>
+        <td class="desc-cell">Key specialization tags</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

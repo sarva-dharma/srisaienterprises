@@ -1,0 +1,361 @@
+/* ==========================================================================
+   Sri Sai Enterprises | ಶ್ರೀ ಸಾಯಿ ಎಂಟರ್‌ಪ್ರೈಸಸ್ - ESTD. 1989
+   Heritage Signboard Palette & Modern Architectural Design System
+   ========================================================================== */
+
+:root {
+  /* Authentic Signboard Color Scheme */
+  --signboard-red: #c51f1f;
+  --signboard-red-dark: #991b1b;
+  --signboard-red-light: #ef4444;
+  --signboard-blue: #0284c7;
+  --signboard-cyan: #009be3;
+  --signboard-blue-dark: #0369a1;
+  --signboard-gold: #f59e0b;
+  --signboard-yellow: #fbbf24;
+  --signboard-gold-light: #fef08a;
+  --signboard-gold-glow: rgba(245, 158, 11, 0.25);
+  --signboard-teal: #0f3b46;
+  --signboard-navy: #0f2937;
+  
+  /* Board Background & Accents */
+  --bg-board-cream: #fffdf5;
+  --bg-board-ivory: #fffcf2;
+  --bg-main: #ffffff;
+  --bg-subtle: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fafafa;
+  
+  /* Borders */
+  --border-light: #e2e8f0;
+  --border-gold: rgba(245, 158, 11, 0.4);
+  --border-red: rgba(197, 31, 31, 0.35);
+  --border-blue: rgba(2, 132, 199, 0.35);
+
+  /* Typography */
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --accent-emerald: #059669;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-secondary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Outfit', 'Noto Sans Kannada', 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.font-kannada {
+  font-family: 'Noto Sans Kannada', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ==========================================================================
+   AUTHENTIC SIGNBOARD TYPOGRAPHY & THEME CLASSES
+   ========================================================================== */
+
+/* Kannada Red Signboard Typography */
+.signboard-kannada {
+  color: var(--signboard-red);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 2px rgba(197, 31, 31, 0.15);
+}
+
+.signboard-kannada-lg {
+  color: var(--signboard-red);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-shadow: 
+    0 1px 0 rgba(251, 191, 36, 0.5),
+    0 2px 8px rgba(197, 31, 31, 0.2);
+}
+
+/* English Architectural Blue Typography */
+.signboard-english {
+  color: var(--signboard-blue-dark);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 2px rgba(2, 132, 199, 0.15);
+}
+
+.signboard-english-lg {
+  color: #0369a1;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-shadow: 
+    0 1px 0 rgba(251, 191, 36, 0.5),
+    0 2px 8px rgba(2, 132, 199, 0.2);
+}
+
+/* Undertaking Services Subtitle Text */
+.signboard-tagline {
+  color: var(--signboard-teal);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+/* Authentic Signboard Plaque Container */
+.signboard-board {
+  background: linear-gradient(180deg, #fffdf8 0%, #fffcf0 100%);
+  border: 3px solid var(--signboard-red);
+  border-radius: 16px;
+  box-shadow: 
+    0 0 0 2px #f59e0b,
+    0 10px 30px -5px rgba(197, 31, 31, 0.12),
+    0 4px 12px -2px rgba(2, 132, 199, 0.08);
+  position: relative;
+}
+
+/* Since 1989 Heritage Badges */
+.badge-since-1989 {
+  background: linear-gradient(135deg, #c51f1f 0%, #991b1b 100%);
+  color: #ffffff;
+  border: 1.5px solid #fbbf24;
+  box-shadow: 0 4px 12px rgba(197, 31, 31, 0.3);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.85rem;
+  box-sizing: border-box;
+}
+
+.badge-since-1989-gold {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #991b1b;
+  border: 1.5px solid #f59e0b;
+  box-shadow: 0 3px 10px rgba(245, 158, 11, 0.25);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+/* Glassmorphism Containers */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05), 0 4px 10px -2px rgba(15, 23, 42, 0.02);
+}
+
+.glass-panel-gold {
+  background: linear-gradient(135deg, #ffffff 0%, #fffdf5 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  box-shadow: 0 15px 35px -10px rgba(245, 158, 11, 0.15), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
+}
+
+.glass-panel-signboard {
+  background: linear-gradient(135deg, #ffffff 0%, #fffdf8 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(197, 31, 31, 0.3);
+  box-shadow: 0 14px 35px -8px rgba(197, 31, 31, 0.12), 0 4px 12px -2px rgba(2, 132, 199, 0.08);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 2px solid rgba(197, 31, 31, 0.15);
+  box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05);
+}
+
+/* Gradient Text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #c51f1f 0%, #f59e0b 50%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-signboard-gradient {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Signboard Theme Buttons */
+.btn-gold {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  font-weight: 700;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  border: 1px solid rgba(251, 191, 36, 0.5);
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
+  color: #ffffff;
+}
+
+.btn-red {
+  background: linear-gradient(135deg, #c51f1f 0%, #991b1b 100%);
+  color: #ffffff;
+  font-weight: 700;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(197, 31, 31, 0.35);
+  border: 1px solid #fbbf24;
+}
+
+.btn-red:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(197, 31, 31, 0.45);
+  color: #ffffff;
+}
+
+.btn-outline-gold {
+  border: 1.5px solid var(--signboard-blue);
+  color: var(--signboard-blue);
+  background: #ffffff;
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+
+.btn-outline-gold:hover {
+  background: #f0f9ff;
+  color: var(--signboard-blue-dark);
+  border-color: var(--signboard-blue-dark);
+  transform: translateY(-1px);
+}
+
+.btn-outline-red {
+  border: 1.5px solid var(--signboard-red);
+  color: var(--signboard-red);
+  background: #ffffff;
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+
+.btn-outline-red:hover {
+  background: #fef2f2;
+  color: var(--signboard-red-dark);
+  border-color: var(--signboard-red-dark);
+  transform: translateY(-1px);
+}
+
+/* Subtle architectural grid pattern in hero */
+.bg-grid-pattern {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+}
+
+/* Glowing badge */
+.badge-live-pulse {
+  position: relative;
+}
+.badge-live-pulse::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  background-color: var(--accent-emerald);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-emerald);
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: translateY(-50%) scale(0.95); opacity: 0.9; }
+  50% { transform: translateY(-50%) scale(1.4); opacity: 0.4; }
+  100% { transform: translateY(-50%) scale(0.95); opacity: 0.9; }
+}
+
+/* Timeline Component */
+.timeline-track {
+  position: relative;
+}
+.timeline-track::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  left: 19px;
+  width: 2px;
+  background: #e2e8f0;
+}
+
+.timeline-step.completed::before {
+  background: var(--accent-emerald);
+}
+
+/* Floating WhatsApp Concierge Widget */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25d366;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 9999px;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+.whatsapp-float:hover {
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.45);
+  color: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--signboard-red);
+}
+
+/* Card hover glow */
+.card-hover-gold {
+  transition: all 0.3s ease;
+}
+.card-hover-gold:hover {
+  transform: translateY(-4px);
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 14px 35px -8px rgba(245, 158, 11, 0.2);
+}
+
+.card-hover-signboard {
+  transition: all 0.3s ease;
+}
+.card-hover-signboard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(197, 31, 31, 0.5);
+  box-shadow: 0 14px 35px -8px rgba(197, 31, 31, 0.18), 0 4px 12px rgba(2, 132, 199, 0.1);
+}

@@ -443,9 +443,16 @@ const FALLBACK_PROJECTS = [
   }
 ];
 
+const isStaticHost = typeof window !== 'undefined' && (
+  window.location.port === '8081' || 
+  window.location.hostname.includes('github.io') || 
+  window.location.protocol === 'file:'
+);
+
 const API = {
   // Public
   async getServices() {
+    if (isStaticHost) return { success: true, services: FALLBACK_SERVICES };
     try {
       const res = await fetch('/api/services');
       if (res.ok) return await res.json();
@@ -454,6 +461,7 @@ const API = {
   },
 
   async getJurisdictions() {
+    if (isStaticHost) return { success: true, localities: FALLBACK_LOCALITIES };
     try {
       const res = await fetch('/api/jurisdictions');
       if (res.ok) return await res.json();
@@ -579,6 +587,7 @@ const API = {
   },
 
   async getBlogs() {
+    if (isStaticHost) return { success: true, blogs: FALLBACK_BLOGS };
     try {
       const res = await fetch('/api/blogs');
       if (res.ok) return await res.json();

@@ -253,7 +253,8 @@
             <div class="pl-3 pr-2 text-sky-700">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
-            <input type="text" placeholder="Enter Sakala / EoDB Ref (e.g. SAKALA-GBA-2026-1041)" value="SAKALA-GBA-2026-1041" class="w-full bg-transparent text-sm text-slate-900 placeholder-slate-400 focus:outline-none font-mono font-medium px-2">
+            <label for="hero-track-ref" class="sr-only">Enter Sakala or EoDB Reference</label>
+            <input type="text" id="hero-track-ref" name="reference_no" aria-label="Sakala or EoDB Reference Number" placeholder="Enter Sakala / EoDB Ref (e.g. SAKALA-GBA-2026-1041)" value="SAKALA-GBA-2026-1041" class="w-full bg-transparent text-sm text-slate-900 placeholder-slate-400 focus:outline-none font-mono font-medium px-2">
             <button type="submit" class="btn-gold px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap">
               Track File (ಪರಿಶೀಲಿಸಿ)
             </button>
@@ -327,26 +328,26 @@
         </p>
       </div>
 
-      <!-- 4-Path Tab Switcher (Responsive Pills) -->
-      <div class="flex items-center justify-center gap-2 sm:gap-3 mb-10 overflow-x-auto pb-2 scrollbar-none">
-        <button type="button" onclick="switchAudienceTab('first-timer')" data-tab="first-timer" class="audience-tab-btn active px-4 sm:px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold border transition-all flex items-center gap-2 whitespace-nowrap bg-red-800 text-white border-red-900 shadow-md">
-          <span class="text-base sm:text-lg">🏡</span>
-          <span>First-Time Plot Owner (ನಿವೇಶನ ಮಾಲೀಕರು)</span>
+      <!-- 4-Path Tab Switcher (Responsive Grid) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 mb-10 max-w-5xl mx-auto">
+        <button type="button" onclick="switchAudienceTab('first-timer')" data-tab="first-timer" class="audience-tab-btn active w-full px-3.5 py-3 rounded-2xl text-xs sm:text-sm font-bold border transition-all flex items-center justify-center gap-2 bg-red-800 text-white border-red-900 shadow-md">
+          <span class="text-base sm:text-lg flex-shrink-0">🏡</span>
+          <span class="truncate">Plot Owner (ನಿವೇಶನ ಮಾಲೀಕರು)</span>
         </button>
 
-        <button type="button" onclick="switchAudienceTab('tech-pro')" data-tab="tech-pro" class="audience-tab-btn px-4 sm:px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold border transition-all flex items-center gap-2 whitespace-nowrap bg-white text-slate-700 border-slate-200 hover:border-amber-400">
-          <span class="text-base sm:text-lg">💻</span>
-          <span>Tech Professional / NRI (ಐಟಿ ಉದ್ಯೋಗಿಗಳಿಗೆ)</span>
+        <button type="button" onclick="switchAudienceTab('tech-pro')" data-tab="tech-pro" class="audience-tab-btn w-full px-3.5 py-3 rounded-2xl text-xs sm:text-sm font-bold border transition-all flex items-center justify-center gap-2 bg-white text-slate-700 border-slate-200 hover:border-amber-400">
+          <span class="text-base sm:text-lg flex-shrink-0">💻</span>
+          <span class="truncate">Tech / NRI (ಐಟಿ ಉದ್ಯೋಗಿಗಳಿಗೆ)</span>
         </button>
 
-        <button type="button" onclick="switchAudienceTab('architect')" data-tab="architect" class="audience-tab-btn px-4 sm:px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold border transition-all flex items-center gap-2 whitespace-nowrap bg-white text-slate-700 border-slate-200 hover:border-amber-400">
-          <span class="text-base sm:text-lg">📐</span>
-          <span>Architect / Studio (ವಾಸ್ತುಶಿಲ್ಪಿಗಳು)</span>
+        <button type="button" onclick="switchAudienceTab('architect')" data-tab="architect" class="audience-tab-btn w-full px-3.5 py-3 rounded-2xl text-xs sm:text-sm font-bold border transition-all flex items-center justify-center gap-2 bg-white text-slate-700 border-slate-200 hover:border-amber-400">
+          <span class="text-base sm:text-lg flex-shrink-0">📐</span>
+          <span class="truncate">Architect / Studio (ವಾಸ್ತುಶಿಲ್ಪಿಗಳು)</span>
         </button>
 
-        <button type="button" onclick="switchAudienceTab('local-walkin')" data-tab="local-walkin" class="audience-tab-btn px-4 sm:px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold border transition-all flex items-center gap-2 whitespace-nowrap bg-white text-slate-700 border-slate-200 hover:border-amber-400">
-          <span class="text-base sm:text-lg">📍</span>
-          <span>Neighbourhood Walk-in (ಸ್ಥಳೀಯ ನಾಗರಿಕರು)</span>
+        <button type="button" onclick="switchAudienceTab('local-walkin')" data-tab="local-walkin" class="audience-tab-btn w-full px-3.5 py-3 rounded-2xl text-xs sm:text-sm font-bold border transition-all flex items-center justify-center gap-2 bg-white text-slate-700 border-slate-200 hover:border-amber-400">
+          <span class="text-base sm:text-lg flex-shrink-0">📍</span>
+          <span class="truncate">Local Walk-in (ಸ್ಥಳೀಯರು)</span>
         </button>
       </div>
 
@@ -1185,19 +1186,19 @@
           
           <!-- Locality Selector -->
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+            <label for="jurisdiction-select" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
               Select Your Locality / Ward (ನಿಮ್ಮ ಬಡಾವಣೆ / ವಾರ್ಡ್ ಆಯ್ಕೆಮಾಡಿ - 25+ Zones)
             </label>
-            <select id="jurisdiction-select" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 shadow-sm font-medium">
+            <select id="jurisdiction-select" name="locality_id" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 shadow-sm font-medium">
               <option value="">Loading Bengaluru localities / ಬಡಾವಣೆಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...</option>
             </select>
           </div>
 
           <!-- Quick Plot Dimension Presets -->
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+            <span class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
               Plot Size (ft) &bull; ನಿವೇಶನದ ಅಳತೆ ಆಯ್ಕೆಮಾಡಿ
-            </label>
+            </span>
             <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-3">
               <button type="button" data-dimensions="30x40" class="btn-dimension-preset px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-sky-500 hover:bg-sky-50/50 transition-colors">
                 30 x 40 ft (1,200 sq.ft)
@@ -1219,20 +1220,20 @@
             <!-- Custom Dimension Inputs -->
             <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
               <div>
-                <span class="text-xs text-slate-600 block mb-1 font-medium">Width / ಅಗಲ (ft):</span>
-                <input type="number" id="input-plot-width" value="30" min="15" max="300" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-mono focus:border-sky-500 focus:outline-none shadow-sm">
+                <label for="input-plot-width" class="text-xs text-slate-600 block mb-1 font-medium">Width / ಅಗಲ (ft):</label>
+                <input type="number" id="input-plot-width" name="plot_width" value="30" min="15" max="300" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-mono focus:border-sky-500 focus:outline-none shadow-sm">
               </div>
               <div>
-                <span class="text-xs text-slate-600 block mb-1 font-medium">Length / ಉದ್ದ (ft):</span>
-                <input type="number" id="input-plot-length" value="40" min="20" max="400" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-mono focus:border-sky-500 focus:outline-none shadow-sm">
+                <label for="input-plot-length" class="text-xs text-slate-600 block mb-1 font-medium">Length / ಉದ್ದ (ft):</label>
+                <input type="number" id="input-plot-length" name="plot_length" value="40" min="20" max="400" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-mono focus:border-sky-500 focus:outline-none shadow-sm">
               </div>
               <div>
-                <span class="text-xs text-slate-600 block mb-1 font-medium">Abutting Road / ರಸ್ತೆ (ft):</span>
-                <input type="number" id="input-road-width" value="30" min="15" max="150" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-mono focus:border-sky-500 focus:outline-none shadow-sm">
+                <label for="input-road-width" class="text-xs text-slate-600 block mb-1 font-medium">Abutting Road / ರಸ್ತೆ (ft):</label>
+                <input type="number" id="input-road-width" name="road_width" value="30" min="15" max="150" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-mono focus:border-sky-500 focus:outline-none shadow-sm">
               </div>
               <div>
-                <span class="text-xs text-slate-600 block mb-1 font-medium">Building Use / ಬಳಕೆ:</span>
-                <select id="input-building-type" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:border-sky-500 focus:outline-none shadow-sm">
+                <label for="input-building-type" class="text-xs text-slate-600 block mb-1 font-medium">Building Use / ಬಳಕೆ:</label>
+                <select id="input-building-type" name="building_type" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:border-sky-500 focus:outline-none shadow-sm">
                   <option value="Residential">Residential Villa (ವಸತಿ ಮನೆ)</option>
                   <option value="Multi-family">Apartment 4+ Units (ಅಪಾರ್ಟ್ಮೆಂಟ್)</option>
                   <option value="Commercial">Commercial / Office (ವಾಣಿಜ್ಯ ಕಟ್ಟಡ)</option>
@@ -1318,29 +1319,29 @@
             
             <div class="grid grid-cols-2 gap-4">
               <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Plot Width / ಅಗಲ (ft)</label>
-                <input type="number" id="calc-width" value="30" class="w-full bg-white border border-slate-300 rounded-xl p-3 text-sm text-slate-900 font-mono shadow-sm focus:border-sky-500 focus:outline-none">
+                <label for="calc-width" class="block text-xs font-bold text-slate-700 mb-1">Plot Width / ಅಗಲ (ft)</label>
+                <input type="number" id="calc-width" name="calc_width" value="30" class="w-full bg-white border border-slate-300 rounded-xl p-3 text-sm text-slate-900 font-mono shadow-sm focus:border-sky-500 focus:outline-none">
               </div>
               <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Plot Length / ಉದ್ದ (ft)</label>
-                <input type="number" id="calc-length" value="40" class="w-full bg-white border border-slate-300 rounded-xl p-3 text-sm text-slate-900 font-mono shadow-sm focus:border-sky-500 focus:outline-none">
+                <label for="calc-length" class="block text-xs font-bold text-slate-700 mb-1">Plot Length / ಉದ್ದ (ft)</label>
+                <input type="number" id="calc-length" name="calc_length" value="40" class="w-full bg-white border border-slate-300 rounded-xl p-3 text-sm text-slate-900 font-mono shadow-sm focus:border-sky-500 focus:outline-none">
               </div>
             </div>
 
             <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">Proposed Floors / ಮಹಡಿಗಳ ಸಂಖ್ಯೆ</label>
+              <span class="block text-xs font-bold text-slate-700 mb-1">Proposed Floors / ಮಹಡಿಗಳ ಸಂಖ್ಯೆ</span>
               <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 <button type="button" data-floors="2" class="btn-calc-floor py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-sky-500 transition-colors">G+1 (2 Flrs)</button>
                 <button type="button" data-floors="3" class="btn-calc-floor py-2.5 rounded-lg bg-sky-100 border border-sky-500 text-sky-900 font-bold text-xs shadow-sm">G+2 (3 Flrs)</button>
                 <button type="button" data-floors="4" class="btn-calc-floor py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-sky-500 transition-colors">G+3 (4 Flrs)</button>
                 <button type="button" data-floors="5" class="btn-calc-floor py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-sky-500 transition-colors">Stilt+4 (5 Flrs)</button>
               </div>
-              <input type="hidden" id="calc-floors" value="3">
+              <input type="hidden" id="calc-floors" name="calc_floors" value="3">
             </div>
 
             <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">Locality Zone / ವಲಯ</label>
-              <select id="calc-locality" class="w-full bg-white border border-slate-300 rounded-xl p-3 text-sm text-slate-900 shadow-sm focus:border-sky-500 focus:outline-none font-medium">
+              <label for="calc-locality" class="block text-xs font-bold text-slate-700 mb-1">Locality Zone / ವಲಯ</label>
+              <select id="calc-locality" name="calc_locality" class="w-full bg-white border border-slate-300 rounded-xl p-3 text-sm text-slate-900 shadow-sm focus:border-sky-500 focus:outline-none font-medium">
                 <option value="whitefield">Whitefield / Mahadevapura (ಮಹದೇವಪುರ - ₹250/sq.ft)</option>
                 <option value="indiranagar">Indiranagar / East Zone (ಪೂರ್ವ ವಲಯ - ₹350/sq.ft)</option>
                 <option value="yelahanka">Yelahanka / North Zone (ಯಲಹಂಕ ಉತ್ತರ - ₹220/sq.ft)</option>
@@ -1350,12 +1351,14 @@
               </select>
             </div>
 
-            <div class="p-4 rounded-xl bg-amber-50/50 border border-amber-200/80 flex items-center justify-between">
-              <div>
-                <div class="text-sm font-bold text-slate-900">Include B-Khata to A-Khata Betterment Levy?</div>
-                <div class="text-xs text-slate-600 mt-0.5">ಬಿ-ಖಾತಾ ದಿಂದ ಎ-ಖಾತಾಗೆ ಬೆಟರ್‌ಮೆಂಟ್ ಶುಲ್ಕ ಸೇರಿಸಿ</div>
-              </div>
-              <input type="checkbox" id="calc-b-khata" class="w-5 h-5 rounded text-sky-600 focus:ring-sky-500 border-slate-300 cursor-pointer">
+            <div class="p-4 rounded-xl bg-amber-50/50 border border-amber-200/80">
+              <label for="calc-b-khata" class="cursor-pointer flex items-center justify-between">
+                <span class="flex-1 pr-3">
+                  <span class="text-sm font-bold text-slate-900 block">Include B-Khata to A-Khata Betterment Levy?</span>
+                  <span class="text-xs text-slate-600 block mt-0.5">ಬಿ-ಖಾತಾ ದಿಂದ ಎ-ಖಾತಾಗೆ ಬೆಟರ್‌ಮೆಂಟ್ ಶುಲ್ಕ ಸೇರಿಸಿ</span>
+                </span>
+                <input type="checkbox" id="calc-b-khata" name="calc_b_khata" aria-label="Include B-Khata to A-Khata Betterment Levy" class="w-5 h-5 rounded text-sky-600 focus:ring-sky-500 border-slate-300 cursor-pointer">
+              </label>
             </div>
 
             <!-- Live Dimension Feedback -->
@@ -1749,8 +1752,8 @@
       <form id="consultation-booking-form" class="space-y-4">
         <!-- Audience Self-Identification Selector -->
         <div>
-          <label class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1.5">Who Are You? / ನಿಮ್ಮ ವಿವರ ಆರಿಸಿ</label>
-          <div class="grid grid-cols-2 gap-2 text-xs">
+          <div class="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1.5" id="label-who-are-you">Who Are You? / ನಿಮ್ಮ ವಿವರ ಆರಿಸಿ</div>
+          <div class="grid grid-cols-2 gap-2 text-xs" role="group" aria-labelledby="label-who-are-you">
             <button type="button" onclick="selectAudienceInModal('first-timer')" data-audience="first-timer" class="modal-audience-pill p-2 rounded-xl border text-left transition-all bg-red-700 text-white border-red-800 shadow-sm">
               <span class="font-bold block">🏡 Plot Owner</span>
               <span class="text-[10px] opacity-90">Where to start?</span>
@@ -1771,35 +1774,35 @@
         </div>
 
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Your Full Name / ನಿಮ್ಮ ಹೆಸರು *</label>
-          <input type="text" id="lead-name" required placeholder="e.g. Dr. Raghavan Rao / ರಾಘವನ್ ರಾವ್" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 shadow-sm">
+          <label for="lead-name" class="block text-xs font-bold text-slate-700 mb-1">Your Full Name / ನಿಮ್ಮ ಹೆಸರು *</label>
+          <input type="text" id="lead-name" name="full_name" autocomplete="name" required placeholder="e.g. Dr. Raghavan Rao / ರಾಘವನ್ ರಾವ್" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 shadow-sm">
         </div>
 
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Phone / ಮೊಬೈಲ್ ಸಂಖ್ಯೆ *</label>
-            <input type="tel" id="lead-phone" required placeholder="+91 94480 XXXXX" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 shadow-sm">
+            <label for="lead-phone" class="block text-xs font-bold text-slate-700 mb-1">Phone / ಮೊಬೈಲ್ ಸಂಖ್ಯೆ *</label>
+            <input type="tel" id="lead-phone" name="phone" autocomplete="tel" required placeholder="+91 94480 XXXXX" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 shadow-sm">
           </div>
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Email / ಇಮೇಲ್ ವಿಳಾಸ</label>
-            <input type="email" id="lead-email" placeholder="name@domain.com" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 shadow-sm">
+            <label for="lead-email" class="block text-xs font-bold text-slate-700 mb-1">Email / ಇಮೇಲ್ ವಿಳಾಸ</label>
+            <input type="email" id="lead-email" name="email" autocomplete="email" placeholder="name@domain.com" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 shadow-sm">
           </div>
         </div>
 
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Plot Location / ವಾರ್ಡ್ / ಬಡಾವಣೆ</label>
-            <input type="text" id="lead-location" placeholder="e.g. Gayathrinagar / ವೈಟ್‌ಫೀಲ್ಡ್" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 shadow-sm">
+            <label for="lead-location" class="block text-xs font-bold text-slate-700 mb-1">Plot Location / ವಾರ್ಡ್ / ಬಡಾವಣೆ</label>
+            <input type="text" id="lead-location" name="plot_location" placeholder="e.g. Gayathrinagar / ವೈಟ್‌ಫೀಲ್ಡ್" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 shadow-sm">
           </div>
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Plot Dimensions / ನಿವೇಶನ ಅಳತೆ</label>
-            <input type="text" id="lead-dimensions" placeholder="e.g. 30x40 / 40x60 ft" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 shadow-sm">
+            <label for="lead-dimensions" class="block text-xs font-bold text-slate-700 mb-1">Plot Dimensions / ನಿವೇಶನ ಅಳತೆ</label>
+            <input type="text" id="lead-dimensions" name="plot_dimensions" placeholder="e.g. 30x40 / 40x60 ft" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 shadow-sm">
           </div>
         </div>
 
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Service Required / ಅಗತ್ಯವಿರುವ ಸೇವೆ</label>
-          <select id="lead-service" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 shadow-sm">
+          <label for="lead-service" class="block text-xs font-bold text-slate-700 mb-1">Service Required / ಅಗತ್ಯವಿರುವ ಸೇವೆ</label>
+          <select id="lead-service" name="service_title" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 shadow-sm">
             <option value="Plan Sanctions & Approvals">Plan Sanctions & Approvals (ಕಟ್ಟಡ ನಕ್ಷೆ ಮಂಜೂರಾತಿ - GBA/BBMP/BDA)</option>
             <option value="Estimation & Costing">Estimation &amp; Costing (ವೆಚ್ಚದ ಅಂದಾಜು ಪಟ್ಟಿ)</option>
             <option value="Constructions & Turnkey Design">Constructions &amp; Turnkey Design (ಕಟ್ಟಡ ನಿರ್ಮಾಣ)</option>
@@ -1811,8 +1814,8 @@
         </div>
 
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Property Specifics / Remarks (ವಿವರಣೆ)</label>
-          <textarea id="lead-message" rows="2" placeholder="Mention if you need building plans, estimation, construction, or land survey..." class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-sm text-slate-900 focus:outline-none focus:border-sky-500 shadow-sm"></textarea>
+          <label for="lead-message" class="block text-xs font-bold text-slate-700 mb-1">Property Specifics / Remarks (ವಿವರಣೆ)</label>
+          <textarea id="lead-message" name="message" rows="2" placeholder="Mention if you need building plans, estimation, construction, or land survey..." class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-sm text-slate-900 focus:outline-none focus:border-sky-500 shadow-sm"></textarea>
         </div>
 
         <button type="submit" class="btn-gold w-full py-3.5 rounded-xl text-sm font-bold shadow-lg">
@@ -1846,12 +1849,12 @@
 
       <form id="client-login-form" class="space-y-4">
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Email Address / ಇಮೇಲ್</label>
-          <input type="email" id="client-email" value="nandini.ramanathan@gmail.com" required class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 shadow-sm">
+          <label for="client-email" class="block text-xs font-bold text-slate-700 mb-1">Email Address / ಇಮೇಲ್</label>
+          <input type="email" id="client-email" name="email" autocomplete="username" value="nandini.ramanathan@gmail.com" required class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 shadow-sm">
         </div>
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Password / ಪಾಸ್‌ವರ್ಡ್</label>
-          <input type="password" id="client-password" value="Nandini@Bangalore2026" required class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 shadow-sm">
+          <label for="client-password" class="block text-xs font-bold text-slate-700 mb-1">Password / ಪಾಸ್‌ವರ್ಡ್</label>
+          <input type="password" id="client-password" name="password" autocomplete="current-password" value="Nandini@Bangalore2026" required class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 shadow-sm">
         </div>
 
         <button type="submit" class="btn-gold w-full py-3 rounded-xl text-sm font-bold shadow-lg">
@@ -1903,12 +1906,12 @@
 
       <form id="admin-login-form" class="space-y-4">
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Admin Email</label>
-          <input type="email" id="admin-email" value="admin@bengaluruapprovals.com" required class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 font-mono shadow-sm">
+          <label for="admin-email" class="block text-xs font-bold text-slate-700 mb-1">Admin Email</label>
+          <input type="email" id="admin-email" name="email" autocomplete="username" value="admin@bengaluruapprovals.com" required class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 font-mono shadow-sm">
         </div>
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Master Password</label>
-          <input type="password" id="admin-password" value="admin123" required class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 font-mono shadow-sm">
+          <label for="admin-password" class="block text-xs font-bold text-slate-700 mb-1">Master Password</label>
+          <input type="password" id="admin-password" name="password" autocomplete="current-password" value="admin123" required class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-sky-500 font-mono shadow-sm">
         </div>
 
         <button type="submit" class="btn-gold w-full py-3 rounded-xl text-sm font-bold shadow-lg">

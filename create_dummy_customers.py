@@ -1,8 +1,9 @@
 import os
 import sys
 
-# Add 2.02 directory to path
-sys.path.insert(0, os.path.abspath('2.02'))
+# Add latest version directory to path (2.03 if present, fallback 2.02)
+version_dir = '2.03' if os.path.isdir('2.03') else '2.02'
+sys.path.insert(0, os.path.abspath(version_dir))
 from backend.app import create_app
 from backend.database import db
 from backend.models import User, Lead, Project, ProjectTimeline, ProjectDocument
