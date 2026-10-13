@@ -46,14 +46,30 @@ body {
   overflow-x: hidden;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+p, h1, h2, h3, h4, h5, h6, span, a, label {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 h1, h2, h3, h4, .font-heading {
   font-family: 'Outfit', 'Noto Sans Kannada', 'Inter', sans-serif;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   color: var(--text-primary);
+  line-height: 1.3;
 }
 
 .font-kannada {
   font-family: 'Noto Sans Kannada', 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+h1 .font-kannada, h2 .font-kannada, h3 .font-kannada, h4 .font-kannada {
+  line-height: 1.5;
+  display: block;
 }
 
 /* ==========================================================================
@@ -304,15 +320,15 @@ h1, h2, h3, h4, .font-heading {
 /* Floating WhatsApp Concierge Widget */
 .whatsapp-float {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 50;
+  bottom: 20px;
+  right: 20px;
+  z-index: 45;
   display: flex;
   align-items: center;
   gap: 10px;
   background: #25d366;
   color: #ffffff;
-  padding: 12px 20px;
+  padding: 10px 18px;
   border-radius: 9999px;
   box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
   font-weight: 700;
@@ -323,6 +339,22 @@ h1, h2, h3, h4, .font-heading {
   transform: scale(1.05) translateY(-3px);
   box-shadow: 0 12px 28px rgba(37, 211, 102, 0.45);
   color: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .whatsapp-float {
+    bottom: 16px;
+    right: 16px;
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+  }
+  .whatsapp-float .whatsapp-text-block {
+    display: none !important;
+  }
 }
 
 /* Custom Scrollbar */
