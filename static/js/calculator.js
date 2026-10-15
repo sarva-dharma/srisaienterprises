@@ -60,9 +60,6 @@ const FeeCalculator = {
   },
 
   renderBreakdown(data) {
-    const b = data.breakdown;
-    const formatINR = (num) => '₹' + Math.round(num).toLocaleString('en-IN');
-
     const elScrutiny = document.getElementById('fee-scrutiny');
     const elCess = document.getElementById('fee-cess');
     const elBetterment = document.getElementById('fee-betterment');
@@ -71,20 +68,25 @@ const FeeCalculator = {
     const elLiaison = document.getElementById('fee-liaison');
     const elTotal = document.getElementById('fee-total');
 
-    if (elScrutiny) elScrutiny.textContent = formatINR(b.municipal_scrutiny_fee);
-    if (elCess) elCess.textContent = formatINR(b.statutory_cess_rwh);
+    if (elScrutiny) elScrutiny.textContent = 'BBMP BPAS Tariff';
+    if (elCess) elCess.textContent = 'Per Built-up Area';
     
+    const hasBKhata = document.getElementById('calc-b-khata')?.checked || false;
     if (elBettermentRow) {
-      if (b.betterment_levy > 0) {
+      if (hasBKhata) {
         elBettermentRow.classList.remove('hidden');
-        if (elBetterment) elBetterment.textContent = formatINR(b.betterment_levy);
+        if (elBetterment) elBetterment.textContent = 'Ward Zonal Assessment';
       } else {
         elBettermentRow.classList.add('hidden');
       }
     }
 
-    if (elCad) elCad.textContent = formatINR(b.autodcr_drafting_fee);
-    if (elLiaison) elLiaison.textContent = formatINR(b.architect_liaisoning_fee);
-    if (elTotal) elTotal.textContent = formatINR(data.total_estimated);
+    if (elCad) elCad.textContent = 'Tailored to Site';
+    if (elLiaison) elLiaison.textContent = 'On Inspection';
+    if (elTotal) {
+      elTotal.textContent = 'Quote on Review';
+      elTotal.classList.remove('text-2xl');
+      elTotal.classList.add('text-lg', 'sm:text-xl');
+    }
   }
 };

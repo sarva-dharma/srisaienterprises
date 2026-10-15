@@ -128,11 +128,11 @@ window.loadPublicServices = async function() {
 
           <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
             <div>
-              <div class="text-[11px] text-slate-500 uppercase tracking-wider">Starting At (ಆರಂಭಿಕ ಶುಲ್ಕ)</div>
-              <div class="text-lg font-bold text-slate-900 font-mono">${basePrice}</div>
+              <div class="text-[11px] text-slate-500 uppercase tracking-wider">Fee Structure (ಶುಲ್ಕ ವಿವರ)</div>
+              <div class="text-xs sm:text-sm font-bold text-slate-900">Custom Scope on Review</div>
             </div>
 
-            <button onclick="openBookingModal('${s.title}')" class="btn-outline-gold px-4 py-2 rounded-lg text-xs font-semibold">
+            <button onclick="openBookingModal('${s.title}')" class="btn-gold px-4 py-2 rounded-lg text-xs font-semibold shadow-sm">
               Get Quote (ಕೋಟ್ ಪಡೆಯಿರಿ)
             </button>
           </div>
