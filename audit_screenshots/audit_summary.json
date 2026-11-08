@@ -1,0 +1,7 @@
+{
+  "timestamp": "2026-10-12T21:16:25.315Z",
+  "pageId": 2,
+  "consoleMessages": "Protocol error (Browser.setContentsSize): Restore window to normal state before setting content size",
+  "networkRequests": "Protocol error (Browser.setContentsSize): Restore window to normal state before setting content size",
+  "domChecks": "Protocol error (Browser.setContentsSize): Restore window to normal state before setting content size"
+}

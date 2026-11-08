@@ -13,3 +13,7 @@ This project is a bilingual retail web application (Kannada: ಶ್ರೀ ಸಾ
 ## 3. Science Skills Access
 This project has direct access to the **Science Plugin** via `.agents/skills`:
 - Web performance and frontend optimization literature via `literature-search-arxiv`.
+
+## 4. Connectivity & Resilience Guideline
+- If a temporary network interruption or stream disconnect occurs during development or tasks, auto-verify host connectivity and resume the workflow immediately once network is active.
+

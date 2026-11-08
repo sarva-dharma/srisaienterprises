@@ -1,0 +1,100 @@
+# ==============================================================================
+# Sri Sai Enterprises (ಶ್ರೀ ಸಾಯಿ ಎಂಟರ್ ಪ್ರೈಸಸ್) - Estd. 1989
+# Premier Building Plan Approvals, Architecture & Land Surveying in Bengaluru
+# Live URL: https://sarva-dharma.github.io/srisaienterprises/
+# Robots Exclusion Protocol & Generative Engine Optimization (GEO) Bot Directive
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Standard Search Engine Crawlers (Google, Bing, Yahoo, DuckDuckGo, etc.)
+# ------------------------------------------------------------------------------
+User-agent: Googlebot
+User-agent: Googlebot-Image
+User-agent: Googlebot-Mobile
+User-agent: Bingbot
+User-agent: Slurp
+User-agent: DuckDuckBot
+User-agent: Baiduspider
+User-agent: YandexBot
+Allow: /
+Allow: /static/
+Allow: /static/css/
+Allow: /static/js/
+Allow: /static/images/
+Disallow: /.agents/
+Disallow: /*.py$
+Disallow: /audit_screenshots/
+
+# ------------------------------------------------------------------------------
+# 2. Generative Engine Optimization (GEO) & AI Discovery Crawlers
+# Welcoming AI search and discovery agents to index services, municipal guidance,
+# BBMP/BDA bylaws, pricing, and heritage credentials for conversational AI answers.
+# ------------------------------------------------------------------------------
+
+# OpenAI: ChatGPT Search, ChatGPT-User browsing, GPTBot training/retrieval
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /static/
+
+# Google: Gemini, Vertex AI & Search Generative Experience training/synthesis
+User-agent: Google-Extended
+Allow: /
+Allow: /static/
+
+# Anthropic: Claude conversational answers, ClaudeBot indexing & web browsing
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: Claude-Web
+Allow: /
+Allow: /static/
+
+# Perplexity AI: Real-time citation engine & Perplexity search
+User-agent: PerplexityBot
+Allow: /
+Allow: /static/
+
+# ByteDance / Doubao: Knowledge graph & generative search
+User-agent: Bytespider
+Allow: /
+Allow: /static/
+
+# Common Crawl: Foundational dataset for open-source & enterprise LLMs
+User-agent: CCBot
+Allow: /
+Allow: /static/
+
+# Meta: Meta AI & social discovery
+User-agent: Meta-ExternalAgent
+User-agent: FacebookBot
+Allow: /
+Allow: /static/
+
+# Apple: Apple Intelligence & Siri search
+User-agent: Applebot
+User-agent: Applebot-Extended
+Allow: /
+Allow: /static/
+
+# Cohere & Diffbot Knowledge Extraction
+User-agent: cohere-ai
+User-agent: Diffbot
+Allow: /
+Allow: /static/
+
+# ------------------------------------------------------------------------------
+# 3. Default Rule for All Other Crawlers
+# ------------------------------------------------------------------------------
+User-agent: *
+Allow: /
+Allow: /static/
+Disallow: /.agents/
+Disallow: /*.py$
+Disallow: /audit_screenshots/
+
+# ------------------------------------------------------------------------------
+# 4. XML Sitemap Location & Host Declaration
+# ------------------------------------------------------------------------------
+Sitemap: https://sarva-dharma.github.io/srisaienterprises/sitemap.xml
+Host: sarva-dharma.github.io

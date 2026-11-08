@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+                            http://www.w3.org/1999/xhtml
+                            http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd">
+
+  <!-- ==================================================================== -->
+  <!-- Primary Storefront & Application Landing Page (Bilingual EN & KN)   -->
+  <!-- ==================================================================== -->
+  <url>
+    <loc>https://sarva-dharma.github.io/srisaienterprises/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+
+    <!-- Bilingual Hreflang Alternate Links -->
+    <xhtml:link rel="alternate" hreflang="en" href="https://sarva-dharma.github.io/srisaienterprises/" />
+    <xhtml:link rel="alternate" hreflang="kn" href="https://sarva-dharma.github.io/srisaienterprises/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sarva-dharma.github.io/srisaienterprises/" />
+  </url>
+
+  <!-- ==================================================================== -->
+  <!-- Auxiliary: Official Standee & QR Portal Access Document              -->
+  <!-- ==================================================================== -->
+  <url>
+    <loc>https://sarva-dharma.github.io/srisaienterprises/sri_sai_enterprises_qr_standee.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
