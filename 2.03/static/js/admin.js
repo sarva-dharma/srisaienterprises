@@ -60,6 +60,24 @@ const AdminPanel = {
         await this.handleCreateBlog();
       });
     }
+
+    // Staff Form
+    const staffForm = document.getElementById('admin-staff-form');
+    if (staffForm) {
+      staffForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        await this.handleSaveStaff();
+      });
+    }
+
+    // Site Content Form
+    const contentForm = document.getElementById('admin-content-form');
+    if (contentForm) {
+      contentForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        await this.handleSaveContent();
+      });
+    }
   },
 
   async handleLogin(email, password) {
@@ -117,6 +135,8 @@ const AdminPanel = {
     if (tabName === 'projects') this.loadProjects();
     if (tabName === 'services') this.loadServices();
     if (tabName === 'blogs') this.loadBlogs();
+    if (tabName === 'staff') this.loadStaff();
+    if (tabName === 'content') this.loadContentEditor();
   },
 
   async loadMetrics() {
@@ -448,6 +468,282 @@ const AdminPanel = {
       if (window.loadPublicBlogs) window.loadPublicBlogs();
     } catch (err) {
       alert(err.message);
+    }
+  },
+
+  // ================= STAFF & TEAM CMS =================
+  async loadStaff() {
+    const container = document.getElementById('admin-staff-list');
+    if (!container) return;
+
+    container.innerHTML = '<div class="p-8 text-center text-slate-500">Loading staff records...</div>';
+
+    try {
+      const data = await API.getStaff();
+      const staff = data.staff || [];
+
+      if (staff.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-12 bg-slate-50 rounded-2xl border border-dashed border-slate-300 p-6">
+            <div class="text-3xl mb-2">👥</div>
+            <h4 class="text-sm font-bold text-slate-700">No staff members listed yet</h4>
+            <p class="text-xs text-slate-500 mt-1 mb-4">Add your engineers, draftsmen, liaison coordinators and surveyors here.</p>
+            <button onclick="AdminPanel.openStaffModal()" class="btn-gold px-4 py-2 rounded-xl text-xs font-bold">
+              + Add First Staff Member
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = staff.map(s => {
+        return `
+          <div class="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:border-amber-400 transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div class="flex items-start gap-3.5">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${s.avatar_color || 'from-sky-600 to-indigo-800'} text-white font-bold text-sm flex items-center justify-center flex-shrink-0 shadow-sm">
+                ${s.initials || 'ST'}
+              </div>
+              <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h4 class="text-sm font-bold text-slate-900">${s.name}</h4>
+                  ${s.name_kn ? `<span class="text-xs text-red-800 font-kannada font-bold">(${s.name_kn})</span>` : ''}
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold ${s.active !== false ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600'}">
+                    ${s.active !== false ? 'Active' : 'Hidden'}
+                  </span>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-50 text-amber-800 border border-amber-200">
+                    ${s.department || 'Technical'}
+                  </span>
+                </div>
+                <div class="text-xs text-slate-700 font-medium mt-0.5">${s.role} ${s.role_kn ? `&bull; ${s.role_kn}` : ''}</div>
+                <div class="text-[11px] text-slate-500 mt-1 flex items-center gap-3 flex-wrap">
+                  ${s.qualifications ? `<span>🎓 ${s.qualifications}</span>` : ''}
+                  <span>⏱️ ${s.experience_years || 1}+ Years</span>
+                  ${s.phone ? `<span>📞 ${s.phone}</span>` : ''}
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 w-full sm:w-auto justify-end border-t sm:border-t-0 pt-2 sm:pt-0">
+              <button onclick="AdminPanel.openStaffModal('${s.id}')" class="px-3 py-1.5 rounded-lg bg-sky-50 text-sky-700 hover:bg-sky-100 text-xs font-semibold border border-sky-200">
+                Edit
+              </button>
+              <button onclick="AdminPanel.deleteStaff('${s.id}')" class="px-3 py-1.5 rounded-lg bg-red-50 text-red-700 hover:bg-red-100 text-xs font-semibold border border-red-200">
+                Delete
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    } catch (err) {
+      container.innerHTML = `<div class="p-4 text-red-600 text-xs">Failed to load staff: ${err.message}</div>`;
+    }
+  },
+
+  async openStaffModal(staffId = null) {
+    const modal = document.getElementById('admin-staff-modal');
+    if (!modal) return;
+
+    const titleEl = document.getElementById('staff-modal-title');
+    const form = document.getElementById('admin-staff-form');
+    if (form) form.reset();
+
+    const idInput = document.getElementById('staff-id');
+    if (idInput) idInput.value = staffId || '';
+
+    if (staffId) {
+      if (titleEl) titleEl.textContent = 'Edit Staff Member';
+      const data = await API.getStaff();
+      const member = (data.staff || []).find(s => s.id === staffId);
+      if (member) {
+        document.getElementById('staff-name').value = member.name || '';
+        document.getElementById('staff-name-kn').value = member.name_kn || '';
+        document.getElementById('staff-role').value = member.role || '';
+        document.getElementById('staff-role-kn').value = member.role_kn || '';
+        document.getElementById('staff-department').value = member.department || 'CAD & Technical';
+        document.getElementById('staff-experience').value = member.experience_years || 1;
+        document.getElementById('staff-qualifications').value = member.qualifications || '';
+        document.getElementById('staff-phone').value = member.phone || '';
+        document.getElementById('staff-email').value = member.email || '';
+        document.getElementById('staff-bio').value = member.bio || '';
+        document.getElementById('staff-bio-kn').value = member.bio_kn || '';
+        document.getElementById('staff-tags').value = Array.isArray(member.tags) ? member.tags.join(', ') : (member.tags || '');
+        document.getElementById('staff-avatar-color').value = member.avatar_color || 'from-sky-600 to-indigo-800';
+        document.getElementById('staff-active').checked = member.active !== false;
+      }
+    } else {
+      if (titleEl) titleEl.textContent = 'Add New Staff Member';
+      document.getElementById('staff-avatar-color').value = 'from-sky-600 to-indigo-800';
+      document.getElementById('staff-active').checked = true;
+    }
+
+    modal.classList.remove('hidden');
+  },
+
+  closeStaffModal() {
+    const modal = document.getElementById('admin-staff-modal');
+    if (modal) modal.classList.add('hidden');
+  },
+
+  async handleSaveStaff() {
+    const staffId = document.getElementById('staff-id').value;
+    const name = document.getElementById('staff-name').value.trim();
+    if (!name) {
+      alert('Please enter staff member name');
+      return;
+    }
+
+    const payload = {
+      name,
+      name_kn: document.getElementById('staff-name-kn').value.trim(),
+      role: document.getElementById('staff-role').value.trim(),
+      role_kn: document.getElementById('staff-role-kn').value.trim(),
+      department: document.getElementById('staff-department').value,
+      experience_years: parseInt(document.getElementById('staff-experience').value, 10) || 1,
+      qualifications: document.getElementById('staff-qualifications').value.trim(),
+      phone: document.getElementById('staff-phone').value.trim(),
+      email: document.getElementById('staff-email').value.trim(),
+      bio: document.getElementById('staff-bio').value.trim(),
+      bio_kn: document.getElementById('staff-bio-kn').value.trim(),
+      tags: document.getElementById('staff-tags').value.split(',').map(t => t.trim()).filter(Boolean),
+      avatar_color: document.getElementById('staff-avatar-color').value,
+      active: document.getElementById('staff-active').checked
+    };
+
+    if (staffId) {
+      await API.updateStaffMember(staffId, payload);
+      showToast(`Updated staff: ${name}`);
+    } else {
+      await API.createStaffMember(payload);
+      showToast(`Added new staff member: ${name}`);
+    }
+
+    this.closeStaffModal();
+    this.loadStaff();
+    if (window.renderPublicStaff) window.renderPublicStaff();
+  },
+
+  async deleteStaff(staffId) {
+    if (!confirm('Are you sure you want to delete this staff member?')) return;
+    await API.deleteStaffMember(staffId);
+    showToast('Staff member deleted');
+    this.loadStaff();
+    if (window.renderPublicStaff) window.renderPublicStaff();
+  },
+
+  async resetStaffDefaults() {
+    if (!confirm('Reset all staff members to default practice team? Any custom additions will be cleared.')) return;
+    await API.resetStaff();
+    showToast('Staff reset to defaults');
+    this.loadStaff();
+    if (window.renderPublicStaff) window.renderPublicStaff();
+  },
+
+  exportStaffJSON() {
+    API.getStaff().then(data => {
+      const blob = new Blob([JSON.stringify(data.staff, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `sri_sai_staff_${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Staff data exported as JSON');
+    });
+  },
+
+  // ================= WEBSITE TEXT & CONTENT CMS =================
+  async loadContentEditor() {
+    const data = await API.getSiteContent();
+    const c = data.content || {};
+
+    const mapping = {
+      'content-firm-name': c.firm_name || '',
+      'content-firm-name-kn': c.firm_name_kn || '',
+      'content-tagline': c.tagline || '',
+      'content-tagline-kn': c.tagline_kn || '',
+      'content-landline': c.landline || '',
+      'content-mobile': c.mobile || '',
+      'content-email': c.email || '',
+      'content-address': c.office_address || '',
+      'content-address-kn': c.office_address_kn || '',
+      'content-timings': c.timings || '',
+      'content-hero-prefix': c.hero_title_prefix || '',
+      'content-hero-highlight': c.hero_title_highlight || '',
+      'content-hero-suffix': c.hero_title_suffix || '',
+      'content-hero-kn': c.hero_title_kn || '',
+      'content-hero-desc': c.hero_desc || '',
+      'content-founder-quote': c.founder_quote || '',
+      'content-founder-quote-kn': c.founder_quote_kn || '',
+      'content-founder-story-p1': c.founder_story_p1 || '',
+      'content-founder-story-p2': c.founder_story_p2 || '',
+      'content-founder-story-p3': c.founder_story_p3 || '',
+      'content-announcement': c.announcement_banner || ''
+    };
+
+    Object.entries(mapping).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) el.value = val;
+    });
+  },
+
+  async handleSaveContent() {
+    const payload = {
+      firm_name: document.getElementById('content-firm-name')?.value.trim(),
+      firm_name_kn: document.getElementById('content-firm-name-kn')?.value.trim(),
+      tagline: document.getElementById('content-tagline')?.value.trim(),
+      tagline_kn: document.getElementById('content-tagline-kn')?.value.trim(),
+      landline: document.getElementById('content-landline')?.value.trim(),
+      mobile: document.getElementById('content-mobile')?.value.trim(),
+      email: document.getElementById('content-email')?.value.trim(),
+      office_address: document.getElementById('content-address')?.value.trim(),
+      office_address_kn: document.getElementById('content-address-kn')?.value.trim(),
+      timings: document.getElementById('content-timings')?.value.trim(),
+      hero_title_prefix: document.getElementById('content-hero-prefix')?.value.trim(),
+      hero_title_highlight: document.getElementById('content-hero-highlight')?.value.trim(),
+      hero_title_suffix: document.getElementById('content-hero-suffix')?.value.trim(),
+      hero_title_kn: document.getElementById('content-hero-kn')?.value.trim(),
+      hero_desc: document.getElementById('content-hero-desc')?.value.trim(),
+      founder_quote: document.getElementById('content-founder-quote')?.value.trim(),
+      founder_quote_kn: document.getElementById('content-founder-quote-kn')?.value.trim(),
+      founder_story_p1: document.getElementById('content-founder-story-p1')?.value.trim(),
+      founder_story_p2: document.getElementById('content-founder-story-p2')?.value.trim(),
+      founder_story_p3: document.getElementById('content-founder-story-p3')?.value.trim(),
+      announcement_banner: document.getElementById('content-announcement')?.value.trim()
+    };
+
+    await API.saveSiteContent(payload);
+    if (window.applyCustomSiteContent) window.applyCustomSiteContent();
+    showToast('Website text and details updated live!');
+  },
+
+  async resetContentDefaults() {
+    if (!confirm('Revert all website text and details to factory default content?')) return;
+    await API.resetSiteContent();
+    await this.loadContentEditor();
+    if (window.applyCustomSiteContent) window.applyCustomSiteContent();
+    showToast('Website content restored to defaults');
+  },
+
+  exportContentJSON() {
+    API.getSiteContent().then(data => {
+      const blob = new Blob([JSON.stringify(data.content, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `sri_sai_content_${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Site content exported as JSON');
+    });
+  }
+};
+
+window.openStaffContentEditor = function(initialTab = 'staff') {
+  const modal = document.getElementById('admin-panel-modal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    if (window.AdminPanel) {
+      AdminPanel.switchTab(initialTab);
     }
   }
 };

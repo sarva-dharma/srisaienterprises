@@ -663,6 +663,10 @@
             <span>Book Consultation</span>
           </button>
 
+          <button onclick="openStaffContentEditor('staff')" title="Staff & Website Content Editor GUI" class="px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 hover:bg-amber-100 text-xs font-bold inline-flex items-center gap-1.5 shadow-sm transition-all">
+            <span>👥 Staff &amp; Text GUI</span>
+          </button>
+
           <button onclick="openModal('admin-login-modal')" title="Admin CRM & CMS Console" class="p-2 rounded-xl bg-slate-100 border border-slate-300 text-slate-600 hover:text-red-700 hover:border-red-400 transition-colors">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
           </button>
@@ -680,6 +684,7 @@
       <a href="#audience-navigator" class="block py-2 text-sm font-bold text-red-700">Where to Start? (ನಿವೇಶನ ಮಾರ್ಗದರ್ಶಿ)</a>
       <a href="#construction-roadmap" class="block py-2 text-sm font-semibold text-slate-800">Plot-to-Grihapravesha Roadmap (5 ಹಂತಗಳು)</a>
       <a href="#about-founder" class="block py-2 text-sm font-semibold text-slate-800">Meet S. M. Thyagaraja (ಸಂಸ್ಥಾಪಕರ ಪರಿಚಯ)</a>
+      <a href="#team-staff" class="block py-2 text-sm font-semibold text-slate-800">Technical Team &amp; Staff (ತಾಂತ್ರಿಕ ಸಿಬ್ಬಂದಿ)</a>
       <a href="#bbmp-bpas-portal" class="block py-2 text-sm font-semibold text-slate-800">BBMP BPAS (ಬಿಬಿಎಂಪಿ ಪೋರ್ಟಲ್)</a>
       <a href="#services" class="block py-2 text-sm font-semibold text-slate-800">Core Services (ಪ್ರಮುಖ ಸೇವೆಗಳು)</a>
       <a href="#jurisdiction-checker" class="block py-2 text-sm font-semibold text-slate-800">Jurisdiction Checker (ವಲಯ ಪರಿಶೀಲನೆ)</a>
@@ -687,6 +692,7 @@
       <a href="#client-portal-section" class="block py-2 text-sm font-semibold text-slate-800">Sakala Tracker (ಸಕಾಲ ಟ್ರ್ಯಾಕರ್)</a>
       <a href="#knowledge-hub" class="block py-2 text-sm font-semibold text-slate-800">GBA Zoning Hub (ನಿಯಮಾವಳಿ ಮಾಹಿತಿ)</a>
       <div class="pt-3 border-t border-slate-200 flex flex-col gap-2">
+        <button onclick="openStaffContentEditor('staff')" class="w-full py-2 rounded-lg bg-amber-50 border border-amber-300 text-amber-900 text-xs font-bold text-center">👥 Staff &amp; Website Content Editor GUI</button>
         <button onclick="openModal('client-login-modal')" class="btn-outline-gold py-2 rounded-lg text-xs font-semibold">Client Login (ಗ್ರಾಹಕರ ಲಾಗಿನ್)</button>
         <button onclick="openBookingModal('General Building Plan Consultation')" class="btn-gold py-2 rounded-lg text-xs font-semibold">Book Free Consultation (ಸಮಾಲೋಚನೆ)</button>
         <button onclick="openModal('admin-login-modal')" class="py-2 text-xs text-slate-600 text-center font-medium">Admin CRM Portal</button>
@@ -721,18 +727,18 @@
         <div id="signboard-showcase" class="max-w-xl mx-auto my-3 p-5 sm:p-6 rounded-2xl signboard-board text-center shadow-lg">
           
           <!-- Line 1: Kannada Brand -->
-          <div class="font-kannada text-2xl sm:text-3xl md:text-4xl signboard-kannada-lg leading-tight mb-1 tracking-wide">
+          <div data-site-key="firm_name_kn" class="font-kannada text-2xl sm:text-3xl md:text-4xl signboard-kannada-lg leading-tight mb-1 tracking-wide">
             ಶ್ರೀ ಸಾಯಿ ಎಂಟರ್ ಪ್ರೈಸಸ್
           </div>
           
           <!-- Line 2: English Brand -->
-          <div class="text-xl sm:text-2xl md:text-3xl signboard-english-lg font-heading uppercase leading-none mb-3">
+          <div data-site-key="firm_name" class="text-xl sm:text-2xl md:text-3xl signboard-english-lg font-heading uppercase leading-none mb-3">
             SRI SAI ENTERPRISES
           </div>
           
           <!-- Line 3: Clean, Simpler Services Subtitle -->
           <div class="my-2.5 px-2">
-            <p class="text-xs sm:text-[13px] font-medium text-slate-600 tracking-wide">
+            <p data-site-key="tagline" class="text-xs sm:text-[13px] font-medium text-slate-600 tracking-wide">
               Building Plans &bull; Estimation &bull; Constructions &bull; Land Surveying &bull; Xerox &amp; Prints
             </p>
           </div>
@@ -1679,20 +1685,20 @@
           </div>
 
           <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 font-heading leading-tight">
-            "We Treat Every Plot as if Our Own Family Is Going to Live There."
-            <div class="text-xl sm:text-2xl text-red-800 font-kannada font-bold mt-1">
+            <span data-site-key="founder_quote">"We Treat Every Plot as if Our Own Family Is Going to Live There."</span>
+            <div data-site-key="founder_quote_kn" class="text-xl sm:text-2xl text-red-800 font-kannada font-bold mt-1">
               "ಪ್ರತಿಯೊಂದು ನಿವೇಶನವನ್ನೂ ನಮ್ಮ ಸ್ವಂತ ಕುಟುಂಬದ ಮನೆಯಂತೆಯೇ ಪರಿಗಣಿಸುತ್ತೇವೆ."
             </div>
           </h2>
 
           <div class="space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed">
-            <p>
+            <p data-site-key="founder_story_p1">
               When I founded <strong>Sri Sai Enterprises</strong> on 1st Main Road, Gayathrinagar back in 1989, Bengaluru was a quiet city of pensioners and tree-lined avenues. Families saved their entire lives to buy one site and build a home where three generations could live with dignity.
             </p>
-            <p>
+            <p data-site-key="founder_story_p2">
               Over the last 37 years, the city transformed into India's Silicon Valley. The regulations evolved from hand-drawn ammonia blueprints to AutoDCR and Nambike Nakshe digital self-declarations. But our founding core has remained unchanged: <em>absolute honesty, technical rigor, and zero false promises.</em>
             </p>
-            <p class="font-medium text-slate-900">
+            <p data-site-key="founder_story_p3" class="font-medium text-slate-900">
               In an age where impersonal venture-backed websites and AI portals treat you like a cold database record, we are right here at our Gayathrinagar studio. Bring your sale deed, property tax receipt, or rough sketch—let us sit down for a warm cup of coffee and map out your dream house with integrity.
             </p>
           </div>
@@ -1706,6 +1712,207 @@
             <button onclick="openBookingModal('Priority Plan Sanction Consultation')" class="btn-outline-gold px-6 py-3.5 rounded-xl text-xs font-bold">
               Book Office Visit (ಗಾಯತ್ರಿನಗರ ಕಚೇರಿಗೆ ಬನ್ನಿ)
             </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= TECHNICAL TEAM & OFFICE STAFF (SINCE 1989 PRACTICE) ================= -->
+  <section id="team-staff" class="py-16 bg-slate-50 border-t border-slate-200 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-red-700">Practice Specialists &bull; ನಮ್ಮ ತಾಂತ್ರಿಕ ತಂಡ</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 font-heading">
+            Technical Team &amp; Licensed Specialists
+            <div class="text-xl sm:text-2xl text-slate-800 mt-1 font-kannada font-bold">ನಮ್ಮ ತಾಂತ್ರಿಕ ತಂಡ ಮತ್ತು ಪರಿಣಿತ ಸಿಬ್ಬಂದಿ</div>
+          </h2>
+          <p class="text-slate-600 text-xs sm:text-sm mt-2 max-w-2xl leading-relaxed">
+            Collaborating alongside Founder S. M. Thyagaraja to deliver algorithmic AutoDCR drafting, Sakala municipal clearances, structural design, and precision land surveying across Bengaluru.
+            <span class="block text-slate-700 font-kannada text-xs mt-1">ಸ್ಥಾಪಕರಾದ ಎಸ್. ಎಂ. ತ್ಯಾಗರಾಜ ಅವರೊಂದಿಗೆ ಆಟೋಡಿಸಿಆರ್, ಪಾಲಿಕೆ ಅನುಮೋದನೆ ಮತ್ತು ನಿವೇಶನ ಸರ್ವೇ ಕಾರ್ಯನಿರ್ವಹಿಸುವ ನಮ್ಮ ಅನುಭವಿ ತಂಡ.</span>
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="openStaffContentEditor('staff')" class="btn-outline-gold px-4 py-2.5 rounded-xl text-xs font-bold inline-flex items-center gap-1.5 shadow-sm whitespace-nowrap">
+            <span>⚙️ Manage Team / Add Staff (GUI)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Dynamic Team Grid (Rendered via renderPublicStaff, with resilient static fallback) -->
+      <div id="dynamic-team-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Member 1: Gnanesh T. -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 hover:border-amber-400 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+          <div>
+            <div class="flex items-start gap-3.5 mb-3.5">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-sky-600 to-indigo-800 text-white font-bold text-base flex items-center justify-center flex-shrink-0 shadow-sm">
+                GT
+              </div>
+              <div class="min-w-0">
+                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 uppercase tracking-wide">
+                  CAD &amp; Technical &bull; 12+ Yrs
+                </span>
+                <h4 class="text-base font-bold text-slate-900 font-heading leading-snug mt-0.5 truncate">
+                  Gnanesh T.
+                </h4>
+                <div class="text-[11px] text-red-800 font-kannada font-bold leading-tight">ಜ್ಞಾನೇಶ್ ಟಿ.</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="text-xs font-semibold text-slate-800 leading-snug">Lead AutoDCR CAD Engineer &amp; Systems Architect</div>
+              <div class="text-[11px] text-slate-600 font-kannada leading-tight mt-0.5">ಮುಖ್ಯ ಆಟೋಡಿಸಿಆರ್ ಸಿಎಡಿ ಎಂಜಿನಿಯರ್ &amp; ಸಿಸ್ಟಮ್ಸ್</div>
+              <div class="text-[11px] text-slate-500 font-medium mt-1">🎓 B.E. Civil Engineering, PreDCR Certified Specialist</div>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">
+              Specializes in algorithmic AutoCAD/PreDCR layer coding, zero-error municipal software bypass, and structural drawing validation across GBA &amp; BBMP.
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-3 pt-2 border-t border-slate-100">
+              <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80 text-[10px] font-semibold">AutoDCR Expert</span>
+              <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80 text-[10px] font-semibold">PreDCR Coding</span>
+              <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80 text-[10px] font-semibold">Bilingual Support</span>
+            </div>
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+              <a href="tel:9448054185" class="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-red-800 hover:text-red-900">📞 +91 94480 54185</a>
+              <span class="text-[11px] font-mono text-slate-500">Gayathrinagar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Member 2: R. Manjunath -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 hover:border-amber-400 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+          <div>
+            <div class="flex items-start gap-3.5 mb-3.5">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-600 to-red-700 text-white font-bold text-base flex items-center justify-center flex-shrink-0 shadow-sm">
+                RM
+              </div>
+              <div class="min-w-0">
+                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 uppercase tracking-wide">
+                  Liaison &bull; 18+ Yrs
+                </span>
+                <h4 class="text-base font-bold text-slate-900 font-heading leading-snug mt-0.5 truncate">
+                  R. Manjunath
+                </h4>
+                <div class="text-[11px] text-red-800 font-kannada font-bold leading-tight">ಆರ್. ಮಂಜುನಾಥ್</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="text-xs font-semibold text-slate-800 leading-snug">Senior Town Planning Liaison Officer</div>
+              <div class="text-[11px] text-slate-600 font-kannada leading-tight mt-0.5">ಹಿರಿಯ ನಗರ ಯೋಜನಾ ಸಂಪರ್ಕಾಧಿಕಾರಿ</div>
+              <div class="text-[11px] text-slate-500 font-medium mt-1">🎓 Diploma in Civil Engineering, BBMP Registered Liaison</div>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">
+              Coordinates directly with Assistant Directors of Town Planning (ADTP) and Executive Engineers across 8 BBMP zones, BDA, and BIAAPA for swift clearances.
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-3 pt-2 border-t border-slate-100">
+              <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80 text-[10px] font-semibold">ADTP Coordination</span>
+              <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80 text-[10px] font-semibold">Sakala Guaranteed</span>
+              <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80 text-[10px] font-semibold">Zonal Specialist</span>
+            </div>
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+              <a href="tel:08023325509" class="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-slate-800 hover:text-red-700">📞 080-23325509</a>
+              <span class="text-[11px] font-mono text-slate-500">8 Zonal Desk</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Member 3: K. Sunitha -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 hover:border-amber-400 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+          <div>
+            <div class="flex items-start gap-3.5 mb-3.5">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-800 text-white font-bold text-base flex items-center justify-center flex-shrink-0 shadow-sm">
+                KS
+              </div>
+              <div class="min-w-0">
+                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 uppercase tracking-wide">
+                  Design &bull; 8+ Yrs
+                </span>
+                <h4 class="text-base font-bold text-slate-900 font-heading leading-snug mt-0.5 truncate">
+                  K. Sunitha
+                </h4>
+                <div class="text-[11px] text-red-800 font-kannada font-bold leading-tight">ಕೆ. ಸುನೀತಾ</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="text-xs font-semibold text-slate-800 leading-snug">Architectural Draftsperson &amp; 3D Visualizer</div>
+              <div class="text-[11px] text-slate-600 font-kannada leading-tight mt-0.5">ವಾಸ್ತುಶಿಲ್ಪ ನಕ್ಷೆಗಾರ್ತಿ &amp; 3ಡಿ ವಿನ್ಯಾಸಕಿ</div>
+              <div class="text-[11px] text-slate-500 font-medium mt-1">🎓 D.Arch, Revit &amp; 3ds Max Certified</div>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">
+              Creates functional residential space plans, Vaastu-compliant layouts, 3D exterior elevations, and detailed working drawings for bank loans and construction.
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-3 pt-2 border-t border-slate-100">
+              <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80 text-[10px] font-semibold">3D Elevations</span>
+              <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80 text-[10px] font-semibold">Vaastu Planning</span>
+              <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80 text-[10px] font-semibold">KPWD Estimation</span>
+            </div>
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+              <a href="tel:08023325509" class="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-slate-800 hover:text-red-700">📞 080-23325509</a>
+              <span class="text-[11px] font-mono text-slate-500">Studio Floor</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Member 4: P. Venkatesh -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 hover:border-amber-400 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+          <div>
+            <div class="flex items-start gap-3.5 mb-3.5">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-indigo-900 text-white font-bold text-base flex items-center justify-center flex-shrink-0 shadow-sm">
+                PV
+              </div>
+              <div class="min-w-0">
+                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 uppercase tracking-wide">
+                  Survey &bull; 15+ Yrs
+                </span>
+                <h4 class="text-base font-bold text-slate-900 font-heading leading-snug mt-0.5 truncate">
+                  P. Venkatesh
+                </h4>
+                <div class="text-[11px] text-red-800 font-kannada font-bold leading-tight">ಪಿ. ವೆಂಕಟೇಶ್</div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="text-xs font-semibold text-slate-800 leading-snug">Licensed Land Surveyor &amp; DGPS Specialist</div>
+              <div class="text-[11px] text-slate-600 font-kannada leading-tight mt-0.5">ಪರವಾನಗಿ ಪಡೆದ ಭೂಮಾಪಕರು (ಸರ್ವೇಯರ್)</div>
+              <div class="text-[11px] text-slate-500 font-medium mt-1">🎓 Licensed Government Surveyor, ETS Certified</div>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">
+              Conducts precision plot measurements using Electronic Total Station (ETS) &amp; DGPS, boundary dispute demarcation, Kharab land analysis, and layout contour mapping.
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-3 pt-2 border-t border-slate-100">
+              <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80 text-[10px] font-semibold">Total Station</span>
+              <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80 text-[10px] font-semibold">DGPS Survey</span>
+              <span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80 text-[10px] font-semibold">Contour Mapping</span>
+            </div>
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+              <a href="tel:9448054185" class="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-red-800 hover:text-red-900">📞 +91 94480 54185</a>
+              <span class="text-[11px] font-mono text-slate-500">Field Operations</span>
+            </div>
           </div>
         </div>
 
@@ -2511,11 +2718,13 @@
       </div>
 
       <!-- Navigation Tabs -->
-      <div class="flex border-b border-slate-200 gap-4 text-xs font-bold text-slate-500">
-        <button class="admin-tab-btn active text-sky-700 border-b-2 border-sky-600 pb-2" data-tab="leads">Inbound Consultation Leads</button>
-        <button class="admin-tab-btn pb-2 hover:text-slate-900" data-tab="projects">Active Sakala Filings</button>
-        <button class="admin-tab-btn pb-2 hover:text-slate-900" data-tab="services">Services &amp; Pricing Catalog</button>
-        <button class="admin-tab-btn pb-2 hover:text-slate-900" data-tab="blogs">Zoning Hub Articles</button>
+      <div class="flex border-b border-slate-200 gap-2 sm:gap-4 text-xs font-bold text-slate-500 overflow-x-auto pb-1">
+        <button class="admin-tab-btn active text-sky-700 border-b-2 border-sky-600 pb-2 whitespace-nowrap" data-tab="leads">Inbound Leads</button>
+        <button class="admin-tab-btn pb-2 hover:text-slate-900 whitespace-nowrap" data-tab="staff">👥 Practice Staff &amp; Team (ಸಿಬ್ಬಂದಿ)</button>
+        <button class="admin-tab-btn pb-2 hover:text-slate-900 whitespace-nowrap" data-tab="content">✏️ Edit Website Text &amp; Info (ಪಠ್ಯ ಸಂಪಾದನೆ)</button>
+        <button class="admin-tab-btn pb-2 hover:text-slate-900 whitespace-nowrap" data-tab="projects">Active Sakala Filings</button>
+        <button class="admin-tab-btn pb-2 hover:text-slate-900 whitespace-nowrap" data-tab="services">Services &amp; Pricing Catalog</button>
+        <button class="admin-tab-btn pb-2 hover:text-slate-900 whitespace-nowrap" data-tab="blogs">Zoning Hub Articles</button>
       </div>
 
       <!-- TAB 1: LEADS CRM PANE -->
@@ -2523,6 +2732,196 @@
         <div id="admin-leads-list" class="space-y-3">
           <div class="text-center py-8 text-slate-400 text-xs font-medium">No active inquiries submitted yet.</div>
         </div>
+      </div>
+
+      <!-- TAB 5: STAFF & TEAM MANAGEMENT PANE -->
+      <div id="admin-pane-staff" class="admin-tab-content space-y-6 hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200">
+          <div>
+            <h4 class="text-lg font-bold text-slate-900">Practice Staff &amp; Technical Team</h4>
+            <p class="text-xs text-slate-500">Manage draftsmen, engineers, liaison officers, and surveyors working with Founder S.M. Thyagaraja.</p>
+          </div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <button onclick="AdminPanel.openStaffModal()" class="btn-gold px-4 py-2 rounded-xl text-xs font-bold inline-flex items-center gap-1.5 shadow-sm">
+              <span>+ Add Staff Member</span>
+            </button>
+            <button onclick="AdminPanel.exportStaffJSON()" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold border border-slate-300">
+              Export JSON
+            </button>
+            <button onclick="AdminPanel.resetStaffDefaults()" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-red-50 hover:text-red-700 text-slate-600 text-xs font-medium border border-slate-200" title="Revert to default staff">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <div id="admin-staff-list" class="space-y-3">
+          <!-- Rendered via AdminPanel.loadStaff() -->
+        </div>
+      </div>
+
+      <!-- TAB 6: WEBSITE TEXT & CONTENT CMS PANE -->
+      <div id="admin-pane-content" class="admin-tab-content space-y-6 hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200">
+          <div>
+            <h4 class="text-lg font-bold text-slate-900">Visual Website Text &amp; Details CMS</h4>
+            <p class="text-xs text-slate-500">Edit business details, Kannada subtitles, phone numbers, founder messages, and copy directly.</p>
+          </div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <button type="submit" form="admin-content-form" class="btn-gold px-5 py-2 rounded-xl text-xs font-bold inline-flex items-center gap-1.5 shadow-md">
+              <span>💾 Save &amp; Apply Live</span>
+            </button>
+            <button type="button" onclick="AdminPanel.exportContentJSON()" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold border border-slate-300">
+              Export Backup
+            </button>
+            <button type="button" onclick="AdminPanel.resetContentDefaults()" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-red-50 hover:text-red-700 text-slate-600 text-xs font-medium border border-slate-200">
+              Restore Defaults
+            </button>
+          </div>
+        </div>
+
+        <form id="admin-content-form" class="space-y-6">
+          
+          <!-- Category 1: Firm Identity -->
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+            <div class="flex items-center gap-2 border-b border-slate-200 pb-2">
+              <span class="text-base">🏢</span>
+              <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wide">Firm Identity &amp; Branding</h5>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div>
+                <label for="content-firm-name" class="block font-bold text-slate-700 mb-1">Firm Name (English)</label>
+                <input type="text" id="content-firm-name" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-semibold focus:outline-none focus:border-sky-500">
+              </div>
+              <div>
+                <label for="content-firm-name-kn" class="block font-bold text-slate-700 mb-1">ಸಂಸ್ಥೆಯ ಹೆಸರು (ಕನ್ನಡ)</label>
+                <input type="text" id="content-firm-name-kn" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-kannada font-bold focus:outline-none focus:border-sky-500">
+              </div>
+              <div>
+                <label for="content-tagline" class="block font-bold text-slate-700 mb-1">Tagline (English)</label>
+                <input type="text" id="content-tagline" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-sky-500">
+              </div>
+              <div>
+                <label for="content-tagline-kn" class="block font-bold text-slate-700 mb-1">ಧ್ಯೇಯವಾಕ್ಯ (ಕನ್ನಡ)</label>
+                <input type="text" id="content-tagline-kn" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-kannada focus:outline-none focus:border-sky-500">
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: Office Contact & Coordinates -->
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+            <div class="flex items-center gap-2 border-b border-slate-200 pb-2">
+              <span class="text-base">📞</span>
+              <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wide">Studio Contact Details &amp; Location</h5>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+              <div>
+                <label for="content-landline" class="block font-bold text-slate-700 mb-1">Studio Landline</label>
+                <input type="text" id="content-landline" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-mono font-bold focus:outline-none focus:border-sky-500">
+              </div>
+              <div>
+                <label for="content-mobile" class="block font-bold text-slate-700 mb-1">Direct Mobile / WhatsApp</label>
+                <input type="text" id="content-mobile" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-mono font-bold focus:outline-none focus:border-sky-500">
+              </div>
+              <div>
+                <label for="content-email" class="block font-bold text-slate-700 mb-1">Official Email</label>
+                <input type="email" id="content-email" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-mono focus:outline-none focus:border-sky-500">
+              </div>
+              <div class="md:col-span-2">
+                <label for="content-address" class="block font-bold text-slate-700 mb-1">Studio Street Address</label>
+                <input type="text" id="content-address" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-sky-500">
+              </div>
+              <div>
+                <label for="content-timings" class="block font-bold text-slate-700 mb-1">Office Hours</label>
+                <input type="text" id="content-timings" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-sky-500">
+              </div>
+              <div class="md:col-span-3">
+                <label for="content-address-kn" class="block font-bold text-slate-700 mb-1">ಕಚೇರಿ ವಿಳಾಸ (ಕನ್ನಡ)</label>
+                <input type="text" id="content-address-kn" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-kannada focus:outline-none focus:border-sky-500">
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: Hero Section Copy -->
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+            <div class="flex items-center gap-2 border-b border-slate-200 pb-2">
+              <span class="text-base">🎯</span>
+              <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wide">Hero Header &amp; Value Proposition</h5>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+              <div>
+                <label for="content-hero-prefix" class="block font-bold text-slate-700 mb-1">Heading Prefix</label>
+                <input type="text" id="content-hero-prefix" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-sky-500">
+              </div>
+              <div>
+                <label for="content-hero-highlight" class="block font-bold text-slate-700 mb-1">Gold Highlight Text</label>
+                <input type="text" id="content-hero-highlight" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-bold focus:outline-none focus:border-sky-500">
+              </div>
+              <div>
+                <label for="content-hero-suffix" class="block font-bold text-slate-700 mb-1">Heading Suffix</label>
+                <input type="text" id="content-hero-suffix" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-sky-500">
+              </div>
+              <div class="md:col-span-3">
+                <label for="content-hero-kn" class="block font-bold text-slate-700 mb-1">ಮುಖ್ಯ ಶೀರ್ಷಿಕೆ (ಕನ್ನಡ)</label>
+                <input type="text" id="content-hero-kn" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-kannada font-bold focus:outline-none focus:border-sky-500">
+              </div>
+              <div class="md:col-span-3">
+                <label for="content-hero-desc" class="block font-bold text-slate-700 mb-1">Hero Description Paragraph</label>
+                <textarea id="content-hero-desc" rows="2" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-sky-500 leading-relaxed"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 4: Founder Spotlight & Story -->
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+            <div class="flex items-center gap-2 border-b border-slate-200 pb-2">
+              <span class="text-base">🏛️</span>
+              <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wide">Founder Spotlight &amp; Story (S. M. Thyagaraja)</h5>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div>
+                <label for="content-founder-quote" class="block font-bold text-slate-700 mb-1">Founder Guiding Quote</label>
+                <input type="text" id="content-founder-quote" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-bold focus:outline-none focus:border-sky-500">
+              </div>
+              <div>
+                <label for="content-founder-quote-kn" class="block font-bold text-slate-700 mb-1">ಮಾರ್ಗದರ್ಶಿ ನುಡಿ (ಕನ್ನಡ)</label>
+                <input type="text" id="content-founder-quote-kn" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-kannada font-bold focus:outline-none focus:border-sky-500">
+              </div>
+              <div class="md:col-span-2 space-y-2">
+                <label for="content-founder-story-p1" class="block font-bold text-slate-700">Founder Message: 1989 Foundations (Paragraph 1)</label>
+                <textarea id="content-founder-story-p1" rows="2" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-sky-500 leading-relaxed"></textarea>
+              </div>
+              <div class="md:col-span-2 space-y-2">
+                <label for="content-founder-story-p2" class="block font-bold text-slate-700">Founder Message: 37+ Years Evolution (Paragraph 2)</label>
+                <textarea id="content-founder-story-p2" rows="2" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-sky-500 leading-relaxed"></textarea>
+              </div>
+              <div class="md:col-span-2 space-y-2">
+                <label for="content-founder-story-p3" class="block font-bold text-slate-700">Founder Message: Invitation to Studio (Paragraph 3)</label>
+                <textarea id="content-founder-story-p3" rows="2" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-sky-500 leading-relaxed"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 5: Announcement Banner -->
+          <div class="p-5 rounded-2xl bg-amber-50/50 border border-amber-200/80 space-y-3">
+            <div class="flex items-center gap-2 border-b border-amber-200/80 pb-2">
+              <span class="text-base">📢</span>
+              <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wide">Public Notice &amp; Announcement Banner</h5>
+            </div>
+            <div>
+              <label for="content-announcement" class="block text-xs font-bold text-slate-700 mb-1">Top Notice Text</label>
+              <textarea id="content-announcement" rows="2" class="w-full bg-white border border-amber-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 focus:outline-none focus:border-amber-500 leading-relaxed"></textarea>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-200">
+            <button type="button" onclick="AdminPanel.resetContentDefaults()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold">
+              Cancel &amp; Revert
+            </button>
+            <button type="submit" class="btn-gold px-6 py-2.5 rounded-xl text-xs font-bold shadow-md">
+              Save &amp; Update Live Website
+            </button>
+          </div>
+        </form>
       </div>
 
       <!-- TAB 2: SAKALA PROJECTS PANE -->
@@ -2539,6 +2938,122 @@
       <div id="admin-pane-blogs" class="admin-tab-content space-y-6 hidden">
         <div id="admin-blogs-list" class="space-y-3"></div>
       </div>
+
+    </div>
+  </div>
+
+  <!-- ================= ADD / EDIT STAFF MODAL ================= -->
+  <div id="admin-staff-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-sm overflow-y-auto">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 space-y-5">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-red-700">Practice Personnel</span>
+          <h3 id="staff-modal-title" class="text-lg font-bold text-slate-900">Add New Staff Member</h3>
+        </div>
+        <button onclick="AdminPanel.closeStaffModal()" class="text-slate-400 hover:text-slate-800 text-2xl font-bold">&times;</button>
+      </div>
+
+      <form id="admin-staff-form" class="space-y-4 text-xs">
+        <input type="hidden" id="staff-id" value="">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="staff-name" class="block font-bold text-slate-700 mb-1">Full Name (English) *</label>
+            <input type="text" id="staff-name" required placeholder="e.g. Gnanesh T." class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-semibold focus:outline-none focus:border-sky-500">
+          </div>
+          <div>
+            <label for="staff-name-kn" class="block font-bold text-slate-700 mb-1">ಪೂರ್ಣ ಹೆಸರು (ಕನ್ನಡ)</label>
+            <input type="text" id="staff-name-kn" placeholder="ಉದಾ: ಜ್ಞಾನೇಶ್ ಟಿ." class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-kannada font-bold focus:outline-none focus:border-sky-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="staff-role" class="block font-bold text-slate-700 mb-1">Role / Designation (English) *</label>
+            <input type="text" id="staff-role" required placeholder="e.g. Lead AutoDCR CAD Engineer" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-sky-500">
+          </div>
+          <div>
+            <label for="staff-role-kn" class="block font-bold text-slate-700 mb-1">ಹುದ್ದೆ / ಜವಾಬ್ದಾರಿ (ಕನ್ನಡ)</label>
+            <input type="text" id="staff-role-kn" placeholder="ಉದಾ: ಮುಖ್ಯ ಆಟೋಡಿಸಿಆರ್ ಸಿಎಡಿ ಎಂಜಿನಿಯರ್" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-kannada focus:outline-none focus:border-sky-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="staff-department" class="block font-bold text-slate-700 mb-1">Department</label>
+            <select id="staff-department" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-sky-500">
+              <option value="CAD & Technical">CAD &amp; Technical Drafting</option>
+              <option value="Municipal Liaison">Municipal Liaison &amp; Sakala</option>
+              <option value="Architecture & Design">Architecture &amp; 3D Design</option>
+              <option value="Land Surveying">Land Surveying &amp; Demarcation</option>
+              <option value="Administration">Office Administration &amp; Front Desk</option>
+            </select>
+          </div>
+          <div>
+            <label for="staff-experience" class="block font-bold text-slate-700 mb-1">Experience (Years)</label>
+            <input type="number" id="staff-experience" min="0" max="60" value="5" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-mono focus:outline-none focus:border-sky-500">
+          </div>
+        </div>
+
+        <div>
+          <label for="staff-qualifications" class="block font-bold text-slate-700 mb-1">Qualifications &amp; License</label>
+          <input type="text" id="staff-qualifications" placeholder="e.g. B.E. Civil, PreDCR Certified Specialist, BBMP Lic." class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-sky-500">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="staff-phone" class="block font-bold text-slate-700 mb-1">Phone / WhatsApp</label>
+            <input type="text" id="staff-phone" placeholder="e.g. +91 94480 54185 or 080-23325509" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-mono focus:outline-none focus:border-sky-500">
+          </div>
+          <div>
+            <label for="staff-email" class="block font-bold text-slate-700 mb-1">Email Address</label>
+            <input type="email" id="staff-email" placeholder="e.g. staff@bengaluruapprovals.com" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-mono focus:outline-none focus:border-sky-500">
+          </div>
+        </div>
+
+        <div>
+          <label for="staff-bio" class="block font-bold text-slate-700 mb-1">Bio / Key Responsibilities (English)</label>
+          <textarea id="staff-bio" rows="2" placeholder="Describe core expertise, projects handled, or municipal liaisoning..." class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-sky-500 leading-relaxed"></textarea>
+        </div>
+
+        <div>
+          <label for="staff-bio-kn" class="block font-bold text-slate-700 mb-1">ವಿವರಣೆ / ಅನುಭವ (ಕನ್ನಡ)</label>
+          <textarea id="staff-bio-kn" rows="2" placeholder="ಕನ್ನಡ ವಿವರಣೆ..." class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-kannada focus:outline-none focus:border-sky-500 leading-relaxed"></textarea>
+        </div>
+
+        <div>
+          <label for="staff-tags" class="block font-bold text-slate-700 mb-1">Skill Tags (Comma separated)</label>
+          <input type="text" id="staff-tags" placeholder="AutoDCR Expert, PreDCR Coding, Structural Review" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-sky-500">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 items-center pt-1">
+          <div>
+            <label for="staff-avatar-color" class="block font-bold text-slate-700 mb-1">Avatar Color Theme</label>
+            <select id="staff-avatar-color" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 focus:outline-none focus:border-sky-500">
+              <option value="from-sky-600 to-indigo-800">Sky Blue to Deep Indigo</option>
+              <option value="from-amber-600 to-red-700">Amber Gold to Deep Red</option>
+              <option value="from-emerald-600 to-teal-800">Emerald Green to Teal</option>
+              <option value="from-purple-600 to-indigo-900">Royal Purple to Navy</option>
+              <option value="from-rose-600 to-pink-800">Rose to Crimson</option>
+            </select>
+          </div>
+          <div class="flex items-center gap-2 pt-5">
+            <input type="checkbox" id="staff-active" checked class="w-4 h-4 rounded text-sky-600 focus:ring-sky-500 border-slate-300">
+            <label for="staff-active" class="font-bold text-slate-700 select-none">Active / Show on Live Website</label>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-3 border-t border-slate-200">
+          <button type="button" onclick="AdminPanel.closeStaffModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold">
+            Cancel
+          </button>
+          <button type="submit" class="btn-gold px-5 py-2 rounded-xl font-bold shadow-md">
+            Save Staff Member
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 
     </div>
   </div>

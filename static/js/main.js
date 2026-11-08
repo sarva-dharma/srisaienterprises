@@ -9,9 +9,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (window.ClientPortal) ClientPortal.init();
   if (window.AdminPanel) AdminPanel.init();
 
-  // Load Dynamic Catalog & Blogs from Backend
+  // Load Dynamic Catalog, Blogs & Staff Team from Backend/Storage
   loadPublicServices();
   loadPublicBlogs();
+  if (window.renderPublicStaff) renderPublicStaff();
+  if (window.applyCustomSiteContent) applyCustomSiteContent();
 
   // Attach Consultation Booking Form
   const bookingForm = document.getElementById('consultation-booking-form');
@@ -288,4 +290,102 @@ window.showToast = function(msg) {
     toast.style.transition = 'opacity 0.4s ease';
     setTimeout(() => toast.remove(), 400);
   }, 4000);
+};
+
+// Dynamic Staff & Technical Team Renderer
+window.renderPublicStaff = async function() {
+  const container = document.getElementById('dynamic-team-grid');
+  if (!container) return;
+
+  try {
+    const data = await API.getStaff();
+    const staff = (data.staff || []).filter(s => s.active !== false);
+    if (staff.length === 0) {
+      container.innerHTML = '<div class="col-span-full text-center py-8 text-slate-400 text-xs">Technical team profiles being updated.</div>';
+      return;
+    }
+
+    container.innerHTML = staff.map(member => {
+      const tagsHtml = (member.tags || []).map(t => `<span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/80 text-[10px] font-semibold">${t}</span>`).join(' ');
+      const phoneHtml = member.phone ? `<a href="tel:${member.phone.replace(/[^0-9+]/g, '')}" class="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-red-800 hover:text-red-900">📞 ${member.phone}</a>` : '';
+      const emailHtml = member.email ? `<a href="mailto:${member.email}" class="text-[11px] font-mono text-slate-600 hover:text-slate-900 truncate max-w-[150px]">✉️ ${member.email}</a>` : '';
+
+      return `
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 hover:border-amber-400 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+          <div>
+            <div class="flex items-start gap-3.5 mb-3.5">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${member.avatar_color || 'from-sky-600 to-indigo-800'} text-white font-bold text-base flex items-center justify-center flex-shrink-0 shadow-sm">
+                ${member.initials || 'ST'}
+              </div>
+              <div class="min-w-0">
+                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 uppercase tracking-wide">
+                  ${member.department || 'Technical'} &bull; ${member.experience_years || 1}+ Yrs
+                </span>
+                <h4 class="text-base font-bold text-slate-900 font-heading leading-snug mt-0.5 truncate">
+                  ${member.name}
+                </h4>
+                ${member.name_kn ? `<div class="text-[11px] text-red-800 font-kannada font-bold leading-tight">${member.name_kn}</div>` : ''}
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="text-xs font-semibold text-slate-800 leading-snug">${member.role}</div>
+              ${member.role_kn ? `<div class="text-[11px] text-slate-600 font-kannada leading-tight mt-0.5">${member.role_kn}</div>` : ''}
+              ${member.qualifications ? `<div class="text-[11px] text-slate-500 font-medium mt-1">🎓 ${member.qualifications}</div>` : ''}
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed mb-3">
+              ${member.bio || ''}
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-3 pt-2 border-t border-slate-100">
+              ${tagsHtml}
+            </div>
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+              ${phoneHtml}
+              ${emailHtml}
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  } catch (err) {
+    console.error('Error rendering staff:', err);
+  }
+};
+
+// Dynamic Content Applier
+window.applyCustomSiteContent = async function() {
+  try {
+    const data = await API.getSiteContent();
+    const c = data.content;
+    if (!c) return;
+
+    document.querySelectorAll('[data-site-key]').forEach(el => {
+      const key = el.getAttribute('data-site-key');
+      if (c[key] !== undefined && c[key] !== null && c[key] !== '') {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.value = c[key];
+        } else {
+          el.textContent = c[key];
+        }
+      }
+    });
+
+    // Update phone & landline href attributes
+    if (c.landline) {
+      document.querySelectorAll('a[href^="tel:080"]').forEach(a => {
+        a.href = `tel:${c.landline.replace(/[^0-9]/g, '')}`;
+      });
+    }
+    if (c.mobile) {
+      document.querySelectorAll('a[href^="tel:94480"]').forEach(a => {
+        a.href = `tel:${c.mobile.replace(/[^0-9+]/g, '')}`;
+      });
+    }
+  } catch (err) {
+    console.error('Error applying custom content:', err);
+  }
 };

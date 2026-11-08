@@ -443,6 +443,118 @@ const FALLBACK_PROJECTS = [
   }
 ];
 
+const FALLBACK_STAFF = [
+  {
+    id: "staff-1",
+    name: "Gnanesh T.",
+    name_kn: "ಜ್ಞಾನೇಶ್ ಟಿ.",
+    role: "Lead AutoDCR CAD Engineer & Systems Architect",
+    role_kn: "ಮುಖ್ಯ ಆಟೋಡಿಸಿಆರ್ ಸಿಎಡಿ ಎಂಜಿನಿಯರ್ & ಸಿಸ್ಟಮ್ಸ್",
+    department: "CAD & Technical",
+    experience_years: 12,
+    qualifications: "B.E. Civil Engineering, PreDCR Certified Specialist",
+    phone: "+91 94480 54185",
+    email: "gnanesh@bengaluruapprovals.com",
+    avatar_color: "from-sky-600 to-indigo-800",
+    initials: "GT",
+    bio: "Specializes in algorithmic AutoCAD/PreDCR layer coding, zero-error municipal software bypass, and structural drawing validation across GBA & BBMP.",
+    bio_kn: "ಜಿಬಿಎ ಮತ್ತು ಬಿಬಿಎಂಪಿ ಬೈಲಾ ನಿಯಮಾವಳಿಗೆ ಅನುಗುಣವಾಗಿ ಪ್ರಿ-ಡಿಸಿಆರ್ ಮತ್ತು ಆಟೋಡಿಸಿಆರ್ ಲೇಯರಿಂಗ್ ಹಾಗೂ ತಾಂತ್ರಿಕ ನಕ್ಷೆ ಸಿದ್ಧಪಡಿಸುವಲ್ಲಿ ಪರಿಣತರು.",
+    tags: ["AutoDCR Expert", "PreDCR Coding", "Structural Review", "Bilingual Support"],
+    active: true,
+    order: 1
+  },
+  {
+    id: "staff-2",
+    name: "R. Manjunath",
+    name_kn: "ಆರ್. ಮಂಜುನಾಥ್",
+    role: "Senior Town Planning Liaison Officer",
+    role_kn: "ಹಿರಿಯ ನಗರ ಯೋಜನಾ ಸಂಪರ್ಕಾಧಿಕಾರಿ",
+    department: "Municipal Liaison",
+    experience_years: 18,
+    qualifications: "Diploma in Civil Engineering, BBMP Registered Liaison",
+    phone: "080-23325509",
+    email: "liaison@bengaluruapprovals.com",
+    avatar_color: "from-amber-600 to-red-700",
+    initials: "RM",
+    bio: "Coordinates directly with Assistant Directors of Town Planning (ADTP) and Executive Engineers across 8 BBMP zones, BDA, and BIAAPA for swift clearances.",
+    bio_kn: "ಬಿಬಿಎಂಪಿಯ 8 ವಲಯಗಳ ಎಡಿಟಿಪಿ ಕಚೇರಿಗಳು, ಬಿಡಿಎ ಮತ್ತು ಬಿಯಾಫಾ ವ್ಯಾಪ್ತಿಯಲ್ಲಿ ಸರಕಾರಿ ಕಡತಗಳ ಶೀಘ್ರ ವಿಲೇವಾರಿಗೆ ನೇರ ಸಂಪರ್ಕ ನಿರ್ವಹಣೆ.",
+    tags: ["ADTP Coordination", "Sakala Guaranteed", "e-Khata Verification", "Zonal Specialist"],
+    active: true,
+    order: 2
+  },
+  {
+    id: "staff-3",
+    name: "K. Sunitha",
+    name_kn: "ಕೆ. ಸುನೀತಾ",
+    role: "Architectural Draftsperson & 3D Visualizer",
+    role_kn: "ವಾಸ್ತುಶಿಲ್ಪ ನಕ್ಷೆಗಾರ್ತಿ & 3ಡಿ ವಿನ್ಯಾಸಕಿ",
+    department: "Architecture & Design",
+    experience_years: 8,
+    qualifications: "D.Arch, Revit & 3ds Max Certified",
+    phone: "080-23325509",
+    email: "design@bengaluruapprovals.com",
+    avatar_color: "from-emerald-600 to-teal-800",
+    initials: "KS",
+    bio: "Creates functional residential space plans, Vaastu-compliant layouts, 3D exterior elevations, and detailed working drawings for bank loans and construction.",
+    bio_kn: "ವಾಸ್ತು ಆಧಾರಿತ ಮನೆ ವಿನ್ಯಾಸ, 3ಡಿ ಎಲಿವೇಶನ್, ಬ್ಯಾಂಕ್ ಸಾಲದ ಅಂದಾಜು ಪಟ್ಟಿ ಮತ್ತು ಕಾರ್ಯಕಾರಿ ನಕ್ಷೆಗಳ ರಚನೆ.",
+    tags: ["3D Elevations", "Vaastu Planning", "KPWD Estimation", "Residential Layouts"],
+    active: true,
+    order: 3
+  },
+  {
+    id: "staff-4",
+    name: "P. Venkatesh",
+    name_kn: "ಪಿ. ವೆಂಕಟೇಶ್",
+    role: "Licensed Land Surveyor & DGPS Specialist",
+    role_kn: "ಪರವಾನಗಿ ಪಡೆದ ಭೂಮಾಪಕರು (ಸರ್ವೇಯರ್)",
+    department: "Land Surveying",
+    experience_years: 15,
+    qualifications: "Licensed Government Surveyor, Total Station Certified",
+    phone: "+91 94480 54185",
+    email: "survey@bengaluruapprovals.com",
+    avatar_color: "from-purple-600 to-indigo-900",
+    initials: "PV",
+    bio: "Conducts precision plot measurements using Electronic Total Station (ETS) & DGPS, boundary dispute demarcation, Kharab land analysis, and layout contour mapping.",
+    bio_kn: "ಟೋಟಲ್ ಸ್ಟೇಷನ್ ಮತ್ತು ಡಿಜಿಪಿಎಸ್ ಮೂಲಕ ನಿಖರ ಗಡಿ ಗುರುತಿಸುವಿಕೆ, ನಿವೇಶನ ಅಳತೆ ಮತ್ತು ಖರಾಬು ಜಮೀನು ಪರಿಶೀಲನೆ.",
+    tags: ["Total Station Survey", "DGPS Demarcation", "Boundary Fixation", "Contour Mapping"],
+    active: true,
+    order: 4
+  }
+];
+
+const DEFAULT_SITE_CONTENT = {
+  firm_name: "Sri Sai Enterprises",
+  firm_name_kn: "ಶ್ರೀ ಸಾಯಿ ಎಂಟರ್ ಪ್ರೈಸಸ್",
+  tagline: "Building Plan Approvals & Architecture in Bengaluru Since 1989",
+  tagline_kn: "ಬೆಂಗಳೂರಿನಲ್ಲಿ 1989 ರಿಂದ ನಕ್ಷೆ ಮಂಜೂರಾತಿ ಮತ್ತು ವಾಸ್ತುಶಿಲ್ಪ ಸೇವೆಗಳು",
+  years_heritage: "37+",
+  estd_year: "1989",
+  sanctions_count: "23,000+",
+  founder_name: "S. M. Thyagaraja",
+  founder_name_kn: "ಎಸ್. ಎಂ. ತ್ಯಾಗರಾಜ",
+  founder_title: "Principal Architect & Draftsman Civil",
+  founder_title_kn: "ಮುಖ್ಯ ವಾಸ್ತುಶಿಲ್ಪ & ನಕ್ಷೆ ತಜ್ಞರು",
+  coa_reg: "CA/2009/44120",
+  bbmp_lic: "BCC/BL-3.2.3/S-218/89-90",
+  landline: "080-23325509",
+  mobile: "+91 94480 54185",
+  email: "smthyagaraj@gmail.com",
+  office_address: "#42, 1st Main Road, Gayathrinagar, Rajajinagar, Bengaluru - 560021",
+  office_address_kn: "#42, 1ನೇ ಮುಖ್ಯರಸ್ತೆ, ಗಾಯತ್ರಿನಗರ, ರಾಜಾಜಿನಗರ, ಬೆಂಗಳೂರು - 560021",
+  timings: "Mon - Sat: 9:30 AM - 8:30 PM | Sunday: By Appointment",
+  hero_title_prefix: "Premier Building Plan Approvals,",
+  hero_title_highlight: "PreDCR CAD & Municipal Sanctions",
+  hero_title_suffix: "in Bengaluru",
+  hero_title_kn: "ಬೆಂಗಳೂರು ಕಟ್ಟಡ ನಕ್ಷೆ ಮಂಜೂರಾತಿ, ಆಟೋಡಿಸಿಆರ್ ಮತ್ತು ಪಾಲಿಕೆ ಅನುಮೋದನೆ ಸೇವೆಗಳು",
+  hero_desc: "Since 1989 (37+ Years of Heritage): Bengaluru's premier architectural and municipal liaisoning consultancy. Delivering 23,000+ approved sanctions across GBA, BBMP, BDA, and BIAAPA with guaranteed Sakala compliance.",
+  founder_quote: "\"We Treat Every Plot as if Our Own Family Is Going to Live There.\"",
+  founder_quote_kn: "\"ಪ್ರತಿಯೊಂದು ನಿವೇಶನವನ್ನೂ ನಮ್ಮ ಸ್ವಂತ ಕುಟುಂಬದ ಮನೆಯಂತೆಯೇ ಪರಿಗಣಿಸುತ್ತೇವೆ.\"",
+  founder_story_p1: "When I founded Sri Sai Enterprises on 1st Main Road, Gayathrinagar back in 1989, Bengaluru was a quiet city of pensioners and tree-lined avenues. Families saved their entire lives to buy one site and build a home where three generations could live with dignity.",
+  founder_story_p2: "Over the last 37 years, the city transformed into India's Silicon Valley. The regulations evolved from hand-drawn ammonia blueprints to AutoDCR and Nambike Nakshe digital self-declarations. But our founding core has remained unchanged: absolute honesty, technical rigor, and zero false promises.",
+  founder_story_p3: "In an age where impersonal venture-backed websites and AI portals treat you like a cold database record, we are right here at our Gayathrinagar studio. Bring your sale deed, property tax receipt, or rough sketch—let us sit down for a warm cup of coffee and map out your dream house with integrity.",
+  announcement_banner: "📢 Public Notice: Nambike Nakshe fast-track self-declarations and BBMP BPAS trust-based sanctions active for plots up to 50x80 ft. Visit our Gayathrinagar studio or call 080-23325509."
+};
+
 const isStaticHost = typeof window !== 'undefined' && (
   window.location.port === '8081' || 
   window.location.hostname.includes('github.io') || 
@@ -793,5 +905,128 @@ const API = {
 
   async createService(payload) {
     return { success: true };
+  },
+
+  // Staff & Team Management
+  async getStaff() {
+    try {
+      const stored = localStorage.getItem('sse_staff_members');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return { success: true, staff: parsed };
+        }
+      }
+    } catch (e) {}
+    return { success: true, staff: FALLBACK_STAFF };
+  },
+
+  async saveStaff(staffList) {
+    try {
+      localStorage.setItem('sse_staff_members', JSON.stringify(staffList));
+      return { success: true };
+    } catch (e) {
+      return { success: false, error: e.message };
+    }
+  },
+
+  async createStaffMember(member) {
+    try {
+      const res = await this.getStaff();
+      const current = res.staff || [];
+      const newMember = {
+        id: member.id || 'staff-' + Date.now(),
+        name: member.name || 'New Staff Member',
+        name_kn: member.name_kn || '',
+        role: member.role || 'Technical Specialist',
+        role_kn: member.role_kn || '',
+        department: member.department || 'CAD & Technical',
+        experience_years: parseInt(member.experience_years, 10) || 1,
+        qualifications: member.qualifications || '',
+        phone: member.phone || '',
+        email: member.email || '',
+        avatar_color: member.avatar_color || 'from-sky-600 to-indigo-800',
+        initials: (member.name || 'ST').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase(),
+        bio: member.bio || '',
+        bio_kn: member.bio_kn || '',
+        tags: Array.isArray(member.tags) ? member.tags : (member.tags ? member.tags.split(',').map(t => t.trim()) : ['Technical Specialist']),
+        active: member.active !== false,
+        order: current.length + 1
+      };
+      current.push(newMember);
+      await this.saveStaff(current);
+      return { success: true, staff: current, member: newMember };
+    } catch (e) {
+      return { success: false, error: e.message };
+    }
+  },
+
+  async updateStaffMember(id, updatedFields) {
+    try {
+      const res = await this.getStaff();
+      let current = res.staff || [];
+      const idx = current.findIndex(s => s.id === id);
+      if (idx === -1) return { success: false, error: 'Staff member not found' };
+      current[idx] = { ...current[idx], ...updatedFields };
+      if (updatedFields.name) {
+        current[idx].initials = updatedFields.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+      }
+      await this.saveStaff(current);
+      return { success: true, staff: current, member: current[idx] };
+    } catch (e) {
+      return { success: false, error: e.message };
+    }
+  },
+
+  async deleteStaffMember(id) {
+    try {
+      const res = await this.getStaff();
+      let current = res.staff || [];
+      current = current.filter(s => s.id !== id);
+      await this.saveStaff(current);
+      return { success: true, staff: current };
+    } catch (e) {
+      return { success: false, error: e.message };
+    }
+  },
+
+  async resetStaff() {
+    try {
+      localStorage.removeItem('sse_staff_members');
+      return { success: true, staff: FALLBACK_STAFF };
+    } catch (e) {
+      return { success: false, error: e.message };
+    }
+  },
+
+  // Site Text & Content Management
+  async getSiteContent() {
+    try {
+      const stored = localStorage.getItem('sse_site_content');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        return { success: true, content: { ...DEFAULT_SITE_CONTENT, ...parsed } };
+      }
+    } catch (e) {}
+    return { success: true, content: DEFAULT_SITE_CONTENT };
+  },
+
+  async saveSiteContent(content) {
+    try {
+      const merged = { ...DEFAULT_SITE_CONTENT, ...content };
+      localStorage.setItem('sse_site_content', JSON.stringify(merged));
+      return { success: true, content: merged };
+    } catch (e) {
+      return { success: false, error: e.message };
+    }
+  },
+
+  async resetSiteContent() {
+    try {
+      localStorage.removeItem('sse_site_content');
+      return { success: true, content: DEFAULT_SITE_CONTENT };
+    } catch (e) {
+      return { success: false, error: e.message };
+    }
   }
 };
