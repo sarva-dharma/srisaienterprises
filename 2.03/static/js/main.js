@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (window.FeeCalculator) FeeCalculator.init();
   if (window.ClientPortal) ClientPortal.init();
   if (window.AdminPanel) AdminPanel.init();
+  if (window.DocumentChecklist) DocumentChecklist.init();
 
   // Load Dynamic Catalog, Blogs & Staff Team from Backend/Storage
   loadPublicServices();

@@ -641,6 +641,7 @@
             <span>Where to Start? (ಮಾರ್ಗದರ್ಶಿ)</span>
           </a>
           <a href="#construction-roadmap" class="hover:text-red-700 transition-colors py-1">Plot Roadmap</a>
+          <a href="#document-checklist" class="hover:text-red-700 transition-colors py-1 font-bold text-amber-900">Checklist</a>
           <a href="#about-founder" class="hover:text-red-700 transition-colors py-1">About Founder</a>
           <a href="#bbmp-bpas-portal" class="hover:text-red-700 transition-colors flex items-center gap-1.5 py-1">
             <img src="./static/images/bbmp_official_logo.jpg" class="w-3.5 h-3.5 rounded-full" alt="BBMP">
@@ -683,6 +684,7 @@
     <div id="mobile-menu" class="hidden xl:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 shadow-lg">
       <a href="#audience-navigator" class="block py-2 text-sm font-bold text-red-700">Where to Start? (ನಿವೇಶನ ಮಾರ್ಗದರ್ಶಿ)</a>
       <a href="#construction-roadmap" class="block py-2 text-sm font-semibold text-slate-800">Plot-to-Grihapravesha Roadmap (5 ಹಂತಗಳು)</a>
+      <a href="#document-checklist" class="block py-2 text-sm font-bold text-amber-900">Document Checklist (ದಾಖಲೆಗಳ ಪರಿಶೀಲನಾ ಪಟ್ಟಿ)</a>
       <a href="#about-founder" class="block py-2 text-sm font-semibold text-slate-800">Meet S. M. Thyagaraja (ಸಂಸ್ಥಾಪಕರ ಪರಿಚಯ)</a>
       <a href="#team-staff" class="block py-2 text-sm font-semibold text-slate-800">Technical Team &amp; Staff (ತಾಂತ್ರಿಕ ಸಿಬ್ಬಂದಿ)</a>
       <a href="#bbmp-bpas-portal" class="block py-2 text-sm font-semibold text-slate-800">BBMP BPAS (ಬಿಬಿಎಂಪಿ ಪೋರ್ಟಲ್)</a>
@@ -1341,6 +1343,127 @@
             Book In-Person Visit
           </button>
         </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= BENGALURU PLOT SANCTION DOCUMENT READINESS CHECKLIST ================= -->
+  <section id="document-checklist" class="py-20 bg-gradient-to-b from-white via-amber-50/20 to-slate-50 border-t border-slate-200 relative overflow-hidden">
+    <!-- Subtle glow accents -->
+    <div class="absolute top-0 right-1/4 w-72 h-72 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-red-700">Interactive Document Audit &bull; ದಾಖಲೆಗಳ ಪರಿಶೀಲನೆ</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1 font-heading">
+          Plot Sanction Document Readiness Checklist
+          <div class="text-xl sm:text-2xl text-slate-800 mt-1 font-kannada font-bold">ಕಟ್ಟಡ ನಕ್ಷೆ ಮಂಜೂರಾತಿ ಅಗತ್ಯ ದಾಖಲೆಗಳ ಪರಿಶೀಲನಾ ಪಟ್ಟಿ</div>
+        </h2>
+        <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
+          Select the documents you currently hold for your Bengaluru plot. Our system calculates your <strong>BBMP BPAS Sanction Readiness Score</strong>, flags missing paperwork (e-Khata, EC, Mojini), and lets you WhatsApp the summary directly to S. M. Thyagaraja for instant review.
+          <span class="block text-slate-700 font-kannada text-xs mt-1">ನಿಮ್ಮಲ್ಲಿರುವ ದಾಖಲೆಗಳನ್ನು ಗುರುತಿಸಿ; ನಕ್ಷೆ ಮಂಜೂರಾತಿಗೆ ನಿಮ್ಮ ಕಡತ ಎಷ್ಟು ಶೇಕಡಾ ಸಿದ್ಧವಾಗಿದೆ ಎಂಬುದನ್ನು ತಕ್ಷಣ ತಿಳಿದುಕೊಳ್ಳಿ.</span>
+        </p>
+      </div>
+
+      <!-- Live Interactive Readiness Card -->
+      <div class="max-w-5xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-amber-300/90 shadow-xl space-y-8">
+        
+        <!-- Top Metrics Bar -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-amber-950 text-white">
+          <div class="w-full sm:w-auto text-center sm:text-left">
+            <div class="text-xs font-bold tracking-wider uppercase text-amber-400">Sanction Readiness Score</div>
+            <div class="flex items-baseline gap-2 justify-center sm:justify-start mt-0.5">
+              <span id="checklist-progress-text" class="text-3xl sm:text-4xl font-extrabold text-white font-mono">0%</span>
+              <span id="checklist-count-display" class="text-xs text-slate-300 font-medium">0 of 10 Documents Ready</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+            <div id="checklist-status-badge" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700">
+              Select your documents below
+            </div>
+            <button id="checklist-reset-btn" type="button" class="text-xs text-slate-400 hover:text-white underline">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- Progress Bar Fill -->
+        <div class="w-full bg-slate-100 rounded-full h-3.5 overflow-hidden p-0.5 border border-slate-200">
+          <div id="checklist-progress-bar" class="h-full rounded-full bg-gradient-to-r from-red-600 via-amber-500 to-emerald-500 transition-all duration-500" style="width: 0%;"></div>
+        </div>
+
+        <!-- 3 Document Columns -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <!-- Column 1: Ownership & Deeds -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 pb-2 border-b border-amber-200">
+              <span class="text-lg">📜</span>
+              <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">1. Ownership &amp; Title</h3>
+                <span class="text-[11px] font-kannada font-bold text-red-800">ಮಾಲೀಕತ್ವದ ದಾಖಲೆಗಳು</span>
+              </div>
+            </div>
+            <div id="checklist-container-title" class="space-y-3">
+              <!-- Rendered via DocumentChecklist.renderCheckboxes() -->
+            </div>
+          </div>
+
+          <!-- Column 2: e-Khata & Municipal Taxes -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 pb-2 border-b border-amber-200">
+              <span class="text-lg">🏛️</span>
+              <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">2. Municipal &amp; Taxes</h3>
+                <span class="text-[11px] font-kannada font-bold text-red-800">ಇ-ಖಾತಾ ಮತ್ತು ತೆರಿಗೆ ಪಾವತಿ</span>
+              </div>
+            </div>
+            <div id="checklist-container-tax" class="space-y-3">
+              <!-- Rendered via DocumentChecklist.renderCheckboxes() -->
+            </div>
+          </div>
+
+          <!-- Column 3: Technical & Survey Sketch -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 pb-2 border-b border-amber-200">
+              <span class="text-lg">📐</span>
+              <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">3. Technical &amp; Survey</h3>
+                <span class="text-[11px] font-kannada font-bold text-red-800">ತಾಂತ್ರಿಕ ಹಾಗೂ ಸರ್ವೆ ನಕ್ಷೆಗಳು</span>
+              </div>
+            </div>
+            <div id="checklist-container-tech" class="space-y-3">
+              <!-- Rendered via DocumentChecklist.renderCheckboxes() -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Action Bar & WhatsApp Direct Trigger -->
+        <div class="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="text-xs text-slate-600 text-center sm:text-left">
+            <strong class="text-slate-900 font-bold block">Need help retrieving missing e-Khata or 30-year EC?</strong>
+            <span>Our Gayathrinagar studio team assists with title search, Sub-Registrar EC, and Mojini 11E sketches.</span>
+          </div>
+
+          <div class="flex items-center gap-2.5 w-full sm:w-auto flex-wrap justify-center sm:justify-end">
+            <button id="checklist-whatsapp-btn" type="button" class="btn-gold px-5 py-3 rounded-xl text-xs font-bold inline-flex items-center gap-2 shadow-md">
+              <span>💬 WhatsApp My Checklist to S.M. Thyagaraja</span> &rarr;
+            </button>
+            <button id="checklist-booking-btn" type="button" class="btn-outline-gold px-4 py-3 rounded-xl text-xs font-bold">
+              Book Office Review (ಕಚೇರಿ ಭೇಟಿ)
+            </button>
+            <button id="checklist-print-btn" type="button" class="px-3.5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold border border-slate-300" title="Print Document Checklist">
+              🖨️ Print
+            </button>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -2913,6 +3036,48 @@
             </div>
           </div>
 
+          <!-- Category 6: Lead Webhook & Notification Engine (Option B) -->
+          <div class="p-5 rounded-2xl bg-sky-50/70 border border-sky-200 space-y-4">
+            <div class="flex items-center justify-between border-b border-sky-200 pb-2">
+              <div class="flex items-center gap-2">
+                <span class="text-base">⚡</span>
+                <h5 class="text-xs font-bold text-slate-900 uppercase tracking-wide">Automated Lead Webhook &amp; Email Notifications</h5>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-100 text-sky-800">Instant Real-time Sync</span>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Every consultation booking is permanently saved in browser storage. Connect a Google Sheet Webhook (via free Google Apps Script) or Formspree endpoint to automatically log new client inquiries to your Google Spreadsheet and receive email notifications.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div>
+                <label for="content-webhook-url" class="block font-bold text-slate-700 mb-1">Google Sheet Webhook URL / Endpoint</label>
+                <input type="url" id="content-webhook-url" placeholder="https://script.google.com/macros/s/.../exec" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-mono focus:outline-none focus:border-sky-500">
+              </div>
+              <div>
+                <label for="content-notify-email" class="block font-bold text-slate-700 mb-1">Primary Notification Email</label>
+                <input type="email" id="content-notify-email" value="smthyagaraj@gmail.com" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-slate-900 font-mono focus:outline-none focus:border-sky-500">
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-2">
+              <details class="text-[11px] text-slate-600 cursor-pointer">
+                <summary class="font-bold text-sky-800 hover:underline">View 5-line Google Sheet Apps Script snippet</summary>
+                <pre class="mt-2 p-3 bg-slate-900 text-amber-300 rounded-xl font-mono text-[10px] overflow-x-auto leading-relaxed">function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = JSON.parse(e.postData.contents);
+  sheet.appendRow([new Date(), data.full_name, data.phone, data.email, data.plot_location, data.plot_dimensions, data.service_title, data.message]);
+  return ContentService.createTextOutput(JSON.stringify({result: "success"})).setMimeType(ContentService.MimeType.JSON);
+}</pre>
+              </details>
+
+              <button type="button" onclick="AdminPanel.handleTestWebhook()" class="px-3.5 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold shadow-sm whitespace-nowrap">
+                ⚡ Test Webhook Ping
+              </button>
+            </div>
+          </div>
+
           <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-200">
             <button type="button" onclick="AdminPanel.resetContentDefaults()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold">
               Cancel &amp; Revert
@@ -3055,14 +3220,12 @@
     </div>
   </div>
 
-    </div>
-  </div>
-
   <!-- JavaScript Application Bundle -->
   <script src="./static/js/api.js"></script>
   <script src="./static/js/jurisdiction.js"></script>
   <script src="./static/js/calculator.js"></script>
   <script src="./static/js/portal.js"></script>
+  <script src="./static/js/checklist.js"></script>
   <script src="./static/js/admin.js"></script>
   <script src="./static/js/main.js"></script>
 

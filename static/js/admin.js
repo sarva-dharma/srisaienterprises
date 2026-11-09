@@ -677,7 +677,9 @@ const AdminPanel = {
       'content-founder-story-p1': c.founder_story_p1 || '',
       'content-founder-story-p2': c.founder_story_p2 || '',
       'content-founder-story-p3': c.founder_story_p3 || '',
-      'content-announcement': c.announcement_banner || ''
+      'content-announcement': c.announcement_banner || '',
+      'content-webhook-url': c.webhook_url || '',
+      'content-notify-email': c.notify_email || 'smthyagaraj@gmail.com'
     };
 
     Object.entries(mapping).forEach(([id, val]) => {
@@ -708,12 +710,29 @@ const AdminPanel = {
       founder_story_p1: document.getElementById('content-founder-story-p1')?.value.trim(),
       founder_story_p2: document.getElementById('content-founder-story-p2')?.value.trim(),
       founder_story_p3: document.getElementById('content-founder-story-p3')?.value.trim(),
-      announcement_banner: document.getElementById('content-announcement')?.value.trim()
+      announcement_banner: document.getElementById('content-announcement')?.value.trim(),
+      webhook_url: document.getElementById('content-webhook-url')?.value.trim(),
+      notify_email: document.getElementById('content-notify-email')?.value.trim()
     };
 
     await API.saveSiteContent(payload);
     if (window.applyCustomSiteContent) window.applyCustomSiteContent();
     showToast('Website text and details updated live!');
+  },
+
+  async handleTestWebhook() {
+    const url = document.getElementById('content-webhook-url')?.value.trim();
+    if (!url) {
+      alert('Please enter a Webhook URL first (e.g. Google Apps Script Web App URL)');
+      return;
+    }
+    showToast('Sending test lead to webhook...');
+    const res = await API.testWebhook(url);
+    if (res.success) {
+      showToast('Webhook ping sent successfully! Check your destination sheet/inbox.');
+    } else {
+      alert('Webhook dispatch: ' + res.error);
+    }
   },
 
   async resetContentDefaults() {

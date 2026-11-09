@@ -552,7 +552,9 @@ const DEFAULT_SITE_CONTENT = {
   founder_story_p1: "When I founded Sri Sai Enterprises on 1st Main Road, Gayathrinagar back in 1989, Bengaluru was a quiet city of pensioners and tree-lined avenues. Families saved their entire lives to buy one site and build a home where three generations could live with dignity.",
   founder_story_p2: "Over the last 37 years, the city transformed into India's Silicon Valley. The regulations evolved from hand-drawn ammonia blueprints to AutoDCR and Nambike Nakshe digital self-declarations. But our founding core has remained unchanged: absolute honesty, technical rigor, and zero false promises.",
   founder_story_p3: "In an age where impersonal venture-backed websites and AI portals treat you like a cold database record, we are right here at our Gayathrinagar studio. Bring your sale deed, property tax receipt, or rough sketch—let us sit down for a warm cup of coffee and map out your dream house with integrity.",
-  announcement_banner: "📢 Public Notice: Nambike Nakshe fast-track self-declarations and BBMP BPAS trust-based sanctions active for plots up to 50x80 ft. Visit our Gayathrinagar studio or call 080-23325509."
+  announcement_banner: "📢 Public Notice: Nambike Nakshe fast-track self-declarations and BBMP BPAS trust-based sanctions active for plots up to 50x80 ft. Visit our Gayathrinagar studio or call 080-23325509.",
+  webhook_url: "",
+  notify_email: "smthyagaraj@gmail.com"
 };
 
 const isStaticHost = typeof window !== 'undefined' && (
@@ -672,16 +674,17 @@ const API = {
   },
 
   async submitLead(payload) {
+    let serverRes = null;
     try {
       const res = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-      if (res.ok) return await res.json();
+      if (res.ok) serverRes = await res.json();
     } catch (e) {}
 
-    // Save lead in localStorage for static demo
+    // Save lead in localStorage for static execution (guarantees zero inquiry loss)
     const leads = JSON.parse(localStorage.getItem('bengaluru_leads') || '[]');
     const newLead = {
       id: Date.now(),
@@ -691,7 +694,25 @@ const API = {
     leads.unshift(newLead);
     localStorage.setItem('bengaluru_leads', JSON.stringify(leads));
 
-    return {
+    // Async Webhook Dispatch (Google Sheets / Formspree / Discord / Zapier)
+    try {
+      const siteConfig = await this.getSiteContent();
+      const webhookUrl = siteConfig?.content?.webhook_url || localStorage.getItem('sse_webhook_url');
+      if (webhookUrl && webhookUrl.trim().startsWith('http')) {
+        fetch(webhookUrl.trim(), {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            timestamp: new Date().toISOString(),
+            source: 'Sri Sai Enterprises Official Portal',
+            ...newLead
+          })
+        }).catch(err => console.warn('Webhook notification dispatched asynchronously', err));
+      }
+    } catch (e) {}
+
+    return serverRes || {
       success: true,
       message: 'Consultation Booked Successfully! Reference: SAKALA-GBA-' + Math.floor(1000 + Math.random() * 9000),
       lead: newLead
@@ -1027,6 +1048,35 @@ const API = {
       return { success: true, content: DEFAULT_SITE_CONTENT };
     } catch (e) {
       return { success: false, error: e.message };
+    }
+  },
+
+  async testWebhook(targetUrl) {
+    if (!targetUrl || !targetUrl.trim().startsWith('http')) {
+      return { success: false, error: 'Please enter a valid HTTP/HTTPS Webhook URL' };
+    }
+    const testData = {
+      test: true,
+      timestamp: new Date().toISOString(),
+      source: 'Sri Sai Enterprises Webhook Test',
+      full_name: 'Test Plot Owner',
+      phone: '+91 94480 54185',
+      email: 'smthyagaraj@gmail.com',
+      plot_location: 'Gayathrinagar, Bengaluru',
+      plot_dimensions: '30x40',
+      service_title: 'Plan Sanctions & Approvals (Test)',
+      message: 'This is an automated test ping from Sri Sai Enterprises CMS Console.'
+    };
+    try {
+      await fetch(targetUrl.trim(), {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(testData)
+      });
+      return { success: true, message: 'Test webhook dispatched successfully!' };
+    } catch (err) {
+      return { success: false, error: err.message };
     }
   }
 };
